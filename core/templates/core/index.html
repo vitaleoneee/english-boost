@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Добро пожаловать!
+{% endblock title %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">Добро пожаловать в English BOOST!</h1>
+                        <p class="lead text-white-50 mb-4">Прокачай свой английский легко и с интересом.
+                            Мы объединили современные технологии, озвучку слов, интервальные повторения и
+                            удобную систему обучения, чтобы ты мог учить язык эффективно,
+                            шаг за шагом — каждый день.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Features section -->
+    <section class="py-5 border-bottom" id="features">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-collection"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">Словарь</h2>
+                    <p>Твой персональный словарь с возможностью добавлять, просматривать и повторять слова.
+                        Каждое слово — с переводом, примером, транскрипцией и озвучкой.
+                        Учить стало удобно, быстро и эффективно.
+                    </p>
+                    <a class="text-decoration-none" href="{% url 'core:dictionary' %}">
+                        Словарь
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">Достижения</h2>
+                    <p>Следи за своим прогрессом с достижениями в изучении английского!
+                        Мы визуализируем:
+                        количество выученных слов, текущие и максимальные streaks (дни подряд), и многое другое!
+                    </p>
+                    <a class="text-decoration-none" href="{% url 'games:achievements' %}">
+                        Достижения
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-toggles2"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">Игры</h2>
+                    <p>Учить слова — это интересно!
+                        Карточки — интерактивные мини-игры, чтобы быстро закреплять слова.
+                        Умная система, которая показывает слова в нужный момент, когда ты почти их забыл.
+                        Таким образом ты не просто учишь — ты действительно запоминаешь.
+                    </p>
+                    <a class="text-decoration-none" href="{% url 'games:srs_technique' %}">
+                        Интервальные повторения
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact section-->
+    <section class="bg-light py-5">
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <h2 class="fw-bolder">Предложите нам свои нововведения!</h2>
+                <p class="lead mb-0">Нам действительно это нужно</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <form action="{% url 'core:ajax-send' %}" method="POST" id="contactForm">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            {{ form.full_name }}
+                            <label for="name">Полное имя</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            {{ form.email }}
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            {{ form.message }}
+                            <label for="message">Сообщение</label>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" id="submitButton"
+                                    type="submit">Отправить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-3 bg-dark">
+        <div class="container px-5"><p class="m-0 text-center text-white">Copyright 2025 &copy;
+            Made by vitalion</p></div>
+    </footer>
+    <script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <script src="{% static 'js/contactFormAjax.js' %}"></script>
+{% endblock content %}

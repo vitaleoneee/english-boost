@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Игры
+{% endblock title %}
+
+{% block toasts %}
+    {% if achievement_message %}
+        {% include 'includes/toast_achievement_message.html' with message=achievement_message %}
+    {% elif default_message %}
+        {% include 'includes/toast_default_message.html' with message=default_message %}
+    {% elif error_message %}
+        {% include 'includes/toast_error_message.html' with message=error_message %}
+    {% endif %}
+{% endblock toasts %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-1">
+        <div class="container px-2">
+            <div class="row gx-3 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">SRS</h1>
+                        <p class="lead text-white-50 mb-4">Методика SRS (Spaced Repetition System) — это система
+                            интервального повторения, которая помогает эффективно запоминать информацию и надолго
+                            удерживать её в памяти.
+                        </p>
+                        <p class="lead text-white-50 mb-1">
+                            SRS основана на научном принципе, что информацию нужно повторять как можно реже,
+                            но до того, как она забудется. Повторы происходят по нарастающим интервалам времени,
+                            адаптированным к тому, как хорошо ты запомнил материал.
+                        </p>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container mt-4">
+        <div class="text-center mb-4">
+            <h1>Список слов на изучении</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <ul class="list-group shadow rounded mb-5">
+                    {% for item in word_forms %}
+                        <li class="list-group-item">
+                            <form method="post"
+                                  class="d-flex align-items-center justify-content-between w-100 flex-wrap">
+                                {% csrf_token %}
+                                <span class="me-3" style="white-space: nowrap;">{{ item.word.english_name }}</span>
+                                <input type="hidden" name="english_word_name" value="{{ item.word.english_name }}">
+                                <div class="flex-grow-1 me-2 mb-2 mb-md-0" style="min-width: 150px;">
+                                    {{ item.form.translate_input }}
+                                </div>
+                                <button
+                                        type="submit"
+                                        name="check_word"
+                                        value="{{ item.word.id }}"
+                                        class="btn btn-primary me-2 mb-2 mb-md-0"
+                                        style="min-width: 120px;"
+                                        {% if item.access_time_seconds > 0 %}disabled{% endif %}>
+                                    Проверить
+                                </button>
+                                <span id="timer-{{ item.word.id }}"
+                                      class="text-muted text-end mb-2 mb-md-0"
+                                      style="min-width: 140px; text-align: right;"
+                                      data-seconds="{{ item.access_time_seconds }}">
+                                            {% if item.access_time_seconds > 0 %}
+                                                До проверки: {{ item.access_time }}
+                                            {% else %}
+                                                &nbsp;
+                                            {% endif %}
+                                </span>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/closeBtn.js' %}"></script>
+    <script src="{% static 'js/timer.js' %}"></script>
+{% endblock content %}

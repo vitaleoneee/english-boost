@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+    Словарь
+{% endblock title %}
+
+{% block toasts %}
+    {% if default_message %}
+        {% if default_message|gettype == 'int' %}
+            {# If it's a number, we output it with action and declension #}
+            {% include 'includes/toast_default_message.html' with action='Удалено' message=default_message plural_suffix="слово,слова,слов" %}
+        {% else %}
+            {# If a string, we simply output text without action and declension #}
+            {% include 'includes/toast_default_message.html' with message=default_message %}
+        {% endif %}
+    {% elif achievement_message %}
+        {% include 'includes/toast_achievement_message.html' with message=achievement_message %}
+    {% endif %}
+{% endblock toasts %}
+
+{% block content %}
+    <form method="post" action="{% url 'core:delete_selected_words' %}">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <div class="dictionary-container d-flex justify-content-between align-items-center mb-3">
+                <h1 class="mb-0">Ваш словарь</h1>
+                <div>
+                    <button type="submit" class="btn btn-danger me-2">Удалить выбранные</button>
+                    <a href="{% url 'core:new-dictionary-word' %}" type="button" class="btn btn-primary">Добавить
+                        слово</a>
+                </div>
+            </div>
+
+            <div class="dictionary-container table-responsive">
+                <table class="table table-bordered mx-auto">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+                        <th>#</th>
+                        <th>Слово на английском</th>
+                        <th>Перевод</th>
+                        <th>Произношение</th>
+                        <th>Статус</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for word in words %}
+                        <tr>
+                            <td><input type="checkbox" name="selected_words" value="{{ word.id }}"></td>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ word.english_name }}</td>
+                            <td>{{ word.russian_name }}</td>
+                            <td>
+                                <a class="play-audio-button"
+                                   onclick="playAudio('{{ word.english_name|escapejs }}')">
+                                    <i class="fa-solid fa-play"></i>
+                                </a>
+                            </td>
+                            <td class="{% if word.status == 'LEARNED' %}table-success{% else %}table-warning{% endif %}">
+                                {{ word.get_status_display }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+    <script src="{% static 'js/checkboxesSelectAll.js' %}"></script>
+    <script src="{% static 'js/pronunciationWord.js' %}"></script>
+{% endblock content %}

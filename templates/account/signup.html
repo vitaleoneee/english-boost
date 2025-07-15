@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Регистрация </title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="title">Регистрация</div>
+    <div class="content">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="user-details">
+                {% for field in form %}
+                    <div class="input-box">
+                        <span class="details">{{ field.label }}</span>
+                        {{ field }}
+                        {% if field.errors %}
+                            <p>{{ field.errors }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {% if form.non_field_errors %}
+                    <p>{{ form.non_field_errors }}</p>
+                {% endif %}
+            </div>
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

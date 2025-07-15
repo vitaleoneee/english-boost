@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static "css/login_and_reset_password.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ENjdO4Dr2bkBIFxQpeoR2n5FspPZ7F3+6t1Qb77Pz+6f5uVoDhPYbbW3bt6mJZ9k" crossorigin="anonymous">
+</head>
+<body>
+<div class="wrapper">
+    <div class="title">
+        Вход
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="field">
+            {{ form.login }}
+        </div>
+        <div class="field">
+            {{ form.password }}
+        </div>
+        <div class="pass-link">
+            <a href="{% url 'account_reset_password' %}">Забыли пароль?</a>
+            <a href="{% url 'account_signup' %}">Создать аккаунт</a>
+        </div>
+        {% if field.errors %}
+            <p>{{ field.errors }}</p>
+        {% endif %}
+        {% if form.non_field_errors %}
+            <p>{{ form.non_field_errors }}</p>
+        {% endif %}
+        <div class="field justify-content-center">
+            <input type="submit" value="Войти">
+        </div>
+    </form>
+</div>
+</body>
+</html>
