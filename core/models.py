@@ -5,7 +5,6 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
-    slug = models.SlugField(max_length=100, unique=True, verbose_name='Slug')
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -13,7 +12,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-        ordering = ['name']
+        ordering = ['id']
         indexes = [
             models.Index(
                 fields=['created_at', 'updated_at'],

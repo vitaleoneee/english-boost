@@ -8,7 +8,15 @@ English Boost is a Django web application designed to help users learn English. 
 - 🔁 Spaced repetition (SRS) — words appear in the test at the right time so you don’t forget them.
 - 🏆 Achievement system — get rewards for progress and regular practice.
 - 🔐 Authentication system — convenient and simple registration and login system.
-- 🛠️ Admin panel with Unfold — a modern admin panel. 
+- 🛠️ Admin panel with Unfold — a modern admin panel.
+
+## Technologies
+
+* Django 5.2
+* PostgreSQL
+* Redis
+* django-allauth
+* django-unfold
 
 ## Installation
 
@@ -30,8 +38,7 @@ English Boost is a Django web application designed to help users learn English. 
 
 5. Install Redis
 - Windows:
-    ```bash
-    Download the installer from here https://github.com/tporadowski/redis/releases
+    Download the installer from [here](https://github.com/tporadowski/redis/releases)
 - Ubuntu/Debian:
     ```bash
     sudo apt update
@@ -42,7 +49,7 @@ English Boost is a Django web application designed to help users learn English. 
     brew install redis
     brew services start redis
 
-6. Start Redis
+6. Open the folder and Start Redis
     ```bash
    redis-server
 
@@ -75,10 +82,17 @@ English Boost is a Django web application designed to help users learn English. 
     ```bash
     python manage.py runserver
 
-## Technologies
+## 📸 Screenshots
 
-* Django 5.2
-* PostgreSQL
-* Redis
-* django-allauth
-* django-unfold
+### 🔍 Main page
+![First photo - main page](screenshots/main-page1.png)
+![Second photo - main page](screenshots/main-page2.png)
+
+### 🧠 Srs system
+![SRS system](screenshots/srs-system.png)
+
+### 🏆 Achievements
+![Achievements](screenshots/achievements.png)
+
+### ⚙️ Admin Panel
+![Admin Panel](screenshots/admin-panel.png)

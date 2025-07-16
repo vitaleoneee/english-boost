@@ -51,7 +51,7 @@ def handle_srs_post_request(request):
     is_correct = user_input == word.russian_name.lower()
 
     # Updating the SRS status
-    srs_obj.update_on_success(failure=not is_correct)
+    srs_obj.update_after_answer(failure=not is_correct)
 
     # Forming a message
     if is_correct:

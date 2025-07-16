@@ -38,7 +38,7 @@ class GroupAdmin(BaseGroupAdmin, ModelAdmin):
 class CategoryAdmin(ModelAdmin):
     compressed_fields = True
     warn_unsaved_form = True
-    list_display = ('id', 'name', 'slug')
+    list_display = ('id', 'name')
     formfield_overrides = {
         models.TextField: {'widget': WysiwygWidget},
     }
