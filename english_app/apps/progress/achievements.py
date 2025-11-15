@@ -2,9 +2,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.utils import timezone
 
-from games.models import UserAchievement, Achievement
+from english_app.apps.progress.models import UserAchievement, Achievement
 from redis_service import r
-from games.constants import WORD_ACHIEVEMENTS, TIME_ACHIEVEMENTS, SRS_ACHIEVEMENTS, FLAWLESS_SRS_ACHIEVEMENTS
+from english_app.apps.progress.constants import WORD_ACHIEVEMENTS, TIME_ACHIEVEMENTS, SRS_ACHIEVEMENTS, \
+    FLAWLESS_SRS_ACHIEVEMENTS
 
 
 class AchievementChecker:

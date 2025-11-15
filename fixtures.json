@@ -1,0 +1,1181 @@
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add site",
+      "content_type": 7,
+      "codename": "add_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change site",
+      "content_type": 7,
+      "codename": "change_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete site",
+      "content_type": 7,
+      "codename": "delete_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view site",
+      "content_type": 7,
+      "codename": "view_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add email address",
+      "content_type": 8,
+      "codename": "add_emailaddress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change email address",
+      "content_type": 8,
+      "codename": "change_emailaddress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete email address",
+      "content_type": 8,
+      "codename": "delete_emailaddress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view email address",
+      "content_type": 8,
+      "codename": "view_emailaddress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add email confirmation",
+      "content_type": 9,
+      "codename": "add_emailconfirmation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change email confirmation",
+      "content_type": 9,
+      "codename": "change_emailconfirmation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete email confirmation",
+      "content_type": 9,
+      "codename": "delete_emailconfirmation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view email confirmation",
+      "content_type": 9,
+      "codename": "view_emailconfirmation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add Категория",
+      "content_type": 10,
+      "codename": "add_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change Категория",
+      "content_type": 10,
+      "codename": "change_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete Категория",
+      "content_type": 10,
+      "codename": "delete_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view Категория",
+      "content_type": 10,
+      "codename": "view_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add Слово",
+      "content_type": 11,
+      "codename": "add_word"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change Слово",
+      "content_type": 11,
+      "codename": "change_word"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete Слово",
+      "content_type": 11,
+      "codename": "delete_word"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view Слово",
+      "content_type": 11,
+      "codename": "view_word"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add Достижение",
+      "content_type": 12,
+      "codename": "add_achievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change Достижение",
+      "content_type": 12,
+      "codename": "change_achievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete Достижение",
+      "content_type": 12,
+      "codename": "delete_achievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view Достижение",
+      "content_type": 12,
+      "codename": "view_achievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add Достижение пользователя",
+      "content_type": 13,
+      "codename": "add_userachievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change Достижение пользователя",
+      "content_type": 13,
+      "codename": "change_userachievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete Достижение пользователя",
+      "content_type": 13,
+      "codename": "delete_userachievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view Достижение пользователя",
+      "content_type": 13,
+      "codename": "view_userachievement"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add SRS объект",
+      "content_type": 14,
+      "codename": "add_usersrs"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change SRS объект",
+      "content_type": 14,
+      "codename": "change_usersrs"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete SRS объект",
+      "content_type": 14,
+      "codename": "delete_usersrs"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view SRS объект",
+      "content_type": 14,
+      "codename": "view_usersrs"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "sites",
+      "model": "site"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "account",
+      "model": "emailaddress"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "account",
+      "model": "emailconfirmation"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "core",
+      "model": "category"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "core",
+      "model": "word"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "games",
+      "model": "achievement"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "games",
+      "model": "userachievement"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "games",
+      "model": "usersrs"
+    }
+  },
+  {
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+      "domain": "example.com",
+      "name": "example.com"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 1,
+    "fields": {
+      "name": "Фрукты",
+      "description": "Слова, связанные с фруктами",
+      "created_at": "2025-11-15T10:41:37.085Z",
+      "updated_at": "2025-11-15T10:41:37.085Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 2,
+    "fields": {
+      "name": "Овощи",
+      "description": "Слова, связанные с овощами",
+      "created_at": "2025-11-15T10:41:37.086Z",
+      "updated_at": "2025-11-15T10:41:37.086Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 3,
+    "fields": {
+      "name": "Животные",
+      "description": "Названия животных",
+      "created_at": "2025-11-15T10:41:37.087Z",
+      "updated_at": "2025-11-15T10:41:37.087Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 4,
+    "fields": {
+      "name": "Цвета",
+      "description": "Основные цвета и оттенки",
+      "created_at": "2025-11-15T10:41:37.088Z",
+      "updated_at": "2025-11-15T10:41:37.088Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 5,
+    "fields": {
+      "name": "Части тела",
+      "description": "Анатомические части тела человека и животных",
+      "created_at": "2025-11-15T10:41:37.088Z",
+      "updated_at": "2025-11-15T10:41:37.088Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 6,
+    "fields": {
+      "name": "Одежда",
+      "description": "Наименования одежды и аксессуаров",
+      "created_at": "2025-11-15T10:41:37.089Z",
+      "updated_at": "2025-11-15T10:41:37.089Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 7,
+    "fields": {
+      "name": "Профессии",
+      "description": "Различные профессии и специальности",
+      "created_at": "2025-11-15T10:41:37.090Z",
+      "updated_at": "2025-11-15T10:41:37.090Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 8,
+    "fields": {
+      "name": "Еда",
+      "description": "Продукты питания и блюда",
+      "created_at": "2025-11-15T10:41:37.090Z",
+      "updated_at": "2025-11-15T10:41:37.090Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 9,
+    "fields": {
+      "name": "Напитки",
+      "description": "Напитки всех видов",
+      "created_at": "2025-11-15T10:41:37.091Z",
+      "updated_at": "2025-11-15T10:41:37.091Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 10,
+    "fields": {
+      "name": "Мебель",
+      "description": "Предметы мебели и интерьера",
+      "created_at": "2025-11-15T10:41:37.092Z",
+      "updated_at": "2025-11-15T10:41:37.092Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 11,
+    "fields": {
+      "name": "Транспорт",
+      "description": "Виды транспорта и транспортные средства",
+      "created_at": "2025-11-15T10:41:37.093Z",
+      "updated_at": "2025-11-15T10:41:37.093Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 12,
+    "fields": {
+      "name": "Дом",
+      "description": "Слова, связанные с жильём и бытом",
+      "created_at": "2025-11-15T10:41:37.093Z",
+      "updated_at": "2025-11-15T10:41:37.093Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 13,
+    "fields": {
+      "name": "Природа",
+      "description": "Природные объекты и явления",
+      "created_at": "2025-11-15T10:41:37.094Z",
+      "updated_at": "2025-11-15T10:41:37.094Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 14,
+    "fields": {
+      "name": "Погода",
+      "description": "Слова, описывающие погодные условия",
+      "created_at": "2025-11-15T10:41:37.095Z",
+      "updated_at": "2025-11-15T10:41:37.095Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 15,
+    "fields": {
+      "name": "Жилище",
+      "description": "Комнаты, элементы здания",
+      "created_at": "2025-11-15T10:41:37.095Z",
+      "updated_at": "2025-11-15T10:41:37.095Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 16,
+    "fields": {
+      "name": "Времена года",
+      "description": "Сезоны, месяцы, дни недели и даты",
+      "created_at": "2025-11-15T10:41:37.096Z",
+      "updated_at": "2025-11-15T10:41:37.096Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 17,
+    "fields": {
+      "name": "Город",
+      "description": "Городские объекты и инфраструктура",
+      "created_at": "2025-11-15T10:41:37.097Z",
+      "updated_at": "2025-11-15T10:41:37.097Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 18,
+    "fields": {
+      "name": "Путешествия",
+      "description": "Слова, связанные с поездками и туризмом",
+      "created_at": "2025-11-15T10:41:37.098Z",
+      "updated_at": "2025-11-15T10:41:37.098Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 19,
+    "fields": {
+      "name": "Школа",
+      "description": "Школьные предметы и принадлежности",
+      "created_at": "2025-11-15T10:41:37.098Z",
+      "updated_at": "2025-11-15T10:41:37.098Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 20,
+    "fields": {
+      "name": "Спорт",
+      "description": "Виды спорта и спортивный инвентарь",
+      "created_at": "2025-11-15T10:41:37.099Z",
+      "updated_at": "2025-11-15T10:41:37.099Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 21,
+    "fields": {
+      "name": "Музыка",
+      "description": "Музыкальные термины и жанры",
+      "created_at": "2025-11-15T10:41:37.100Z",
+      "updated_at": "2025-11-15T10:41:37.100Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 22,
+    "fields": {
+      "name": "Искусство",
+      "description": "Художественные стили, термины и техники",
+      "created_at": "2025-11-15T10:41:37.101Z",
+      "updated_at": "2025-11-15T10:41:37.101Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 23,
+    "fields": {
+      "name": "Глаголы движения",
+      "description": "Глаголы, описывающие движение",
+      "created_at": "2025-11-15T10:41:37.102Z",
+      "updated_at": "2025-11-15T10:41:37.102Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 24,
+    "fields": {
+      "name": "Модальные глаголы",
+      "description": "can, must, should и т.д.",
+      "created_at": "2025-11-15T10:41:37.102Z",
+      "updated_at": "2025-11-15T10:41:37.102Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 25,
+    "fields": {
+      "name": "Настоящее время",
+      "description": "Present Simple, Present Continuous и др.",
+      "created_at": "2025-11-15T10:41:37.103Z",
+      "updated_at": "2025-11-15T10:41:37.103Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 26,
+    "fields": {
+      "name": "Прошедшее время",
+      "description": "Past Simple, Past Perfect и др.",
+      "created_at": "2025-11-15T10:41:37.104Z",
+      "updated_at": "2025-11-15T10:41:37.104Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 27,
+    "fields": {
+      "name": "Будущее время",
+      "description": "Future Simple, Future Continuous и др.",
+      "created_at": "2025-11-15T10:41:37.104Z",
+      "updated_at": "2025-11-15T10:41:37.104Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 28,
+    "fields": {
+      "name": "Артикли",
+      "description": "a, an, the и случаи их использования",
+      "created_at": "2025-11-15T10:41:37.105Z",
+      "updated_at": "2025-11-15T10:41:37.105Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 29,
+    "fields": {
+      "name": "Предлоги",
+      "description": "of, in, at и другие предлоги",
+      "created_at": "2025-11-15T10:41:37.106Z",
+      "updated_at": "2025-11-15T10:41:37.106Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 30,
+    "fields": {
+      "name": "Местоимения",
+      "description": "Личные, притяжательные и др. местоимения",
+      "created_at": "2025-11-15T10:41:37.106Z",
+      "updated_at": "2025-11-15T10:41:37.106Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 31,
+    "fields": {
+      "name": "Сравнения",
+      "description": "Сравнительная и превосходная степень",
+      "created_at": "2025-11-15T10:41:37.107Z",
+      "updated_at": "2025-11-15T10:41:37.107Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 32,
+    "fields": {
+      "name": "Числительные",
+      "description": "Порядковые и количественные числительные",
+      "created_at": "2025-11-15T10:41:37.108Z",
+      "updated_at": "2025-11-15T10:41:37.108Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 33,
+    "fields": {
+      "name": "Вопросительные слова",
+      "description": "who, what, where и т.п.",
+      "created_at": "2025-11-15T10:41:37.108Z",
+      "updated_at": "2025-11-15T10:41:37.108Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 34,
+    "fields": {
+      "name": "Фразовые глаголы",
+      "description": "Phrasal verbs с пояснением",
+      "created_at": "2025-11-15T10:41:37.109Z",
+      "updated_at": "2025-11-15T10:41:37.109Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 35,
+    "fields": {
+      "name": "Эмоции",
+      "description": "Слова для выражения чувств и эмоций",
+      "created_at": "2025-11-15T10:41:37.110Z",
+      "updated_at": "2025-11-15T10:41:37.110Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 36,
+    "fields": {
+      "name": "Характер",
+      "description": "Черты характера и личности",
+      "created_at": "2025-11-15T10:41:37.110Z",
+      "updated_at": "2025-11-15T10:41:37.110Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 37,
+    "fields": {
+      "name": "Отношения",
+      "description": "Дружба, любовь, семья",
+      "created_at": "2025-11-15T10:41:37.111Z",
+      "updated_at": "2025-11-15T10:41:37.111Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 38,
+    "fields": {
+      "name": "Мышление",
+      "description": "Действия ума: думать, помнить, забывать",
+      "created_at": "2025-11-15T10:41:37.112Z",
+      "updated_at": "2025-11-15T10:41:37.112Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 39,
+    "fields": {
+      "name": "Время",
+      "description": "Понятия времени и временные маркеры",
+      "created_at": "2025-11-15T10:41:37.113Z",
+      "updated_at": "2025-11-15T10:41:37.113Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 40,
+    "fields": {
+      "name": "Сленг",
+      "description": "Разговорный и молодежный английский",
+      "created_at": "2025-11-15T10:41:37.113Z",
+      "updated_at": "2025-11-15T10:41:37.113Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 41,
+    "fields": {
+      "name": "Идиомы",
+      "description": "Устойчивые выражения",
+      "created_at": "2025-11-15T10:41:37.114Z",
+      "updated_at": "2025-11-15T10:41:37.114Z"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": 42,
+    "fields": {
+      "name": "Другие",
+      "description": "Категория по умолчанию, если не подходит ни одна другая",
+      "created_at": "2025-11-15T10:41:37.115Z",
+      "updated_at": "2025-11-15T10:41:37.115Z"
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 1,
+    "fields": {
+      "name": "Начинающий",
+      "description": "Выучите 5 слов",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 2,
+    "fields": {
+      "name": "Первый десяток",
+      "description": "Выучите 10 слов",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 3,
+    "fields": {
+      "name": "Словарный строитель",
+      "description": "Выучите 50 слов",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 4,
+    "fields": {
+      "name": "Лексический мастер",
+      "description": "Выучите 100 слов",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 5,
+    "fields": {
+      "name": "Тысяча слов",
+      "description": "Выучите 1000 слов",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 6,
+    "fields": {
+      "name": "Первый день",
+      "description": "Занимайтесь один день",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 7,
+    "fields": {
+      "name": "Ученик дисциплины",
+      "description": "Занимайтесь 7 дней подряд",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 8,
+    "fields": {
+      "name": "Ты как часы",
+      "description": "Занимайтесь 30 дней подряд",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 9,
+    "fields": {
+      "name": "Ночной совёнок",
+      "description": "Занимайтесь с 00:00 до 05:00",
+      "secret": true
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 10,
+    "fields": {
+      "name": "Первое повторение",
+      "description": "Сделайте первое повторение",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 11,
+    "fields": {
+      "name": "Сила повторения",
+      "description": "Сделайте 10 повторений",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 12,
+    "fields": {
+      "name": "Чемпион памяти",
+      "description": "Сделайте 100 повторений",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 13,
+    "fields": {
+      "name": "Железная концентрация",
+      "description": "Сделайте 5 повторений без ошибок",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 14,
+    "fields": {
+      "name": "Безупречная сессия",
+      "description": "Сделайте 10 повторений без ошибок",
+      "secret": false
+    }
+  },
+  {
+    "model": "games.achievement",
+    "pk": 15,
+    "fields": {
+      "name": "Очиститель",
+      "description": "Удалите 10 слов из списка изучения",
+      "secret": true
+    }
+  }
+]

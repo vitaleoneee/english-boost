@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
-from core.models import Word
+from english_app.apps.core.models import Word
 from .constants import SRS_LEARNED_THRESHOLD, WORD_STATUS_LEARNED
 
 

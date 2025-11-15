@@ -1,4 +1,4 @@
-from core.models import Category, Word
+from english_app.apps.core.models import Category, Word
 
 from django.db import models
 from django.contrib import admin

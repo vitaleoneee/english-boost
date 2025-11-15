@@ -1,12 +1,12 @@
 from django.shortcuts import redirect
 from django.utils import timezone
 
-from core.utils import check_and_set_achievements
-from games.utils import get_srs_object
-from core.models import Word
-from games.forms import WordCheckForm
+from english_app.apps.core.utils import check_and_set_achievements
+from english_app.apps.progress.utils import get_srs_object
+from english_app.apps.core.models import Word
+from english_app.apps.progress.forms import WordCheckForm
 
-from games.constants import (
+from english_app.apps.progress.constants import (
     SRS_WORD_NOT_FOUND_MSG,
     SRS_OBJECT_NOT_FOUND_MSG,
     SRS_WORD_NOT_AVAILABLE_MSG,

@@ -1,6 +1,7 @@
 # English Boost
 
-English Boost is a Django web application designed to help users learn English. The project offers an interactive and user-friendly platform with a spaced repetition system (SRS), a personal dictionary, and an achievement system.
+English Boost is a Django web application designed to help users learn English. The project offers an interactive and
+user-friendly platform with a spaced repetition system (SRS), a personal dictionary, and an achievement system.
 
 ## Features
 
@@ -9,16 +10,71 @@ English Boost is a Django web application designed to help users learn English. 
 - 🏆 Achievement system — get rewards for progress and regular practice.
 - 🔐 Authentication system — convenient and simple registration and login system.
 - 🛠️ Admin panel with Unfold — a modern admin panel.
+- 🐳 Fully Docker-ready — easy to run and deploy with Docker Compose.
 
 ## Technologies
 
 * Django 5.2
 * PostgreSQL
 * Redis
+* Docker
 * django-allauth
 * django-unfold
 
-## Installation
+## 👨‍💻 Docker Installation
+
+1. Clone the repository
+    ```bash
+    git clone https://github.com/vitaleoneee/english-boost.git
+    cd english-boost
+
+2. Create an .env file and fill the required variables:
+   ```bash
+   cp .env.example .env
+   
+   # Fill the variables in the newly created file with your data
+      DB_NAME=english-boost
+      DB_USER=postgres
+      DB_PASSWORD=your-db-password
+      ...
+   
+   # Fill the variables in the docker-compose.yaml file
+      POSTGRES_PASSWORD=password
+      POSTGRES_USER=postgres
+      POSTGRES_DB=dbname
+3. Build and run the containers:
+    ```bash
+    docker compose up --build --watch
+
+This will automatically:
+
+* Wait for PostgreSQL
+* Apply migrations
+* Load fixtures
+* Start the Django server
+
+🔧 Useful Docker Commands
+
+1. Rebuild containers:
+    ```bash
+    docker compose up --build --watch
+
+2. Run in background:
+    ```bash
+    docker compose up -d
+
+3. Stop:
+    ```bash
+    docker compose down
+
+4. View logs:
+    ```bash
+   docker compose logs -f
+
+## Below is a detailed guide on how to install the application WITHOUT Docker 👇
+
+<details>
+Installation
 
 1. Clone the repository or copy the project folder to your local machine.
     ```bash
@@ -37,8 +93,9 @@ English Boost is a Django web application designed to help users learn English. 
    pip install -r requirements.txt
 
 5. Install Redis
+
 - Windows:
-    Download the installer from [here](https://github.com/tporadowski/redis/releases)
+  Download the installer from [here](https://github.com/tporadowski/redis/releases)
 - Ubuntu/Debian:
     ```bash
     sudo apt update
@@ -56,8 +113,8 @@ English Boost is a Django web application designed to help users learn English. 
 7. Create a .env file based on the example:
    ```bash
    cp .env.example .env
-   
-8. Specify variables in .env 
+
+8. Specify variables in .env
     ```bash
     DEBUG=True
     SECRET_KEY=your-secret-key
@@ -71,7 +128,7 @@ English Boost is a Django web application designed to help users learn English. 
     REDIS_HOST=localhost
     REDIS_PORT=6379
     REDIS_DB=0
-   
+
 9. Set up the database (*Make sure PostgreSQL is running and the database is created.*)
     ```bash
     python manage.py migrate
@@ -82,17 +139,23 @@ English Boost is a Django web application designed to help users learn English. 
     ```bash
     python manage.py runserver
 
+</details>
+
 ## 📸 Screenshots
 
 ### 🔍 Main page
+
 ![First photo - main page](screenshots/main-page1.png)
 ![Second photo - main page](screenshots/main-page2.png)
 
 ### 🧠 Srs system
+
 ![SRS system](screenshots/srs-system.png)
 
 ### 🏆 Achievements
+
 ![Achievements](screenshots/achievements.png)
 
 ### ⚙️ Admin Panel
+
 ![Admin Panel](screenshots/admin-panel.png)

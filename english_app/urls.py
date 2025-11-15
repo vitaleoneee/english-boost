@@ -7,10 +7,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Include core application route
-    path('', include('core.urls'), name='core'),
+    path('', include('english_app.apps.core.urls'), name='core'),
 
     # Include games application route
-    path('games/', include('games.urls'), name='games'),
+    path('progress/', include('english_app.apps.progress.urls'), name='progress'),
 
     # Auth route
     path('accounts/signup/', account_views.signup, name='account_signup'),
@@ -21,5 +21,5 @@ urlpatterns = [
     path('accounts/password/reset/key/<uidb36>-<key>/', account_views.password_reset_from_key,
          name='account_reset_password_from_key'),
     path('accounts/password/reset/key/done/', account_views.password_reset_from_key_done,
-         name='account_reset_password_from_key_done'),
+         name='account_reset_password_from_key_done')
 ]

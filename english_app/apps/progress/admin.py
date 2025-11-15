@@ -1,7 +1,7 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
-from games.models import UserSRS, Achievement, UserAchievement
-from core.models import Word
+from english_app.apps.progress.models import UserSRS, Achievement, UserAchievement
+from english_app.apps.core.models import Word
 
 
 @admin.register(UserSRS)

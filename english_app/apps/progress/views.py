@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from core.utils import check_and_set_achievements
-from games.models import UserSRS, Achievement, UserAchievement
-from games.forms import WordCheckForm
-from games.services.srs_handlers import handle_srs_post_request
+from english_app.apps.core.utils import check_and_set_achievements
+from english_app.apps.progress.models import UserSRS, Achievement, UserAchievement
+from english_app.apps.progress.forms import WordCheckForm
+from english_app.apps.progress.services.srs_handlers import handle_srs_post_request
 
 
 @login_required

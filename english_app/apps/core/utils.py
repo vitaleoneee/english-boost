@@ -1,4 +1,4 @@
-from games.achievements import AchievementChecker
+from english_app.apps.progress.achievements import AchievementChecker
 
 
 def check_and_set_achievements(request, checker_method):

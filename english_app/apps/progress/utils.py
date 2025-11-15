@@ -1,4 +1,4 @@
-from games.models import UserSRS
+from english_app.apps.progress.models import UserSRS
 
 
 def get_srs_object(word):

@@ -1,5 +1,5 @@
 from django.urls import path
-from core.views import index, ajax_contact, dictionary, new_dictionary_word, delete_selected_words
+from english_app.apps.core.views import index, ajax_contact, dictionary, new_dictionary_word, delete_selected_words
 
 app_name = 'core'
 

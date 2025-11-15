@@ -1,5 +1,5 @@
 from django.urls import path
-from games.views import srs_technique, get_achievements
+from english_app.apps.progress.views import srs_technique, get_achievements
 
 app_name = 'games'
 

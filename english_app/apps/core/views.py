@@ -4,15 +4,12 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
-
-from decouple import config
-from games.achievements import *
-from games.models import UserSRS
+from english_app.apps.progress.models import UserSRS
 from redis_service import r
 
-from core.forms import ContactForm, NewDictionaryWordForm
-from core.models import Word
-from core.utils import check_and_set_achievements
+from english_app.apps.core.forms import ContactForm, NewDictionaryWordForm
+from english_app.apps.core.models import Word
+from english_app.apps.core.utils import check_and_set_achievements
 
 
 def index(request):

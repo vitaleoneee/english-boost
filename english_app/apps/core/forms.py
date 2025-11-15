@@ -1,6 +1,6 @@
 from django import forms
 
-from core.models import Word
+from english_app.apps.core.models import Word
 
 
 # Ajax feedback form for collecting data from user to developer
