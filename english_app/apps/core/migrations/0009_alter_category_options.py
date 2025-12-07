@@ -4,14 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0008_remove_category_slug_alter_word_status_and_more'),
+        ("core", "0008_remove_category_slug_alter_word_status_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='category',
-            options={'ordering': ['id'], 'verbose_name': 'Категория', 'verbose_name_plural': 'Категории'},
+            name="category",
+            options={
+                "ordering": ["id"],
+                "verbose_name": "Категория",
+                "verbose_name_plural": "Категории",
+            },
         ),
     ]

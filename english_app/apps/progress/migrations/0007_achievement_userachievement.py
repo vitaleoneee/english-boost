@@ -6,38 +6,65 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('games', '0006_remove_srs_repetitions'),
+        ("games", "0006_remove_srs_repetitions"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Achievement',
+            name="Achievement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.TextField()),
             ],
             options={
-                'verbose_name': 'Достижение',
-                'verbose_name_plural': 'Достижения',
-                'ordering': ['name'],
+                "verbose_name": "Достижение",
+                "verbose_name_plural": "Достижения",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='UserAchievement',
+            name="UserAchievement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('awarded_at', models.DateTimeField(auto_now_add=True)),
-                ('achievement', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.achievement')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("awarded_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "achievement",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="games.achievement",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Достижение пользователя',
-                'verbose_name_plural': 'Достижения пользователя',
-                'ordering': ['user', 'achievement'],
+                "verbose_name": "Достижение пользователя",
+                "verbose_name_plural": "Достижения пользователя",
+                "ordering": ["user", "achievement"],
             },
         ),
     ]

@@ -2,9 +2,9 @@ from django.apps import AppConfig
 
 
 class ProgressConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'english_app.apps.progress'
-    label = 'games'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "english_app.apps.progress"
+    label = "games"
 
     def ready(self):
         pass

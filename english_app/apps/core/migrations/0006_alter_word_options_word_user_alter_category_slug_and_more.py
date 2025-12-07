@@ -6,31 +6,41 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0005_remove_word_srs_hours_interval'),
+        ("core", "0005_remove_word_srs_hours_interval"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='word',
-            options={'ordering': ['-status', 'english_name'], 'verbose_name': 'Слово', 'verbose_name_plural': 'Слова'},
+            name="word",
+            options={
+                "ordering": ["-status", "english_name"],
+                "verbose_name": "Слово",
+                "verbose_name_plural": "Слова",
+            },
         ),
         migrations.AddField(
-            model_name='word',
-            name='user',
-            field=models.ForeignKey(default=2, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Пользователь'),
+            model_name="word",
+            name="user",
+            field=models.ForeignKey(
+                default=2,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Пользователь",
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='category',
-            name='slug',
-            field=models.SlugField(max_length=100, unique=True, verbose_name='Slug'),
+            model_name="category",
+            name="slug",
+            field=models.SlugField(max_length=100, unique=True, verbose_name="Slug"),
         ),
         migrations.AlterField(
-            model_name='word',
-            name='slug',
-            field=models.SlugField(blank=True, max_length=100, null=True, unique=True, verbose_name='Slug'),
+            model_name="word",
+            name="slug",
+            field=models.SlugField(
+                blank=True, max_length=100, null=True, unique=True, verbose_name="Slug"
+            ),
         ),
     ]

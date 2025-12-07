@@ -5,16 +5,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0005_remove_word_srs_hours_interval'),
-        ('games', '0004_srs_access_timer'),
+        ("core", "0005_remove_word_srs_hours_interval"),
+        ("games", "0004_srs_access_timer"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='srs',
-            name='word',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='srs', to='core.word'),
+            model_name="srs",
+            name="word",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="srs",
+                to="core.word",
+            ),
         ),
     ]

@@ -20,17 +20,17 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     change_password_form = AdminPasswordChangeForm
-    list_display = ('id', 'username', 'email', 'is_staff')
+    list_display = ("id", "username", "email", "is_staff")
 
 
 # Admin View Group Model from Django Unfold
 @admin.register(Group)
 class GroupAdmin(BaseGroupAdmin, ModelAdmin):
-    list_display = ('id', 'name')
-    search_fields = ('name',)
-    ordering = ('id',)
+    list_display = ("id", "name")
+    search_fields = ("name",)
+    ordering = ("id",)
     filter_horizontal = ()
-    fields = ('name',)
+    fields = ("name",)
 
 
 # Registering the Category application in the admin panel
@@ -38,13 +38,13 @@ class GroupAdmin(BaseGroupAdmin, ModelAdmin):
 class CategoryAdmin(ModelAdmin):
     compressed_fields = True
     warn_unsaved_form = True
-    list_display = ('id', 'name')
+    list_display = ("id", "name")
     formfield_overrides = {
-        models.TextField: {'widget': WysiwygWidget},
+        models.TextField: {"widget": WysiwygWidget},
     }
 
 
 # Registering the Word application in the admin panel
 @admin.register(Word)
 class WordAdmin(ModelAdmin):
-    list_display = ('user', 'english_name', 'slug', 'status', 'id')
+    list_display = ("user", "english_name", "slug", "status", "id")

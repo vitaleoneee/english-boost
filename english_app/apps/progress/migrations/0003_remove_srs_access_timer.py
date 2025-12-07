@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('games', '0002_srs_access_timer'),
+        ("games", "0002_srs_access_timer"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='srs',
-            name='access_timer',
+            model_name="srs",
+            name="access_timer",
         ),
     ]

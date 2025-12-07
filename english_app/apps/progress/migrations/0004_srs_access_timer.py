@@ -5,15 +5,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('games', '0003_remove_srs_access_timer'),
+        ("games", "0003_remove_srs_access_timer"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='srs',
-            name='access_timer',
-            field=models.DateTimeField(default=django.utils.timezone.now, verbose_name='Время доступа к повторению'),
+            model_name="srs",
+            name="access_timer",
+            field=models.DateTimeField(
+                default=django.utils.timezone.now,
+                verbose_name="Время доступа к повторению",
+            ),
         ),
     ]

@@ -5,24 +5,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0007_alter_word_user'),
+        ("core", "0007_alter_word_user"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='category',
-            name='slug',
+            model_name="category",
+            name="slug",
         ),
         migrations.AlterField(
-            model_name='word',
-            name='status',
-            field=models.CharField(choices=[('LEARNED', 'Изучено'), ('PROCESS', 'Изучается')], default='PROCESS', max_length=20, verbose_name='Статус'),
+            model_name="word",
+            name="status",
+            field=models.CharField(
+                choices=[("LEARNED", "Изучено"), ("PROCESS", "Изучается")],
+                default="PROCESS",
+                max_length=20,
+                verbose_name="Статус",
+            ),
         ),
         migrations.AddConstraint(
-            model_name='word',
-            constraint=models.UniqueConstraint(fields=('user', 'english_name'), name='unique_user_english_word'),
+            model_name="word",
+            constraint=models.UniqueConstraint(
+                fields=("user", "english_name"), name="unique_user_english_word"
+            ),
         ),
     ]

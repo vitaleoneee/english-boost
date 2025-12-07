@@ -7,30 +7,60 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0007_alter_word_user'),
-        ('games', '0009_userachievement_unique_user_achievement'),
+        ("core", "0007_alter_word_user"),
+        ("games", "0009_userachievement_unique_user_achievement"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='UserSRS',
+            name="UserSRS",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('interval', models.IntegerField(default=1, verbose_name='SRS интервал в днях')),
-                ('access_timer', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Время доступа к повторению')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='srs_items', to=settings.AUTH_USER_MODEL)),
-                ('word', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='srs', to='core.word')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "interval",
+                    models.IntegerField(default=1, verbose_name="SRS интервал в днях"),
+                ),
+                (
+                    "access_timer",
+                    models.DateTimeField(
+                        default=django.utils.timezone.now,
+                        verbose_name="Время доступа к повторению",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="srs_items",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "word",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="srs",
+                        to="core.word",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'SRS объект',
-                'verbose_name_plural': 'SRS объекты',
-                'ordering': ['-interval'],
+                "verbose_name": "SRS объект",
+                "verbose_name_plural": "SRS объекты",
+                "ordering": ["-interval"],
             },
         ),
         migrations.DeleteModel(
-            name='SRS',
+            name="SRS",
         ),
     ]

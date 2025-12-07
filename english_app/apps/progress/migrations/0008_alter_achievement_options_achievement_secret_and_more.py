@@ -6,45 +6,60 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('games', '0007_achievement_userachievement'),
+        ("games", "0007_achievement_userachievement"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='achievement',
-            options={'ordering': ['pk'], 'verbose_name': 'Достижение', 'verbose_name_plural': 'Достижения'},
+            name="achievement",
+            options={
+                "ordering": ["pk"],
+                "verbose_name": "Достижение",
+                "verbose_name_plural": "Достижения",
+            },
         ),
         migrations.AddField(
-            model_name='achievement',
-            name='secret',
-            field=models.BooleanField(default=False, verbose_name='Секретность достижения'),
+            model_name="achievement",
+            name="secret",
+            field=models.BooleanField(
+                default=False, verbose_name="Секретность достижения"
+            ),
         ),
         migrations.AlterField(
-            model_name='achievement',
-            name='description',
-            field=models.TextField(verbose_name='Описание'),
+            model_name="achievement",
+            name="description",
+            field=models.TextField(verbose_name="Описание"),
         ),
         migrations.AlterField(
-            model_name='achievement',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='Название'),
+            model_name="achievement",
+            name="name",
+            field=models.CharField(max_length=100, verbose_name="Название"),
         ),
         migrations.AlterField(
-            model_name='userachievement',
-            name='achievement',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.achievement', verbose_name='Достижение'),
+            model_name="userachievement",
+            name="achievement",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="games.achievement",
+                verbose_name="Достижение",
+            ),
         ),
         migrations.AlterField(
-            model_name='userachievement',
-            name='awarded_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Дата и время получения'),
+            model_name="userachievement",
+            name="awarded_at",
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name="Дата и время получения"
+            ),
         ),
         migrations.AlterField(
-            model_name='userachievement',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Пользователь'),
+            model_name="userachievement",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Пользователь",
+            ),
         ),
     ]

@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0004_word_srs_hours_interval'),
+        ("core", "0004_word_srs_hours_interval"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='word',
-            name='srs_hours_interval',
+            model_name="word",
+            name="srs_hours_interval",
         ),
     ]

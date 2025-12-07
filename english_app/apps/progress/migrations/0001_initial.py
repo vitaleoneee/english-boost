@@ -8,22 +8,43 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0005_remove_word_srs_hours_interval'),
+        ("core", "0005_remove_word_srs_hours_interval"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SRS',
+            name="SRS",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('interval', models.IntegerField(default=1, verbose_name='SRS интервал в днях')),
-                ('repetitions', models.IntegerField(default=1, verbose_name='Количество правильных повторений')),
-                ('word', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.word')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "interval",
+                    models.IntegerField(default=1, verbose_name="SRS интервал в днях"),
+                ),
+                (
+                    "repetitions",
+                    models.IntegerField(
+                        default=1, verbose_name="Количество правильных повторений"
+                    ),
+                ),
+                (
+                    "word",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="core.word"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'SRS объект',
-                'verbose_name_plural': 'SRS объекты',
-                'ordering': ['-interval'],
+                "verbose_name": "SRS объект",
+                "verbose_name_plural": "SRS объекты",
+                "ordering": ["-interval"],
             },
         ),
     ]

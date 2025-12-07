@@ -5,15 +5,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('games', '0008_alter_achievement_options_achievement_secret_and_more'),
+        ("games", "0008_alter_achievement_options_achievement_secret_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddConstraint(
-            model_name='userachievement',
-            constraint=models.UniqueConstraint(fields=('user', 'achievement'), name='unique_user_achievement'),
+            model_name="userachievement",
+            constraint=models.UniqueConstraint(
+                fields=("user", "achievement"), name="unique_user_achievement"
+            ),
         ),
     ]

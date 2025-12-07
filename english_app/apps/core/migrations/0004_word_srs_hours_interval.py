@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0003_remove_word_transcription_alter_word_russian_name_and_more'),
+        ("core", "0003_remove_word_transcription_alter_word_russian_name_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='word',
-            name='srs_hours_interval',
-            field=models.IntegerField(default=1, verbose_name='SRS интервал'),
+            model_name="word",
+            name="srs_hours_interval",
+            field=models.IntegerField(default=1, verbose_name="SRS интервал"),
         ),
     ]

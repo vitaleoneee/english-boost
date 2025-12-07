@@ -8,7 +8,7 @@ def pluralize_ru(count, forms):
     """
     Declines a word by number in Russian.
     """
-    one, few, many = forms.split(',')
+    one, few, many = forms.split(",")
     if 11 <= (count % 100) <= 14:
         return many
     elif count % 10 == 1:
@@ -19,6 +19,6 @@ def pluralize_ru(count, forms):
         return many
 
 
-@register.filter(name='gettype')
+@register.filter(name="gettype")
 def gettype(value):
     return type(value).__name__

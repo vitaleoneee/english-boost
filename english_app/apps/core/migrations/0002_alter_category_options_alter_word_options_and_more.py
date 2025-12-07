@@ -5,63 +5,80 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='category',
-            options={'ordering': ['name'], 'verbose_name': 'Категория', 'verbose_name_plural': 'Категории'},
+            name="category",
+            options={
+                "ordering": ["name"],
+                "verbose_name": "Категория",
+                "verbose_name_plural": "Категории",
+            },
         ),
         migrations.AlterModelOptions(
-            name='word',
-            options={'ordering': ['english_name'], 'verbose_name': 'Слово', 'verbose_name_plural': 'Слова'},
+            name="word",
+            options={
+                "ordering": ["english_name"],
+                "verbose_name": "Слово",
+                "verbose_name_plural": "Слова",
+            },
         ),
         migrations.AddField(
-            model_name='word',
-            name='russian_name',
-            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Слово на русском'),
+            model_name="word",
+            name="russian_name",
+            field=models.CharField(
+                blank=True, max_length=100, null=True, verbose_name="Слово на русском"
+            ),
         ),
         migrations.AlterField(
-            model_name='category',
-            name='description',
-            field=models.TextField(blank=True, null=True, verbose_name='Описание'),
+            model_name="category",
+            name="description",
+            field=models.TextField(blank=True, null=True, verbose_name="Описание"),
         ),
         migrations.AlterField(
-            model_name='category',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='Название'),
+            model_name="category",
+            name="name",
+            field=models.CharField(max_length=100, verbose_name="Название"),
         ),
         migrations.AlterField(
-            model_name='category',
-            name='slug',
-            field=models.SlugField(max_length=100, unique=True, verbose_name='Слаг'),
+            model_name="category",
+            name="slug",
+            field=models.SlugField(max_length=100, unique=True, verbose_name="Слаг"),
         ),
         migrations.AlterField(
-            model_name='word',
-            name='category',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.category', verbose_name='Категория'),
+            model_name="word",
+            name="category",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="core.category",
+                verbose_name="Категория",
+            ),
         ),
         migrations.AlterField(
-            model_name='word',
-            name='english_name',
-            field=models.CharField(max_length=100, verbose_name='Слово на английском'),
+            model_name="word",
+            name="english_name",
+            field=models.CharField(max_length=100, verbose_name="Слово на английском"),
         ),
         migrations.AlterField(
-            model_name='word',
-            name='slug',
-            field=models.SlugField(max_length=100, unique=True, verbose_name='Слаг'),
+            model_name="word",
+            name="slug",
+            field=models.SlugField(max_length=100, unique=True, verbose_name="Слаг"),
         ),
         migrations.AlterField(
-            model_name='word',
-            name='status',
-            field=models.CharField(choices=[('LEARNED', 'Изучено'), ('PROCESS', 'Изучается')], max_length=10, verbose_name='Статус'),
+            model_name="word",
+            name="status",
+            field=models.CharField(
+                choices=[("LEARNED", "Изучено"), ("PROCESS", "Изучается")],
+                max_length=10,
+                verbose_name="Статус",
+            ),
         ),
         migrations.AlterField(
-            model_name='word',
-            name='transcription',
-            field=models.CharField(blank=True, null=True, verbose_name='Транскрипция'),
+            model_name="word",
+            name="transcription",
+            field=models.CharField(blank=True, null=True, verbose_name="Транскрипция"),
         ),
     ]
