@@ -37,11 +37,7 @@ user-friendly platform with a spaced repetition system (SRS), a personal diction
       DB_USER=postgres
       DB_PASSWORD=your-db-password
       ...
-   
-   # Fill the variables in the docker-compose.yaml file
-      POSTGRES_PASSWORD=password
-      POSTGRES_USER=postgres
-      POSTGRES_DB=dbname
+
 3. Build and run the containers:
     ```bash
     docker compose up --build --watch
@@ -71,7 +67,7 @@ This will automatically:
     ```bash
    docker compose logs -f
 
-## Below is a detailed guide on how to install the application WITHOUT Docker 👇
+## Below is a detailed guide on how to install the application WITHOUT Docker and NGINX 👇
 
 <details>
 Installation

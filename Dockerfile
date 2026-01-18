@@ -4,7 +4,8 @@ WORKDIR /usr/src/english-boost
 
 RUN apt-get update \
     && apt-get install -y netcat-openbsd \
-    && pip install --upgrade pip
+    && pip install --upgrade pip \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED=1
 
@@ -18,3 +19,5 @@ RUN sed -i 's/\r$//g' /usr/src/english-boost/entrypoint.sh
 RUN chmod +x /usr/src/english-boost/entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "english_app.wsgi:application"]

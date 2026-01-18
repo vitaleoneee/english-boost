@@ -37,7 +37,7 @@ class AchievementChecker:
     def _try_grant_achievement(self, name):
         achievement = self._check_achievement_existence(name)
         if not UserAchievement.objects.filter(
-                user=self.user, achievement=achievement
+            user=self.user, achievement=achievement
         ).exists():
             UserAchievement.objects.create(user=self.user, achievement=achievement)
             self.new_achievements.append(name)

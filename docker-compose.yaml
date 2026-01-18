@@ -3,9 +3,8 @@ services:
     build: .
     image: web-english-boost
     container_name: web
-    command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "127.0.0.1:8000:8000"
+    volumes:
+      - static_volume:/usr/src/english-boost/staticfiles
     develop:
       watch:
         - action: sync
@@ -30,18 +29,29 @@ services:
     volumes:
       - data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=dbname
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
 
   redis:
     image: redis:6.2-bookworm
     container_name: redis
     restart: unless-stopped
-    ports:
-      - "6379:6379"
     depends_on:
       - db
 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/usr/share/nginx/html/staticfiles
+    depends_on:
+      - web
+
+
 volumes:
   data:
+  static_volume:
