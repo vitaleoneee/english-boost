@@ -24,18 +24,27 @@
     <form method="post" action="{% url 'core:delete_selected_words' %}">
         {% csrf_token %}
         <div class="container mt-5">
-            <div class="dictionary-container d-flex justify-content-between align-items-center mb-3">
-                <h1 class="mb-0">Ваш словарь</h1>
-                <div>
-                    <button type="submit" class="btn btn-danger me-2">Удалить выбранные</button>
-                    <a href="{% url 'core:new-dictionary-word' %}" type="button" class="btn btn-primary">Добавить
-                        слово</a>
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-3">
+                <h1 class="mb-2 mb-lg-0">Ваш словарь</h1>
+
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                    <button type="submit" class="btn btn-danger">
+                        Удалить выбранные
+                    </button>
+
+                    <a href="{% url 'core:new-dictionary-word' %}"
+                       class="btn btn-primary">
+                        Добавить слово
+                    </a>
                 </div>
             </div>
 
-            <div class="dictionary-container table-responsive">
-                <table class="table table-bordered mx-auto">
-                    <thead>
+            <!-- ===================== -->
+            <!-- Desktop table -->
+            <!-- ===================== -->
+            <div class="table-responsive d-none d-lg-block">
+                <table class="table table-bordered custom-table align-middle text-center">
+                    <thead class="table-dark">
                     <tr>
                         <th><input type="checkbox" id="select-all"></th>
                         <th>#</th>
@@ -45,29 +54,92 @@
                         <th>Статус</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     {% for word in words %}
                         <tr>
-                            <td><input type="checkbox" name="selected_words" value="{{ word.id }}"></td>
-                            <th scope="row">{{ forloop.counter }}</th>
-                            <td>{{ word.english_name }}</td>
-                            <td>{{ word.russian_name }}</td>
                             <td>
-                                <a class="play-audio-button"
-                                   onclick="playAudio('{{ word.english_name|escapejs }}')">
-                                    <i class="fa-solid fa-play"></i>
-                                </a>
+                                <input type="checkbox"
+                                       name="selected_words"
+                                       value="{{ word.id }}">
                             </td>
+
+                            <th scope="row">
+                                {{ forloop.counter }}
+                            </th>
+
+                            <td>
+                                {{ word.english_name }}
+                            </td>
+
+                            <td>
+                                {{ word.russian_name }}
+                            </td>
+
+                            <td>
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        onclick="playAudio('{{ word.english_name|escapejs }}')">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
+                            </td>
+
                             <td class="{% if word.status == 'LEARNED' %}table-success{% else %}table-warning{% endif %}">
                                 {{ word.get_status_display }}
                             </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Слов пока нет</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
+
+            <!-- ===================== -->
+            <!-- Mobile cards -->
+            <!-- ===================== -->
+            <div class="d-lg-none">
+                {% for word in words %}
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0">
+                                    {{ word.english_name }}
+                                </h5>
+
+                                <input type="checkbox"
+                                       name="selected_words"
+                                       value="{{ word.id }}">
+                            </div>
+                            <p class="text-muted mb-2">
+                                Перевод: {{ word.russian_name }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        onclick="playAudio('{{ word.english_name|escapejs }}')">
+                                    <i class="bi bi-play-fill"></i>
+                                    Произношение
+                                </button>
+
+                                <span class="badge {% if word.status == 'LEARNED' %}bg-success{% else %}bg-warning text-dark{% endif %}">
+                                {{ word.get_status_display }}
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>Слов пока нет</p>
+                {% endfor %}
+            </div>
         </div>
     </form>
+
     <script src="{% static 'js/checkboxesSelectAll.js' %}"></script>
     <script src="{% static 'js/pronunciationWord.js' %}"></script>
+
 {% endblock content %}

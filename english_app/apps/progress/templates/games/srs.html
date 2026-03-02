@@ -48,33 +48,30 @@
                 <ul class="list-group shadow rounded mb-5">
                     {% for item in word_forms %}
                         <li class="list-group-item">
-                            <form method="post"
-                                  class="d-flex align-items-center justify-content-between w-100 flex-wrap">
+                            <form method="post" class="word-row">
                                 {% csrf_token %}
-                                <span class="me-3" style="white-space: nowrap;">{{ item.word.english_name }}</span>
+                                <span class="word-col">{{ item.word.english_name }}</span>
                                 <input type="hidden" name="english_word_name" value="{{ item.word.english_name }}">
-                                <div class="flex-grow-1 me-2 mb-2 mb-md-0" style="min-width: 150px;">
+                                <div class="input-col">
                                     {{ item.form.translate_input }}
                                 </div>
                                 <button
                                         type="submit"
                                         name="check_word"
                                         value="{{ item.word.id }}"
-                                        class="btn btn-primary me-2 mb-2 mb-md-0"
-                                        style="min-width: 120px;"
+                                        class="btn btn-primary btn-col"
                                         {% if item.access_time_seconds > 0 %}disabled{% endif %}>
                                     Проверить
                                 </button>
                                 <span id="timer-{{ item.word.id }}"
-                                      class="text-muted text-end mb-2 mb-md-0"
-                                      style="min-width: 140px; text-align: right;"
+                                      class="timer-col text-muted"
                                       data-seconds="{{ item.access_time_seconds }}">
-                                            {% if item.access_time_seconds > 0 %}
-                                                До проверки: {{ item.access_time }}
-                                            {% else %}
-                                                &nbsp;
-                                            {% endif %}
-                                </span>
+            {% if item.access_time_seconds > 0 %}
+                До проверки: {{ item.access_time }}
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </span>
                             </form>
                         </li>
                     {% endfor %}
