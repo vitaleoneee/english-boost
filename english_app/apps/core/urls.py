@@ -1,17 +1,16 @@
 from django.urls import path
 from english_app.apps.core.views import (
     index,
-    ajax_contact,
     dictionary,
     new_dictionary_word,
-    delete_selected_words,
+    delete_selected_words, send_features,
 )
 
 app_name = "core"
 
 urlpatterns = [
-    # Ajax form processing route
-    path("ajax-send/", ajax_contact, name="ajax-send"),
+    # Ajax form processing route (HTMX)
+    path("send-features/", send_features, name="send-features"),
     # Home page route
     path("", index, name="index"),
     # Dictionary page route

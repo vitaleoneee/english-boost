@@ -1,7 +1,9 @@
 import os
+from http.client import HTTPResponse
 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.shortcuts import redirect
@@ -60,29 +62,32 @@ def new_dictionary_word(request):
 
 
 @require_POST
-def ajax_contact(request):
+def send_features(request):
     """
-    Ajax form implementation controller
+    Ajax form implementation controller using HTMX
     """
-    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            full_name = form.cleaned_data["full_name"]
-            email = form.cleaned_data["email"]
-            message = form.cleaned_data["message"]
-            from_email = f"{full_name} <{email}>"
-            # Sending a message to the developer using backend smtp
-            try:
-                send_mail(
-                    subject=f"Сообщение от {full_name} ({email})!",
-                    message=message,
-                    from_email=from_email,
-                    recipient_list=[os.environ.get("EMAIL_HOST_USER")],
-                )
-                return JsonResponse({"status": "OK"})
-            except Exception as e:
-                return JsonResponse({"status": "ERROR", "message": str(e)})
-    return JsonResponse({"status": "ERROR"})
+    form = ContactForm(request.POST)
+    if not form.is_valid():
+        return render(request, 'core/partials/send_form_btn.html',
+                      {"message": f"Форма не может быть отправлена. Повторите позже"})
+
+    full_name = form.cleaned_data["full_name"]
+    email = form.cleaned_data["email"]
+    message = form.cleaned_data["message"]
+    from_email = f"{full_name} <{email}>"
+    # Sending a message to the developer using backend smtp
+    try:
+        send_mail(
+            subject=f"Сообщение от {full_name} ({email})!",
+            message=message,
+            from_email=from_email,
+            recipient_list=[os.environ.get("EMAIL_HOST_USER")],
+        )
+        return render(request, 'core/partials/send_form_btn.html',
+                      {"message": "Форма успешно отправлена!"})
+    except Exception as e:
+        return render(request, 'core/partials/send_form_btn.html',
+                      {"message": f"Форма не может быть отправлена. Повторите позже"})
 
 
 @require_POST
