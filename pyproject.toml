@@ -11,14 +11,16 @@ dependencies = [
     "django-widget-tweaks==1.5.0",
     "psycopg2-binary==2.9.10",
     "redis==6.2.0",
-    "ruff>=0.14.8",
+    "python-dotenv==1.2.2",
+    "gunicorn==23.0.0",
+    "packaging==25.0",
     "sqlparse==0.5.3",
     "typing-extensions==4.14.1",
     "tzdata==2025.2",
 ]
 
 [project.optional-dependencies]
-dev = ["ruff"]
+dev = ["ruff>=0.14.8"]
 
 [tool.ruff]
 exclude = [
