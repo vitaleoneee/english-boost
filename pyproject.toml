@@ -17,6 +17,7 @@ dependencies = [
     "sqlparse==0.5.3",
     "typing-extensions==4.14.1",
     "tzdata==2025.2",
+    "pre-commit>=4.5.1",
 ]
 
 [project.optional-dependencies]
