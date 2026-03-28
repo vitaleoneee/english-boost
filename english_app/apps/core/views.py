@@ -1,19 +1,21 @@
 import os
-from http.client import HTTPResponse
 
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.http.response import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
+
+from english_app.apps.core.tables.dictionary import DictionaryTable
 from english_app.apps.progress.models import UserSRS
 from redis_service import r
 
 from english_app.apps.core.forms import ContactForm, NewDictionaryWordForm
 from english_app.apps.core.models import Word
 from english_app.apps.core.utils import check_and_set_achievements
+
+from django_tables2 import SingleTableView
 
 
 def index(request):
@@ -24,25 +26,34 @@ def index(request):
     return render(request, "core/index.html", {"selected": "index", "form": form})
 
 
-@login_required
-def dictionary(request):
-    """
-    Page controller with dictionary output
-    """
-    words = Word.objects.filter(user=request.user)
-    check_and_set_achievements(request, "check_word_count")
-    achievement_message = request.session.pop("achievement_message", None)
-    default_message = request.session.pop("default_message", None)
-    return render(
-        request,
-        "core/dictionary.html",
-        {
-            "selected": "dictionary",
-            "words": words,
-            "achievement_message": achievement_message,
-            "default_message": default_message,
-        },
-    )
+class DictionaryListView(LoginRequiredMixin, SingleTableView):
+    model = Word
+    context_object_name = "words"
+    template_name = "core/dictionary.html"
+    table_class = DictionaryTable
+    context_table_name = "dictionary_table"
+
+    # TODO : Add pagination here
+
+    def get_queryset(self):
+        # Filter words by the current user
+        return Word.objects.filter(user=self.request.user)
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        # Set achievements and pop messages from session
+        check_and_set_achievements(self.request, "check_word_count")
+        achievement_message = self.request.session.pop("achievement_message", None)
+        default_message = self.request.session.pop("default_message", None)
+        context.update(
+            {
+                "selected": "dictionary",
+                "words": self.get_queryset(),
+                "achievement_message": achievement_message,
+                "default_message": default_message,
+            }
+        )
+        return context
 
 
 @login_required
@@ -68,8 +79,11 @@ def send_features(request):
     """
     form = ContactForm(request.POST)
     if not form.is_valid():
-        return render(request, 'core/partials/send_form_btn.html',
-                      {"message": f"Форма не может быть отправлена. Повторите позже"})
+        return render(
+            request,
+            "core/partials/send_form_btn.html",
+            {"message": f"Форма не может быть отправлена. Повторите позже"},  # noqa: F541
+        )
 
     full_name = form.cleaned_data["full_name"]
     email = form.cleaned_data["email"]
@@ -83,11 +97,17 @@ def send_features(request):
             from_email=from_email,
             recipient_list=[os.environ.get("EMAIL_HOST_USER")],
         )
-        return render(request, 'core/partials/send_form_btn.html',
-                      {"message": "Форма успешно отправлена!"})
-    except Exception as e:
-        return render(request, 'core/partials/send_form_btn.html',
-                      {"message": f"Форма не может быть отправлена. Повторите позже"})
+        return render(
+            request,
+            "core/partials/send_form_btn.html",
+            {"message": "Форма успешно отправлена!"},  # noqa: F841
+        )
+    except Exception as e:  # noqa: F841
+        return render(
+            request,
+            "core/partials/send_form_btn.html",
+            {"message": f"Форма не может быть отправлена. Повторите позже"},  # noqa: F541
+        )
 
 
 @require_POST

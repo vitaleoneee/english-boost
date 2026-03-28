@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
-{% load custom_filters %}
+{% load static custom_filters %}
+{% load render_table from django_tables2 %}
 
 {% block title %}
     Словарь
@@ -42,59 +42,8 @@
             <!-- ===================== -->
             <!-- Desktop table -->
             <!-- ===================== -->
-            <div class="table-responsive d-none d-lg-block">
-                <table class="table table-bordered custom-table align-middle text-center">
-                    <thead class="table-dark">
-                    <tr>
-                        <th><input type="checkbox" id="select-all"></th>
-                        <th>#</th>
-                        <th>Слово на английском</th>
-                        <th>Перевод</th>
-                        <th>Произношение</th>
-                        <th>Статус</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    {% for word in words %}
-                        <tr>
-                            <td>
-                                <input type="checkbox"
-                                       name="selected_words"
-                                       value="{{ word.id }}">
-                            </td>
-
-                            <th scope="row">
-                                {{ forloop.counter }}
-                            </th>
-
-                            <td>
-                                {{ word.english_name }}
-                            </td>
-
-                            <td>
-                                {{ word.russian_name }}
-                            </td>
-
-                            <td>
-                                <button type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                        onclick="playAudio('{{ word.english_name|escapejs }}')">
-                                    <i class="bi bi-play-fill"></i>
-                                </button>
-                            </td>
-
-                            <td class="{% if word.status == 'LEARNED' %}table-success{% else %}table-warning{% endif %}">
-                                {{ word.get_status_display }}
-                            </td>
-                        </tr>
-                    {% empty %}
-                        <tr>
-                            <td colspan="6">Слов пока нет</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+            <div class="d-none d-lg-block mb-3">
+                {% render_table dictionary_table %}
             </div>
 
             <!-- ===================== -->

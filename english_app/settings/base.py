@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # Other
     "widget_tweaks",
     "django_extensions",
+    "django_tables2",
 ]
 
 SITE_ID = 1
