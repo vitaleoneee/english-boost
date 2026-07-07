@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
     dependencies = [
         ("core", "0005_remove_word_srs_hours_interval"),
-        ("games", "0004_srs_access_timer"),
+        ("progress", "0004_srs_access_timer"),
     ]
 
     operations = [

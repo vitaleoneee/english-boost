@@ -8,18 +8,9 @@ from redis_service import r
 
 
 class AchievementChecker:
-    def __init__(self, request, user):
-        self.request = request
+    def __init__(self, user):
         self.user = user
         self.new_achievements = []
-
-    def _set_message(self):
-        if self.new_achievements:
-            self.request.session["achievement_message"] = (
-                f"Поздравляем! Получено достижение: {', '.join(self.new_achievements)}"
-            )
-            return True
-        return False
 
     def _check_achievement_existence(self, achievement_name):
         try:
@@ -32,24 +23,28 @@ class AchievementChecker:
     def _try_grant_achievement(self, name):
         achievement = self._check_achievement_existence(name)
         if not UserAchievement.objects.filter(
-            user=self.user, achievement=achievement
+                user=self.user, achievement=achievement
         ).exists():
-            UserAchievement.objects.create(user=self.user, achievement=achievement)
+            UserAchievement.objects.create(user=self.user, achievement=achievement, is_seen=False)
             self.new_achievements.append(name)
 
     def check_word_count(self):
         words_count = self.user.words.count()
+
         for threshold, name in WORD_ACHIEVEMENTS:
             if words_count >= threshold:
                 self._try_grant_achievement(name)
-        return self._set_message()
+
+        return self.new_achievements
 
     def check_deleted_words(self):
         key = f"{self.user.username}:{self.user.id}:del_counter"
         count = int(r.get(key) or 0)
+
         if count >= 10:
             self._try_grant_achievement("Очиститель")
-        return self._set_message()
+
+        return self.new_achievements
 
     def check_day_count(self):
         date_today = timezone.now().date()
@@ -65,13 +60,15 @@ class AchievementChecker:
         for threshold, name in TIME_ACHIEVEMENTS:
             if day_count >= threshold:
                 self._try_grant_achievement(name)
-        return self._set_message()
+
+        return self.new_achievements
 
     def check_night_achievement(self):
         hours = timezone.localtime().hour
         if 0 < hours < 5:
             self._try_grant_achievement("Ночной совёнок")
-        return self._set_message()
+
+        return self.new_achievements
 
     def check_srs_session_count(self):
         srs_session_count = int(
@@ -80,7 +77,8 @@ class AchievementChecker:
         for threshold, name in SRS_ACHIEVEMENTS:
             if srs_session_count >= threshold:
                 self._try_grant_achievement(name)
-        return self._set_message()
+
+        return self.new_achievements
 
     def check_srs_accuracy_counter(self):
         srs_accuracy_counter = int(
@@ -89,4 +87,5 @@ class AchievementChecker:
         for threshold, name in FLAWLESS_SRS_ACHIEVEMENTS:
             if srs_accuracy_counter >= threshold:
                 self._try_grant_achievement(name)
-        return self._set_message()
+
+        return self.new_achievements

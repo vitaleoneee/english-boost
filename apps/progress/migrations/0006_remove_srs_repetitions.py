@@ -5,7 +5,7 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("games", "0005_alter_srs_word"),
+        ("progress", "0005_alter_srs_word"),
     ]
 
     operations = [

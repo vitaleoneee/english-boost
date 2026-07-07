@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-17 20:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\apps\core\templates\core\dictionary.html:5
+#: .\apps\core\templates\core\index.html:34
+#: .\apps\core\templates\core\index.html:40
+#: .\templates\base.html:74
+msgid "Dictionary"
+msgstr "Словарь"
+
+#: .\apps\core\templates\core\dictionary.html:24
+msgid "Your dictionary"
+msgstr "Ваш словарь"
+
+#: .\apps\core\templates\core\dictionary.html:28
+msgid "Delete selected"
+msgstr "Удалить выбранные"
+
+#: .\apps\core\templates\core\dictionary.html:33
+#: .\apps\core\templates\core\new_dictionary_word.html:5
+msgid "Add word"
+msgstr "Добавить слово"
+
+#: .\apps\core\templates\core\index.html:5
+msgid "Welcome!"
+msgstr "Добро пожаловать!"
+
+#: .\apps\core\templates\core\index.html:15
+msgid "Welcome to English BOOST!"
+msgstr "Добро пожаловать в English BOOST!"
+
+#: .\apps\core\templates\core\index.html:16
+msgid ""
+"Improve your English easily and with\n"
+"                            interest.\n"
+"                            We combine modern technologies, word "
+"pronunciation, spaced repetition, and\n"
+"                            a convenient learning system so you can learn "
+"effectively,\n"
+"                            step by step - every day."
+msgstr ""
+"Изучайте английский легко и с интересом.\n"
+"Мы объединяем современные технологии, произношение слов, интервальные "
+"повторения и удобную систему обучения,\n"
+"чтобы вы могли учиться эффективно,\n"
+"шаг за шагом — каждый день."
+
+#: .\apps\core\templates\core\index.html:35
+msgid ""
+"Your personal dictionary where you can add, view, and review words.\n"
+"                        Each word includes a translation, example, "
+"transcription, and pronunciation.\n"
+"                        Learning is now convenient, fast, and effective."
+msgstr ""
+"Ваш личный словарь, где можно добавлять, просматривать и повторять слова.\n"
+"Каждое слово содержит перевод, пример, транскрипцию и произношение.\n"
+"Обучение стало удобным, быстрым и эффективным."
+
+#: .\apps\core\templates\core\index.html:48
+#: .\apps\core\templates\core\index.html:55
+#: .\apps\progress\templates\progress\achievements.html:9
+#: .\templates\base.html:79
+msgid "Achievements"
+msgstr "Достижения"
+
+#: .\apps\core\templates\core\index.html:49
+msgid ""
+"Track your progress with English learning achievements!\n"
+"                        We visualize:\n"
+"                        the number of learned words, current and maximum "
+"streaks (consecutive days), and much\n"
+"                        more!"
+msgstr ""
+"Следите за своим прогрессом в изучении английского!\n"
+"Мы отображаем количество изученных слов,\n"
+"текущую и максимальную серию дней подряд,\n"
+"а также многое другое!"
+
+#: .\apps\core\templates\core\index.html:63
+#: .\apps\progress\templates\progress\srs.html:5
+msgid "Progress"
+msgstr "Прогресс"
+
+#: .\apps\core\templates\core\index.html:64
+msgid ""
+"Learning words is fun!\n"
+"                        Flashcards are interactive mini-games to quickly "
+"reinforce vocabulary.\n"
+"                        A smart system shows words at the right moment, when "
+"you are about to forget them.\n"
+"                        This way, you do not just learn - you truly remember."
+msgstr ""
+"Изучать слова — это интересно!\n"
+"Карточки — это интерактивные мини-игры для быстрого закрепления словарного "
+"запаса.\n"
+"Умная система показывает слова именно тогда, когда вы начинаете их забывать.\n"
+"Так вы не просто учите, а действительно запоминаете."
+
+#: .\apps\core\templates\core\index.html:70
+msgid "Spaced repetition"
+msgstr "Интервальные повторения"
+
+#: .\apps\core\templates\core\index.html:85
+msgid "Suggest your improvements to us!"
+msgstr "Предложите нам свои улучшения!"
+
+#: .\apps\core\templates\core\index.html:86
+msgid "We really need it"
+msgstr "Нам это очень важно"
+
+#: .\apps\core\templates\core\index.html:96
+msgid "Full name"
+msgstr "Полное имя"
+
+#: .\apps\core\templates\core\index.html:104
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\apps\core\templates\core\index.html:109
+msgid "Send"
+msgstr "Отправить"
+
+#: .\apps\core\templates\core\new_dictionary_word.html:10
+msgid "Add a new word to the dictionary"
+msgstr "Добавить новое слово в словарь"
+
+#: .\apps\core\templates\core\new_dictionary_word.html:28
+msgid "Add"
+msgstr "Добавить"
+
+#: .\apps\core\templates\core\partials\dictionary_table.html:29
+msgid "Translation:"
+msgstr "Перевод:"
+
+#: .\apps\core\templates\core\partials\dictionary_table.html:37
+msgid "Pronunciation"
+msgstr "Произношение"
+
+#: .\apps\core\templates\core\partials\dictionary_table.html:47
+msgid "No words yet"
+msgstr "Пока нет слов"
+
+#: .\apps\core\validators.py:10
+#, python-format
+msgid "Пароль слишком короткий. Минимум %(min_length)d символов."
+msgstr "Пароль слишком короткий. Минимум %(min_length)d символов."
+
+#: .\apps\core\validators.py:16
+#, python-format
+msgid "Ваш пароль должен содержать минимум %(min_length)d символов."
+msgstr "Ваш пароль должен содержать минимум %(min_length)d символов."
+
+#: .\apps\core\views.py:73
+msgid "Add a new word"
+msgstr "Добавить новое слово"
+
+#: .\apps\core\views.py:90
+#: .\apps\core\views.py:114
+msgid "Form cannot be sent. Please try again later"
+msgstr "Форма не может быть отправлена. Повторите попытку позже"
+
+#: .\apps\core\views.py:108
+msgid "Form sent successfully!"
+msgstr "Форма успешно отправлена!"
+
+#: .\apps\core\views.py:140
+#, python-format
+msgid "Deleted words: %(count)s"
+msgstr "Удалено слов: %(count)s"
+
+#: .\apps\core\views.py:143
+msgid "You have not selected any words."
+msgstr "Вы не выбрали ни одного слова."
+
+#: .\apps\progress\templates\progress\achievements.html:14
+msgid "Your achievements"
+msgstr "Ваши достижения"
+
+#: .\apps\progress\templates\progress\achievements.html:25
+msgid "Received:"
+msgstr "Получено:"
+
+#: .\apps\progress\templates\progress\achievements.html:34
+msgid "You do not have any achievements yet"
+msgstr "У вас пока нет достижений"
+
+#: .\apps\progress\templates\progress\achievements.html:38
+msgid "Available achievements"
+msgstr "Доступные достижения"
+
+#: .\apps\progress\templates\progress\achievements.html:54
+msgid "Secret achievements"
+msgstr "Секретные достижения"
+
+#: .\apps\progress\templates\progress\srs.html:28
+msgid ""
+"The SRS method (Spaced Repetition System) is a\n"
+"                            spaced repetition approach that helps you "
+"memorize information effectively and\n"
+"                            retain it for a long time."
+msgstr ""
+"Метод SRS (Spaced Repetition System) — это система интервальных повторений,\n"
+"которая помогает эффективно запоминать информацию\n"
+"и сохранять её в памяти надолго."
+
+#: .\apps\progress\templates\progress\srs.html:33
+msgid ""
+"SRS is based on the scientific principle that information should be reviewed "
+"as rarely as possible,\n"
+"                            but before it is forgotten. Reviews happen at "
+"increasing intervals,\n"
+"                            adapted to how well you have remembered the "
+"material."
+msgstr ""
+"SRS основана на научном принципе: информацию следует повторять как можно "
+"реже,\n"
+"но до того, как она будет забыта. Повторения происходят через увеличивающиеся "
+"интервалы,\n"
+"которые подстраиваются под то, насколько хорошо вы усвоили материал."
+
+#: .\apps\progress\templates\progress\srs.html:46
+msgid "Words to study"
+msgstr "Слова для изучения"
+
+#: .\apps\progress\templates\progress\srs.html:66
+msgid "Check"
+msgstr "Проверить"
+
+#: .\apps\progress\templates\progress\srs.html:72
+msgid "Available in:"
+msgstr "Будет доступно через:"
+
+#: .\templates\account\login.html:6
+#: .\templates\account\login.html:14
+#: .\templates\account\login.html:35
+#: .\templates\base.html:90
+msgid "Log in"
+msgstr "Войти"
+
+#: .\templates\account\login.html:25
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: .\templates\account\login.html:26
+#: .\templates\account\password_reset.html:25
+msgid "Create an account"
+msgstr "Создать аккаунт"
+
+#: .\templates\account\password_reset.html:6
+#: .\templates\account\password_reset.html:13
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+#: .\templates\account\password_reset.html:24
+msgid "Remembered your password?"
+msgstr "Вспомнили пароль?"
+
+#: .\templates\account\password_reset.html:28
+msgid "Send link"
+msgstr "Отправить ссылку"
+
+#: .\templates\account\password_reset_done.html:5
+msgid ""
+"We have sent you an email. If you do not receive it, please check your spam "
+"folder. Otherwise, contact us if it does not arrive within a few minutes."
+msgstr ""
+"Мы отправили вам письмо. Если вы его не получили, проверьте папку «Спам». "
+"Если письма нет и там, свяжитесь с нами, если оно не придёт в течение "
+"нескольких минут."
+
+#: .\templates\account\password_reset_from_key.html:6
+#: .\templates\account\password_reset_from_key.html:13
+#: .\templates\account\password_reset_from_key.html:39
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: .\templates\account\password_reset_from_key.html:16
+msgid "The password reset link is invalid. Please request a new one."
+msgstr "Ссылка для сброса пароля недействительна. Запросите новую."
+
+#: .\templates\account\password_reset_from_key.html:23
+msgid "New password"
+msgstr "Новый пароль"
+
+#: .\templates\account\password_reset_from_key.html:27
+msgid "Repeat password"
+msgstr "Повторите пароль"
+
+#: .\templates\account\password_reset_from_key_done.html:5
+msgid "Your password has been changed."
+msgstr "Ваш пароль был изменён."
+
+#: .\templates\account\signup.html:7
+#: .\templates\account\signup.html:12
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: .\templates\account\signup.html:31
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: .\templates\base.html:68
+msgid "Main"
+msgstr "Главная"
+
+#: .\templates\base.html:83
+msgid "SRS"
+msgstr "SRS"
+
+#: .\templates\base.html:91
+msgid "or"
+msgstr "или"
+
+#: .\templates\base.html:93
+msgid "Sign in"
+msgstr "Войти"
+
+#: .\templates\base.html:95
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: .\templates\base.html:98
+msgid "Exit"
+msgstr "Выйти"
+
+#: .\templates\base.html:111
+msgid "Copyright 2025 &copy; Made by vitalion"
+msgstr ""
+
+#: .\templates\includes\toast_achievement_message.html:7
+msgid "New achievement:"
+msgstr "Новое достижение:"
+
+#: .\templates\includes\toast_achievement_message.html:13
+#: .\templates\includes\toast_default_message.html:10
+#: .\templates\includes\toast_error_message.html:10
+msgid "Close"
+msgstr "Закрыть"

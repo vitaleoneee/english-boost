@@ -21,6 +21,11 @@ dependencies = [
     "unfold>=1.2.4",
     "django-unfold>=0.93.0",
     "django-lifecycle>=1.2.7",
+    "django-htmx>=1.27.0",
+    "django-crispy-forms>=2.6",
+    "crispy-bootstrap5>=2026.3",
+    "django-eagle>=0.1.0",
+    "django-seal>=1.7.1",
 ]
 
 [project.optional-dependencies]
@@ -38,4 +43,9 @@ exclude = [
 "base.py" = [
     "F403",
     "E402",
+]
+
+[dependency-groups]
+dev = [
+    "django-seal>=1.7.1",
 ]

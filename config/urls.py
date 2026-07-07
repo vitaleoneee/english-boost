@@ -1,13 +1,15 @@
+from allauth.account import views as account_views
 from django.contrib import admin
 from django.urls import path, include
-from allauth.account import views as account_views
 
 urlpatterns = [
     # Admin site route
     path("admin/", admin.site.urls),
     # Include core application route
     path("", include("apps.core.urls"), name="core"),
-    # Include games application route
+    # Include dictionary application route
+    path("dictionary/", include("apps.dictionary.urls"), name="dictionary"),
+    # Include progress application route
     path("progress/", include("apps.progress.urls"), name="progress"),
     # Auth route
     path("accounts/signup/", account_views.signup, name="account_signup"),

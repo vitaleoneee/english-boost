@@ -1,22 +1,17 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
+
 {% block extra_css %}
     <link href="{% static 'css/reward_card.css' %}" rel="stylesheet"/>
 {% endblock extra_css %}
 
 {% block title %}
-    Достижения
+    {% trans "Achievements" %}
 {% endblock title %}
-
-{% block toasts %}
-    {% if achievement_message %}
-        {% include 'includes/toast_achievement_message.html' with message=achievement_message %}
-    {% endif %}
-{% endblock toasts %}
 
 {% block content %}
     <div class="container py-5">
-        <h1 class="mb-4 text-center">🏆 Ваши достижения</h1>
+        <h1 class="mb-4 text-center">🏆 {% trans "Your achievements" %}</h1>
         {% if user_achievements %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 {% for ua in user_achievements %}
@@ -27,26 +22,23 @@
                                 <p class="card-text text-muted">{{ ua.achievement.description }}</p>
                             </div>
                             <div class="card-footer text-center text-muted small">
-                                Получено: {{ ua.awarded_at|date:"d.m.Y" }} <i class="bi bi-bookmark-check"></i>
+                                {% trans "Received:" %} {{ ua.awarded_at|date:"d.m.Y" }}
+                                <i class="bi bi-bookmark-check"></i>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-secondary text-center">
-                        У вас пока нет достижений 😔
-                    </div>
-                </div>
+            <div class="alert alert-secondary text-center">
+                {% trans "You do not have any achievements yet" %} 😔
             </div>
         {% endif %}
 
-        <h2 class="mt-5 mb-3 text-center">🔓 Доступные достижения</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            {% for a in achievements %}
-                {% if a.name not in user_achievement_names and a not in secret_achievements %}
+        <h2 class="mt-5 mb-3 text-center">🔓 {% trans "Available achievements" %}</h2>
+        {% if available_achievements %}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                {% for a in available_achievements %}
                     <div class="col">
                         <div class="card h-100 border-secondary shadow-sm">
                             <div class="card-body text-center">
@@ -55,23 +47,26 @@
                             </div>
                         </div>
                     </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <h2 class="mt-5 mb-3 text-center">❓ Секретные достижения</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            {% for sa in secret_achievements %}
-                {% if sa.name not in user_achievement_names %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <h2 class="mt-5 mb-3 text-center">❓ {% trans "Secret achievements" %}</h2>
+        {% if secret_achievements %}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                {% for sa in secret_achievements %}
                     <div class="col">
                         <div class="card h-100 border-secondary shadow-sm">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ sa.name }}</h5>
-                                <p class="card-text text-muted"><i class="bi bi-question-lg"></i></p>
+                                <p class="card-text text-muted">
+                                    <i class="bi bi-question-lg"></i>
+                                </p>
                             </div>
                         </div>
                     </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock content %}

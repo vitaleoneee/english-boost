@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("games", "0001_initial"),
+        ("progress", "0001_initial"),
     ]
 
     operations = [

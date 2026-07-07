@@ -1,9 +1,10 @@
 import itertools
+
 import django_tables2 as tables
 from django.utils.html import format_html, escapejs
 from django.utils.safestring import mark_safe
 
-from apps.core.models import Word
+from apps.dictionary.models import Word
 
 
 class DictionaryTable(tables.Table):
@@ -85,8 +86,9 @@ class DictionaryTable(tables.Table):
         )
 
     def render_row_number(self):
+        start_index = self.page.start_index() if hasattr(self, "page") else 1
         self.row_number = getattr(
-            self, "row_number", itertools.count(self.page.start_index())
+            self, "row_number", itertools.count(start_index)
         )
         return next(self.row_number)
 

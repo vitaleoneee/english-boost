@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("games", "0003_remove_srs_access_timer"),
+        ("progress", "0003_remove_srs_access_timer"),
     ]
 
     operations = [

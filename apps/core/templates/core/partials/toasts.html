@@ -1,0 +1,9 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            {% include 'includes/toast_default_message.html' with message=message %}
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            {% include 'includes/toast_error_message.html' with message=message %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

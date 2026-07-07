@@ -1,10 +1,10 @@
 from django.urls import path
 
-from apps.progress.views import srs_technique, get_achievements
+from apps.progress.views import srs_technique, AchievementsView
 
-app_name = "games"
+app_name = "progress"
 
 urlpatterns = [
     path("", srs_technique, name="srs_technique"),
-    path("achievements/", get_achievements, name="achievements"),
+    path("achievements/", AchievementsView.as_view(), name="achievements"),
 ]

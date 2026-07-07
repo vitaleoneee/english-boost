@@ -1,0 +1,49 @@
+{% load render_table from django_tables2 %}
+{% load i18n %}
+
+<!-- ===================== -->
+<!-- Desktop table -->
+<!-- ===================== -->
+<div class="d-none d-lg-block mb-3">
+    {% render_table dictionary_table %}
+</div>
+
+<!-- ===================== -->
+<!-- Mobile cards -->
+<!-- ===================== -->
+<div class="d-lg-none">
+    {% for word in words %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        {{ word.english_name }}
+                    </h5>
+
+                    <input type="checkbox"
+                           name="selected_words"
+                           value="{{ word.id }}">
+                </div>
+                <p class="text-muted mb-2">
+                    {% trans "Translation:" %} {{ word.russian_name }}
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <button type="button"
+                            class="btn btn-sm btn-outline-secondary"
+                            onclick="playAudio('{{ word.english_name|escapejs }}')">
+                        <i class="bi bi-play-fill"></i>
+                        {% trans "Pronunciation" %}
+                    </button>
+
+                    <span class="badge {% if word.status == 'LEARNED' %}bg-success{% else %}bg-warning text-dark{% endif %}">
+                                {{ word.get_status_display }}
+                            </span>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>{% trans "No words yet" %}</p>
+    {% endfor %}
+</div>

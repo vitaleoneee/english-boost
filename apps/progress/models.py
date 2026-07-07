@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
-from apps.core.models import Word
+from apps.dictionary.models import Word
 from .constants import SRS_LEARNED_THRESHOLD, WORD_STATUS_LEARNED
 
 
@@ -65,12 +65,11 @@ class UserSRS(models.Model):
 class Achievement(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
-    secret = models.BooleanField(default=False, verbose_name="Секретность достижения")
+    is_secret = models.BooleanField(default=False, verbose_name="Секретность достижения")
 
     class Meta:
         verbose_name = "Достижение"
         verbose_name_plural = "Достижения"
-        ordering = ["pk"]
 
     def __str__(self):
         return self.name
@@ -86,6 +85,7 @@ class UserAchievement(models.Model):
     awarded_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Дата и время получения"
     )
+    is_seen = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Достижение пользователя"

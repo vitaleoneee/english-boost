@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("games", "0008_alter_achievement_options_achievement_secret_and_more"),
+        ("progress", "0008_alter_achievement_options_achievement_secret_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 

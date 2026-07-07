@@ -1,8 +1,8 @@
 from django.shortcuts import redirect
 from django.utils import timezone
 
-from apps.core.models import Word
 from apps.core.utils import check_and_set_achievements
+from apps.dictionary.models import Word
 from apps.progress.constants import (
     SRS_WORD_NOT_FOUND_MSG,
     SRS_OBJECT_NOT_FOUND_MSG,
@@ -28,23 +28,23 @@ def handle_srs_post_request(request):
     word = Word.objects.filter(id=word_id, user=request.user).first()
     if not word:
         request.session["error_message"] = SRS_WORD_NOT_FOUND_MSG
-        return redirect("games:srs_technique")
+        return redirect("progress:srs_technique")
     srs_obj = get_srs_object(word)
 
     if not srs_obj:
         request.session["error_message"] = SRS_OBJECT_NOT_FOUND_MSG
-        return redirect("games:dictionary")
+        return redirect("progress:dictionary")
 
     # Check word availability
     if srs_obj.access_timer > timezone.now():
         request.session["error_message"] = SRS_WORD_NOT_AVAILABLE_MSG
-        return redirect("games:srs_technique")
+        return redirect("progress:srs_technique")
 
     # Checking the correctness of the translation
     form = WordCheckForm(request.POST, prefix=f"word_{word.id}")
     if not form.is_valid():
         request.session["error_message"] = SRS_FORM_ERROR_MSG
-        return redirect("games:srs_technique")
+        return redirect("progress:srs_technique")
 
     user_input = form.cleaned_data["translate_input"].strip().lower()
     is_correct = user_input == word.russian_name.lower()
@@ -69,4 +69,4 @@ def handle_srs_post_request(request):
         request.session["error_message"] = SRS_WRONG_ANSWER_MSG.format(
             word.russian_name
         )
-    return redirect("games:srs_technique")
+    return redirect("progress:srs_technique")

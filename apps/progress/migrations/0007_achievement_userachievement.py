@@ -7,7 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("games", "0006_remove_srs_repetitions"),
+        ("progress", "0006_remove_srs_repetitions"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
                     "achievement",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="games.achievement",
+                        to="progress.achievement",
                     ),
                 ),
                 (

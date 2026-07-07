@@ -1,12 +1,16 @@
+{% load i18n %}
+
 {% if message %}
-    {# TODO: translate aria-label #}
     <div class="toast show align-items-center text-white bg-success border-0" role="alert">
         <div class="d-flex">
             <div class="toast-body">
-                ✅ {{ message }}
+                <div>🏆 {% trans "New achievement:" %} <strong>{{ message }}</strong></div>
+                {% if description %}
+                    <div class="small opacity-75">{{ description }}</div>
+                {% endif %}
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                    aria-label="Закрыть"></button>
+                    aria-label="{% trans 'Close' %}"></button>
         </div>
     </div>
 {% endif %}

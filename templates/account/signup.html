@@ -1,15 +1,15 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Регистрация </title>
+    <title>{% trans "Sign up" %}</title>
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 <body>
 <div class="container">
-    <div class="title">Регистрация</div>
+    <div class="title">{% trans "Sign up" %}</div>
     <div class="content">
         <form method="POST">
             {% csrf_token %}
@@ -28,7 +28,7 @@
                 {% endif %}
             </div>
             <div class="button">
-                <input type="submit" value="Register">
+                <input type="submit" value="{% trans 'Register' %}">
             </div>
         </form>
     </div>

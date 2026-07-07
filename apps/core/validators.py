@@ -7,12 +7,12 @@ class CustomMinimumLengthValidator(MinimumLengthValidator):
     def validate(self, password, user=None):
         if len(password) < self.min_length:
             raise ValidationError(
-                _("Пароль слишком короткий. Минимум %(min_length)d символов."),
+                _("Password is too short. Minimum %(min_length)d characters."),
                 code="password_too_short",
                 params={"min_length": self.min_length},
             )
 
     def get_help_text(self):
-        return _("Ваш пароль должен содержать минимум %(min_length)d символов.") % {
+        return _("Your password must contain at least %(min_length)d characters.") % {
             "min_length": self.min_length
         }

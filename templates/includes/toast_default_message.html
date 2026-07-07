@@ -1,4 +1,4 @@
-{% load custom_filters %}
+{% load custom_filters i18n %}
 
 {% if message %}
     <div class="toast show align-items-center text-white bg-primary border-0" role="alert">
@@ -7,7 +7,7 @@
                 ℹ️ {{ action }} {{ message }} {% if plural_suffix %} {{ message|pluralize_ru:plural_suffix }}{% endif %}
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                    aria-label="Закрыть"></button>
+                    aria-label="{% trans 'Close' %}"></button>
         </div>
     </div>
 {% endif %}

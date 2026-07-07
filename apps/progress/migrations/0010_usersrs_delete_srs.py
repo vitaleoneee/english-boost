@@ -9,7 +9,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
     dependencies = [
         ("core", "0007_alter_word_user"),
-        ("games", "0009_userachievement_unique_user_achievement"),
+        ("progress", "0009_userachievement_unique_user_achievement"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 

@@ -19,9 +19,12 @@
     <!-- Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
 
     <!-- CSS -->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
@@ -40,8 +43,12 @@
     {% block extra_css %}{% endblock extra_css %}
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100"
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    {% for user_achievement in unseen_achievements %}
+        {% include 'includes/toast_achievement_message.html' with message=user_achievement.achievement.name description=user_achievement.achievement.description %}
+    {% endfor %}
     {% block toasts %}{% endblock toasts %}
 </div>
 <!-- Header -->
@@ -63,17 +70,17 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if selected == 'dictionary' %}active{% endif %}"
-                       href="{% url 'core:dictionary' %}">
+                       href="{% url 'dictionary:dictionary-list' %}">
                         {% translate "Dictionary" %}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if selected == 'achievements' %}active{% endif %}"
-                       href="{% url 'games:achievements' %}">{% translate "Achievements" %}</a>
+                       href="{% url 'progress:achievements' %}">{% translate "Achievements" %}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if selected == 'srs_technique' %}active{% endif %}"
-                       href="{% url 'games:srs_technique' %}">{% translate "SRS" %}</a>
+                       href="{% url 'progress:srs_technique' %}">{% translate "SRS" %}</a>
                 </li>
             </ul>
 
@@ -101,7 +108,7 @@
 
 <footer class="py-2 bg-dark mt-auto">
     <div class="container text-center text-white">
-        <p>Copyright 2025 &copy; Made by vitalion</p>
+        <p>{% blocktrans %}Copyright 2026 &copy; Made by vitalion{% endblocktrans %}</p>
     </div>
 </footer>
 </body>

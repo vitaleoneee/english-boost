@@ -17,8 +17,3 @@ def pluralize_ru(count, forms):
         return few
     else:
         return many
-
-
-@register.filter(name="gettype")
-def gettype(value):
-    return type(value).__name__

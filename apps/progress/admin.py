@@ -1,7 +1,8 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
+
+from apps.dictionary.models import Word
 from apps.progress.models import UserSRS, Achievement, UserAchievement
-from apps.core.models import Word
 
 
 @admin.register(UserSRS)
@@ -21,10 +22,10 @@ class UserSRSAdmin(ModelAdmin):
 @admin.register(Achievement)
 class AchievementAdmin(ModelAdmin):
     search_fields = ("name", "description")
-    list_filter = ("secret",)
+    list_filter = ("is_secret",)
     compressed_fields = True
     warn_unsaved_form = True
-    list_display = ("id", "name", "secret", "description")
+    list_display = ("id", "name", "is_secret", "description")
 
 
 @admin.register(UserAchievement)

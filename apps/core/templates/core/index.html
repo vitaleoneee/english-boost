@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}
-    Добро пожаловать!
+    {% trans "Welcome!" %}
 {% endblock title %}
 
 {% block content %}
@@ -12,11 +12,12 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center my-2">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Добро пожаловать в English BOOST!</h1>
-                        <p class="lead text-white-50 mb-2">Прокачай свой английский легко и с интересом.
-                            Мы объединили современные технологии, озвучку слов, интервальные повторения и
-                            удобную систему обучения, чтобы ты мог учить язык эффективно,
-                            шаг за шагом — каждый день.</p>
+                        <h1 class="display-5 fw-bolder text-white mb-2">{% trans "Welcome to English BOOST!" %}</h1>
+                        <p class="lead text-white-50 mb-2">{% blocktrans %}Improve your English easily and with
+                            interest.
+                            We combine modern technologies, word pronunciation, spaced repetition, and
+                            a convenient learning system so you can learn effectively,
+                            step by step - every day.{% endblocktrans %}</p>
                     </div>
                 </div>
             </div>
@@ -30,13 +31,13 @@
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
                         <i class="bi bi-collection"></i>
                     </div>
-                    <h2 class="h4 fw-bolder">Словарь</h2>
-                    <p>Твой персональный словарь с возможностью добавлять, просматривать и повторять слова.
-                        Каждое слово — с переводом, примером, транскрипцией и озвучкой.
-                        Учить стало удобно, быстро и эффективно.
+                    <h2 class="h4 fw-bolder">{% trans "Dictionary" %}</h2>
+                    <p>{% blocktrans %}Your personal dictionary where you can add, view, and review words.
+                        Each word includes a translation, example, transcription, and pronunciation.
+                        Learning is now convenient, fast, and effective.{% endblocktrans %}
                     </p>
-                    <a class="text-decoration-none" href="{% url 'core:dictionary' %}">
-                        Словарь
+                    <a class="text-decoration-none" href="{% url 'dictionary:dictionary-list' %}">
+                        {% trans "Dictionary" %}
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -44,13 +45,14 @@
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
                         <i class="bi bi-building"></i>
                     </div>
-                    <h2 class="h4 fw-bolder">Достижения</h2>
-                    <p>Следи за своим прогрессом с достижениями в изучении английского!
-                        Мы визуализируем:
-                        количество выученных слов, текущие и максимальные streaks (дни подряд), и многое другое!
+                    <h2 class="h4 fw-bolder">{% trans "Achievements" %}</h2>
+                    <p>{% blocktrans %}Track your progress with English learning achievements!
+                        We visualize:
+                        the number of learned words, current and maximum streaks (consecutive days), and much
+                        more!{% endblocktrans %}
                     </p>
-                    <a class="text-decoration-none" href="{% url 'games:achievements' %}">
-                        Достижения
+                    <a class="text-decoration-none" href="{% url 'progress:achievements' %}">
+                        {% trans "Achievements" %}
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -58,14 +60,14 @@
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
                         <i class="bi bi-toggles2"></i>
                     </div>
-                    <h2 class="h4 fw-bolder">Игры</h2>
-                    <p>Учить слова — это интересно!
-                        Карточки — интерактивные мини-игры, чтобы быстро закреплять слова.
-                        Умная система, которая показывает слова в нужный момент, когда ты почти их забыл.
-                        Таким образом ты не просто учишь — ты действительно запоминаешь.
+                    <h2 class="h4 fw-bolder">{% trans "Progress" %}</h2>
+                    <p>{% blocktrans %}Learning words is fun!
+                        Flashcards are interactive mini-games to quickly reinforce vocabulary.
+                        A smart system shows words at the right moment, when you are about to forget them.
+                        This way, you do not just learn - you truly remember.{% endblocktrans %}
                     </p>
-                    <a class="text-decoration-none" href="{% url 'games:srs_technique' %}">
-                        Интервальные повторения
+                    <a class="text-decoration-none" href="{% url 'progress:srs_technique' %}">
+                        {% trans "Spaced repetition" %}
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -80,8 +82,8 @@
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
                     <i class="bi bi-envelope"></i>
                 </div>
-                <h2 class="fw-bolder">Предложите нам свои нововведения!</h2>
-                <p class="lead mb-0">Нам действительно это нужно</p>
+                <h2 class="fw-bolder">{% trans "Suggest your improvements to us!" %}</h2>
+                <p class="lead mb-0">{% trans "We really need it" %}</p>
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
@@ -91,7 +93,7 @@
                         {% csrf_token %}
                         <div class="form-floating mb-3">
                             {{ form.full_name }}
-                            <label for="name">Полное имя</label>
+                            <label for="name">{% trans "Full name" %}</label>
                         </div>
                         <div class="form-floating mb-3">
                             {{ form.email }}
@@ -99,12 +101,12 @@
                         </div>
                         <div class="form-floating mb-3">
                             {{ form.message }}
-                            <label for="message">Сообщение</label>
+                            <label for="message">{% trans "Message" %}</label>
                         </div>
                         <div class="d-grid">
                             <button class="btn btn-primary btn-lg" id="submitButton" type="submit"
                                     hx-disabled-elt="this">
-                                <span class="btn-text">Отправить</span>
+                                <span class="btn-text">{% trans "Send" %}</span>
                                 <span id="loading-indicator"
                                       class="spinner-border spinner-border-sm text-light htmx-indicator"
                                       role="status"></span>
@@ -115,5 +117,4 @@
             </div>
         </div>
     </section>
-    <script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 {% endblock content %}
