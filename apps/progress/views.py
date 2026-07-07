@@ -10,9 +10,6 @@ from apps.progress.services.srs_handlers import handle_srs_post_request
 
 @login_required
 def srs_technique(request):
-    """
-    SRS technology implementation controller
-    """
     if request.method == "POST":
         return handle_srs_post_request(request)
     # Getting a list of unstudied words

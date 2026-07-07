@@ -46,7 +46,7 @@ class DictionaryListView(LoginRequiredMixin, SingleTableView):
 class NewDictionaryWordView(LoginRequiredMixin, CreateView):
     form_class = NewDictionaryWordForm
     template_name = "dictionary/new_dictionary_word.html"
-    success_url = reverse_lazy("core:dictionary")
+    success_url = reverse_lazy("dictionary:dictionary-list")
 
     def form_valid(self, form):
         word = form.save(commit=False)

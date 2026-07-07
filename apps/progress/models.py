@@ -12,13 +12,14 @@ class UserSRS(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="srs_items"
     )
-    word = models.OneToOneField(Word, on_delete=models.CASCADE, related_name="srs")
+    word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name="srs")
     interval = models.IntegerField(verbose_name="SRS интервал в днях", default=1)
     access_timer = models.DateTimeField(
         verbose_name="Время доступа к повторению", default=timezone.now
     )
 
     class Meta:
+        unique_together = ("user", "word")
         verbose_name = "SRS объект"
         verbose_name_plural = "SRS объекты"
         ordering = ["-interval"]
@@ -65,7 +66,9 @@ class UserSRS(models.Model):
 class Achievement(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
-    is_secret = models.BooleanField(default=False, verbose_name="Секретность достижения")
+    is_secret = models.BooleanField(
+        default=False, verbose_name="Секретность достижения"
+    )
 
     class Meta:
         verbose_name = "Достижение"
