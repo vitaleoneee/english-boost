@@ -1,38 +1,43 @@
+from django.utils.translation import gettext_lazy as _
+
 # SRS settings
-SRS_LEARNED_THRESHOLD = 8  # The interval in days at which a word is considered learned
+SRS_LEARNED_THRESHOLD = 21  # The interval in days at which a word is considered learned
 SRS_INITIAL_INTERVAL = 1  # Initial recurrence interval (in days)
 
 WORD_ACHIEVEMENTS = [
-    (5, "Начинающий"),
-    (10, "Первый десяток"),
-    (50, "Словарный строитель"),
-    (100, "Лексический мастер"),
-    (1000, "Тысяча слов"),
+    (5, _("Beginner")),
+    (10, _("First Ten")),
+    (50, _("Vocabulary Builder")),
+    (100, _("Vocabulary Master")),
+    (1000, _("One Thousand Words")),
 ]
 
 TIME_ACHIEVEMENTS = [
-    (1, "Первый день"),
-    (7, "Ученик дисциплины"),
-    (30, "Ты как часы"),
+    (1, _("First Day")),
+    (7, _("Disciplined Learner")),
+    (30, _("Like Clockwork")),
 ]
 
 SRS_ACHIEVEMENTS = [
-    (1, "Первое повторение"),
-    (10, "Сила повторения"),
-    (100, "Чемпион памяти"),
+    (1, _("First Review")),
+    (10, _("Power of Repetition")),
+    (100, _("Memory Champion")),
 ]
 
-FLAWLESS_SRS_ACHIEVEMENTS = [(5, "Железная концентрация"), (10, "Безупречная сессия")]
+FLAWLESS_SRS_ACHIEVEMENTS = [
+    (5, _("Iron Focus")),
+    (10, _("Perfect Session")),
+]
 
 # Word statuses
 WORD_STATUS_PROCESS = "PROCESS"
 WORD_STATUS_LEARNED = "LEARNED"
 
 # Messages for user
-SRS_WORD_NOT_FOUND_MSG = "Слово не найдено или у вас нет к нему доступа."
-SRS_OBJECT_NOT_FOUND_MSG = "SRS-объект не найден."
-SRS_WORD_NOT_AVAILABLE_MSG = "Слово пока недоступно для проверки."
-SRS_FORM_ERROR_MSG = "Ошибка формы."
-SRS_CORRECT_ANSWER_MSG = "Верно! Интервал увеличен."
-SRS_LEARNED_MSG = "Вы выучили слово — {}!"
-SRS_WRONG_ANSWER_MSG = 'Неверно. Слово "{}" начато заново.'
+SRS_WORD_NOT_FOUND_MSG = _("Word not found or you do not have access to it.")
+SRS_OBJECT_NOT_FOUND_MSG = _("SRS object not found.")
+SRS_WORD_NOT_AVAILABLE_MSG = _("This word is not yet available for review.")
+SRS_FORM_ERROR_MSG = _("Form error.")
+SRS_CORRECT_ANSWER_MSG = _("Correct! The interval has been increased.")
+SRS_LEARNED_MSG = _("You have learned the word — {}!")
+SRS_WRONG_ANSWER_MSG = _('Incorrect. The word "{}" has been reset.')

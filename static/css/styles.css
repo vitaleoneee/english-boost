@@ -53,7 +53,7 @@
 
 .word-row {
     display: grid;
-    grid-template-columns: 180px 1fr 110px 185px;
+    grid-template-columns: 180px 1fr 110px max-content;
     align-items: center;
     gap: 10px;
 }
@@ -76,7 +76,7 @@
 /* 577px–980px */
 @media (max-width: 992px) and (min-width: 577px) {
     .word-row {
-        grid-template-columns: 140px 1fr 110px 170px;
+        grid-template-columns: 140px 1fr 110px max-content;
         grid-template-rows: auto auto;
     }
 

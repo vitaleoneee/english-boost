@@ -1,72 +1,48 @@
-from django.shortcuts import redirect
-from django.utils import timezone
+from django.contrib import messages
+from django.shortcuts import redirect, get_object_or_404
+from django.utils.translation import gettext_lazy as _
 
-from apps.core.utils import check_and_set_achievements
-from apps.dictionary.models import Word
 from apps.progress.constants import (
-    SRS_WORD_NOT_FOUND_MSG,
-    SRS_OBJECT_NOT_FOUND_MSG,
-    SRS_WORD_NOT_AVAILABLE_MSG,
-    SRS_FORM_ERROR_MSG,
     SRS_CORRECT_ANSWER_MSG,
     SRS_LEARNED_MSG,
     SRS_WRONG_ANSWER_MSG,
-    SRS_LEARNED_THRESHOLD,
 )
 from apps.progress.forms import WordCheckForm
-from apps.progress.utils import get_srs_object
+from apps.progress.models import UserSRS
 from redis_service import r
 
 
-def handle_srs_post_request(request):
+def handle_srs_post(request):
     """
     Handling a POST request to check a word in SRS
     """
     word_id = request.POST.get("check_word")
 
-    # Receiving the word and SRS object
-    word = Word.objects.filter(id=word_id, user=request.user).first()
-    if not word:
-        request.session["error_message"] = SRS_WORD_NOT_FOUND_MSG
-        return redirect("progress:srs_technique")
-    srs_obj = get_srs_object(word)
+    srs = get_object_or_404(
+        UserSRS.objects.select_related("word"),
+        word_id=word_id,
+        user=request.user,
+    )
+    word = srs.word
 
-    if not srs_obj:
-        request.session["error_message"] = SRS_OBJECT_NOT_FOUND_MSG
-        return redirect("progress:dictionary")
-
-    # Check word availability
-    if srs_obj.access_timer > timezone.now():
-        request.session["error_message"] = SRS_WORD_NOT_AVAILABLE_MSG
-        return redirect("progress:srs_technique")
-
-    # Checking the correctness of the translation
     form = WordCheckForm(request.POST, prefix=f"word_{word.id}")
     if not form.is_valid():
-        request.session["error_message"] = SRS_FORM_ERROR_MSG
+        messages.error(request, _("Incorrect form"))
         return redirect("progress:srs_technique")
 
     user_input = form.cleaned_data["translate_input"].strip().lower()
-    is_correct = user_input == word.russian_name.lower()
+    is_correct = user_input == word.russian_name.strip().lower()
 
     # Updating the SRS status
-    srs_obj.update_after_answer(failure=not is_correct)
+    learned = srs.update_after_answer(correct=is_correct)
 
-    # Forming a message
-    if is_correct:
+    if learned:
+        messages.success(request, SRS_LEARNED_MSG.format(word.english_name))
+    elif is_correct:
         r.incr(f"{request.user.username}:{request.user.id}:srs_session_counter")
         r.incr(f"{request.user.username}:{request.user.id}:srs_accuracy_counter")
-        check_and_set_achievements(request, "check_srs_session_count")
-        check_and_set_achievements(request, "check_srs_accuracy_counter")
-        if srs_obj.interval >= SRS_LEARNED_THRESHOLD:
-            request.session["achievement_message"] = SRS_LEARNED_MSG.format(
-                word.russian_name
-            )
-        else:
-            request.session["default_message"] = SRS_CORRECT_ANSWER_MSG
+        messages.success(request, SRS_CORRECT_ANSWER_MSG)
     else:
         r.set(f"{request.user.username}:{request.user.id}:srs_accuracy_counter", 0)
-        request.session["error_message"] = SRS_WRONG_ANSWER_MSG.format(
-            word.russian_name
-        )
+        messages.error(request, SRS_WRONG_ANSWER_MSG.format(word.english_name))
     return redirect("progress:srs_technique")

@@ -1,66 +1,105 @@
+import math
 from datetime import timedelta
 
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django_lifecycle import LifecycleModel, hook, AFTER_UPDATE
 
 from apps.dictionary.models import Word
-from .constants import SRS_LEARNED_THRESHOLD, WORD_STATUS_LEARNED
+from .constants import SRS_LEARNED_THRESHOLD
 
 
-class UserSRS(models.Model):
+class UserSRS(LifecycleModel):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="srs_items"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="srs_items",
     )
-    word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name="srs")
-    interval = models.IntegerField(verbose_name="SRS интервал в днях", default=1)
+    word = models.ForeignKey(
+        Word,
+        on_delete=models.CASCADE,
+        related_name="srs",
+    )
+    interval = models.PositiveIntegerField(
+        verbose_name="Интервал в днях",
+        default=1,
+    )
+    repetitions = models.PositiveIntegerField(
+        verbose_name="Успешных повторений подряд",
+        default=0,
+    )
+    ease_factor = models.FloatField(
+        verbose_name="Коэффициент лёгкости",
+        default=2.5,
+    )
     access_timer = models.DateTimeField(
-        verbose_name="Время доступа к повторению", default=timezone.now
+        verbose_name="Следующее повторение",
+        default=timezone.now,
     )
 
     class Meta:
         unique_together = ("user", "word")
         verbose_name = "SRS объект"
         verbose_name_plural = "SRS объекты"
-        ordering = ["-interval"]
 
     def __str__(self):
         return self.word.english_name
 
-    def get_access_delay(self):
+    @property
+    def is_due(self):
+        return self.access_timer <= timezone.now()
+
+    @property
+    def seconds_until_due(self):
+        diff = self.access_timer - timezone.now()
+        return max(0, int(diff.total_seconds()))
+
+    def update_after_answer(self, correct: int) -> bool:
+        """
+        SM-2 algorithm.
+
+        Returns True if the word is considered learned.
+        """
         now = timezone.now()
-        if self.access_timer and self.access_timer > now:
-            diff = self.access_timer - now
-        else:
-            diff = timedelta(seconds=0)
 
-        total_seconds = max(0, int(diff.total_seconds()))
-
-        if total_seconds > 0:
-            hours = total_seconds // 3600
-            minutes = (total_seconds % 3600) // 60
-            seconds = total_seconds % 60
-            access_time_str = f"{hours:02}:{minutes:02}:{seconds:02}"
-        else:
-            access_time_str = None
-
-        return total_seconds, access_time_str
-
-    def update_after_answer(self, failure=False):
-        now = timezone.now()
-        if failure:
+        if not correct:
+            self.repetitions = 0
             self.interval = 1
+            self.ease_factor = max(1.3, self.ease_factor - 0.2)
             self.access_timer = now
         else:
-            self.interval *= 2
+            # Success - calculating the new interval based on SM-2
+            if self.repetitions == 0:
+                self.interval = 1
+            elif self.repetitions == 1:
+                self.interval = 6
+            else:
+                self.interval = math.ceil(self.interval * self.ease_factor)
+
+            self.repetitions += 1
+            self.ease_factor = min(3.0, self.ease_factor + 0.1)
             self.access_timer = now + timedelta(days=self.interval)
 
-        if self.interval >= SRS_LEARNED_THRESHOLD:
-            self.word.status = WORD_STATUS_LEARNED
-            self.word.save()
+        learned = self.interval >= SRS_LEARNED_THRESHOLD
+
+        if learned:
+            self.word.status = "LEARNED"
+            self.word.save(update_fields=["status"])
+            self.save()
             self.delete()
+            return True
 
         self.save()
+        return False
+
+    @hook(AFTER_UPDATE)
+    def on_srs_updated(self):
+        from apps.progress.achievements import AchievementChecker
+
+        checker = AchievementChecker(self.user)
+        checker.check_srs_session_count()
+        checker.check_srs_accuracy_counter()
 
 
 class Achievement(models.Model):
