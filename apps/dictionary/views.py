@@ -10,10 +10,10 @@ from django.views.generic import CreateView
 from django_htmx.http import trigger_client_event
 from django_tables2 import SingleTableView
 
-from apps.core.utils import check_and_set_achievements
 from apps.dictionary.forms import NewDictionaryWordForm
 from apps.dictionary.models import Word
 from apps.dictionary.tables.dictionary import DictionaryTable
+from apps.progress.achievements import AchievementChecker
 from apps.progress.models import UserSRS
 from redis_service import r
 
@@ -52,7 +52,7 @@ class NewDictionaryWordView(LoginRequiredMixin, CreateView):
         word = form.save(commit=False)
         word.user = self.request.user
         word.save()
-        messages.info(self.request, _("Add a new word"))
+        messages.info(self.request, _("Added a new word"))
 
         # Automatically create SRS model when adding a new word
         UserSRS.objects.create(word=word, user=self.request.user)
@@ -78,7 +78,13 @@ def delete_selected_words(request):
                 f"{request.user.username}:{request.user.id}:del_counter",
                 deleted_count,
             )
-            check_and_set_achievements(request, "check_deleted_words")
+
+            # 07.07.2026
+            # This behavior is not implemented via a hook
+            # because `qs.delete()` (a bulk update) is executed,
+            # rather than the deletion of an individual instance
+            checker = AchievementChecker(request.user)
+            checker.check_deleted_words()
 
         messages.info(
             request,

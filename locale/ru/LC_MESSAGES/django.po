@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-07 17:47+0300\n"
+"POT-Creation-Date: 2026-07-07 22:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -233,8 +233,8 @@ msgid "No words yet"
 msgstr "Пока нет слов"
 
 #: .\apps\dictionary\views.py:55
-msgid "Add a new word"
-msgstr "Добавить новое слово"
+msgid "Added a new word"
+msgstr "Добавлено новое слово"
 
 #: .\apps\dictionary\views.py:85
 #, python-format
@@ -244,6 +244,22 @@ msgstr "Удалено слов: %(count)s"
 #: .\apps\dictionary\views.py:88
 msgid "You have not selected any words."
 msgstr "Вы не выбрали ни одного слова."
+
+#: .\apps\progress\achievements.py:21
+msgid ""
+"An error occurred while awarding the achievement. Please contact the "
+"developer through the website's homepage."
+msgstr ""
+"Произошла ошибка при выдаче достижения. Пожалуйста, свяжитесь с "
+"разработчиком через главную страницу сайта."
+
+#: .\apps\progress\achievements.py:46
+msgid "The Cleaner"
+msgstr "Очиститель"
+
+#: .\apps\progress\achievements.py:70
+msgid "Night Owl"
+msgstr "Ночной совёнок"
 
 #: .\apps\progress\constants.py:8
 msgid "Beginner"
@@ -329,7 +345,13 @@ msgstr "Вы изучили новое слово — {}!"
 msgid "Incorrect. The word \"{}\" has been reset."
 msgstr "Неверно. Слово «{}» начато заново."
 
-#: .\apps\progress\services\srs_handlers.py:29
+#: .\apps\progress\forms.py:8
+#, fuzzy
+#| msgid "Translation:"
+msgid "Enter translation"
+msgstr "Введите перевод"
+
+#: .\apps\progress\services\srs_handlers.py:30
 msgid "Incorrect form"
 msgstr "Некорректная форма"
 
