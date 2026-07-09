@@ -1,50 +1,55 @@
 {% load render_table from django_tables2 %}
 {% load i18n %}
 
-<!-- ===================== -->
-<!-- Desktop table -->
-<!-- ===================== -->
-<div class="d-none d-lg-block mb-3">
-    {% render_table dictionary_table %}
-</div>
+{% if words %}
+    <div class="d-none d-lg-block mb-3">
+        {% render_table dictionary_table %}
+    </div>
 
-<!-- ===================== -->
-<!-- Mobile cards -->
-<!-- ===================== -->
-<div class="d-lg-none">
-    {% for word in words %}
-        <div class="card dictionary-mobile-card mb-3 shadow-sm">
-            <div class="card-body">
+    <div class="d-lg-none">
+        {% for word in words %}
+            <div class="card dictionary-mobile-card mb-3 shadow-sm">
+                <div class="card-body">
 
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0">
-                        {{ word.english_name }}
-                    </h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            {{ word.english_name }}
+                        </h5>
 
-                    <input type="checkbox"
-                           class="form-check-input"
-                           name="selected_words"
-                           value="{{ word.id }}">
-                </div>
-                <p class="text-muted mb-2">
-                    {% trans "Translation:" %} {{ word.russian_name }}
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
+                        <input type="checkbox"
+                               class="form-check-input"
+                               name="selected_words"
+                               value="{{ word.id }}">
+                    </div>
+                    <p class="text-muted mb-2">
+                        {% trans "Translation:" %} {{ word.russian_name }}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
 
-                    <button type="button"
-                            class="btn btn-sm btn-outline-secondary pronunciation-mobile-btn"
-                            onclick="playAudio('{{ word.english_name|escapejs }}')">
-                        <i class="bi bi-play-fill"></i>
-                        {% trans "Pronunciation" %}
-                    </button>
+                        <button type="button"
+                                class="btn btn-sm btn-outline-secondary pronunciation-mobile-btn"
+                                onclick="playAudio('{{ word.english_name|escapejs }}')">
+                            <i class="bi bi-play-fill"></i>
+                            {% trans "Pronunciation" %}
+                        </button>
 
-                    <span class="dictionary-status {% if word.status == 'LEARNED' %}dictionary-status-learned{% else %}dictionary-status-process{% endif %}">
-                        {{ word.get_status_display }}
-                    </span>
+                        <span class="dictionary-status {% if word.status == 'LEARNED' %}dictionary-status-learned{% else %}dictionary-status-process{% endif %}">
+                            {{ word.get_status_display }}
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% empty %}
-        <p>{% trans "No words yet" %}</p>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="dictionary-empty-state">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        {% if query or status %}
+            <h2>{% trans "Nothing found" %}</h2>
+            <p>{% trans "Try another word, translation, or status." %}</p>
+        {% else %}
+            <h2>{% trans "No words yet" %}</h2>
+            <p>{% trans "Add your first word and it will appear here." %}</p>
+        {% endif %}
+    </div>
+{% endif %}

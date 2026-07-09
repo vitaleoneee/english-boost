@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import IntegrityError
+from django.db.models import Q
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -19,6 +20,35 @@ from apps.progress.models import UserSRS
 from redis_service import r
 
 
+def get_dictionary_queryset(request):
+    words = Word.objects.filter(user=request.user)
+    query = request.GET.get("q", "").strip() or request.POST.get("q", "").strip()
+    status = (
+        request.GET.get("status", "").strip() or request.POST.get("status", "").strip()
+    )
+
+    if query:
+        words = words.filter(
+            Q(english_name__icontains=query) | Q(russian_name__icontains=query)
+        )
+
+    if status in Word.StudyStatus.values:
+        words = words.filter(status=status)
+
+    return words
+
+
+def render_dictionary_table(request, words):
+    context = {
+        "words": words,
+        "dictionary_table": DictionaryTable(words),
+        "query": request.GET.get("q", "").strip() or request.POST.get("q", "").strip(),
+        "status": request.GET.get("status", "").strip()
+        or request.POST.get("status", "").strip(),
+    }
+    return render(request, "dictionary/partials/dictionary_table.html", context)
+
+
 class DictionaryListView(LoginRequiredMixin, SingleTableView):
     model = Word
     context_object_name = "words"
@@ -27,11 +57,9 @@ class DictionaryListView(LoginRequiredMixin, SingleTableView):
     context_table_name = "dictionary_table"
 
     # TODO : Add pagination here
-    # TODO : Improve table display
 
     def get_queryset(self):
-        # Filter words by the current user
-        return Word.objects.filter(user=self.request.user)
+        return get_dictionary_queryset(self.request)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -39,6 +67,9 @@ class DictionaryListView(LoginRequiredMixin, SingleTableView):
             {
                 "selected": "dictionary",
                 "words": self.get_queryset(),
+                "query": self.request.GET.get("q", "").strip(),
+                "status": self.request.GET.get("status", "").strip(),
+                "study_statuses": Word.StudyStatus,
             }
         )
         return context
@@ -102,11 +133,11 @@ def delete_selected_words(request):
     else:
         messages.error(request, _("You have not selected any words."))
 
-    words = Word.objects.filter(user=request.user)
-    context = {
-        "words": words,
-        "dictionary_table": DictionaryTable(words),
-    }
-    response = render(request, "dictionary/partials/dictionary_table.html", context)
+    response = render_dictionary_table(request, get_dictionary_queryset(request))
     trigger_client_event(response, "wordDeleted")
     return response
+
+
+@login_required
+def search_words(request):
+    return render_dictionary_table(request, get_dictionary_queryset(request))

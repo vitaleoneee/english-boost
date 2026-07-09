@@ -34,10 +34,7 @@ WORD_STATUS_PROCESS = "PROCESS"
 WORD_STATUS_LEARNED = "LEARNED"
 
 # Messages for user
-SRS_WORD_NOT_FOUND_MSG = _("Word not found or you do not have access to it.")
-SRS_OBJECT_NOT_FOUND_MSG = _("SRS object not found.")
 SRS_WORD_NOT_AVAILABLE_MSG = _("This word is not yet available for review.")
-SRS_FORM_ERROR_MSG = _("Form error.")
 SRS_CORRECT_ANSWER_MSG = _("Correct! The interval has been increased.")
 SRS_LEARNED_MSG = _("You have learned the word — {}!")
 SRS_WRONG_ANSWER_MSG = _('Incorrect. The word "{}" has been reset.')

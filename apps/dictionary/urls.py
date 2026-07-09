@@ -4,6 +4,7 @@ from apps.dictionary.views import (
     delete_selected_words,
     DictionaryListView,
     NewDictionaryWordView,
+    search_words,
 )
 
 app_name = "dictionary"
@@ -16,4 +17,5 @@ urlpatterns = [
         name="new-dictionary-word",
     ),
     path("delete/", delete_selected_words, name="delete-selected-words"),
+    path("search/", search_words, name="search-words"),
 ]

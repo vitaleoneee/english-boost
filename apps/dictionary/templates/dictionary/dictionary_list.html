@@ -13,35 +13,88 @@
 {% endblock toasts %}
 
 {% block content %}
-    <form method="post"
-          hx-post="{% url 'dictionary:delete-selected-words' %}"
-          hx-target="#dictionary-table"
-          hx-swap="innerHTML">
-        <div class="container py-5">
-            <div class="dictionary-toolbar">
-                <div>
-                    <span class="section-eyebrow">{% trans "Vocabulary" %}</span>
-                    <h1>{% trans "Your dictionary" %}</h1>
-                </div>
-
-                <div class="dictionary-actions">
-                    <button type="submit" class="btn btn-danger">
-                        <i class="bi bi-trash3" aria-hidden="true"></i>
-                        <span>{% trans "Delete selected" %}</span>
-                    </button>
-
-                    <a href="{% url 'dictionary:new-dictionary-word' %}"
-                       class="btn btn-primary">
-                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
-                        <span>{% trans "Add word" %}</span>
-                    </a>
-                </div>
+    <div class="container py-5">
+        <div class="dictionary-toolbar">
+            <div>
+                <span class="section-eyebrow">{% trans "Vocabulary" %}</span>
+                <h1>{% trans "Your dictionary" %}</h1>
             </div>
+
+            <div class="dictionary-actions">
+                <button type="submit"
+                        form="dictionary-delete-form"
+                        class="btn btn-danger">
+                    <i class="bi bi-trash3" aria-hidden="true"></i>
+                    <span>{% trans "Delete selected" %}</span>
+                </button>
+
+                <a href="{% url 'dictionary:new-dictionary-word' %}"
+                   class="btn btn-primary">
+                    <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                    <span>{% trans "Add word" %}</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="dictionary-search-panel">
+            <div class="dictionary-search-field">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <input id="dictionary-search-input"
+                       type="search"
+                       name="q"
+                       class="form-control"
+                       value="{{ query }}"
+                       placeholder="{% trans 'Search by word or translation' %}"
+                       autocomplete="off"
+                       hx-get="{% url 'dictionary:search-words' %}"
+                       hx-trigger="input changed delay:300ms, search"
+                       hx-target="#dictionary-table"
+                       hx-include="[name='status']"
+                       hx-indicator="#dictionary-search-indicator">
+                <div id="dictionary-search-indicator"
+                     class="spinner-border spinner-border-sm htmx-indicator"
+                     role="status"
+                     aria-label="{% trans 'Searching' %}"></div>
+            </div>
+
+            <div class="dictionary-status-filter"
+                 hx-get="{% url 'dictionary:search-words' %}"
+                 hx-trigger="change"
+                 hx-target="#dictionary-table"
+                 hx-include="#dictionary-search-input, [name='status']"
+                 hx-indicator="#dictionary-search-indicator">
+                <label>
+                    <input type="radio" name="status" value="" {% if not status %}checked{% endif %}>
+                    <span>{% trans "All" %}</span>
+                </label>
+                <label>
+                    <input type="radio"
+                           name="status"
+                           value="{{ study_statuses.PROCESS }}"
+                           {% if status == study_statuses.PROCESS %}checked{% endif %}>
+                    <span>{% trans "In progress" %}</span>
+                </label>
+                <label>
+                    <input type="radio"
+                           name="status"
+                           value="{{ study_statuses.LEARNED }}"
+                           {% if status == study_statuses.LEARNED %}checked{% endif %}>
+                    <span>{% trans "Learned" %}</span>
+                </label>
+            </div>
+        </div>
+
+        <form id="dictionary-delete-form"
+              method="post"
+              hx-post="{% url 'dictionary:delete-selected-words' %}"
+              hx-target="#dictionary-table"
+              hx-swap="innerHTML"
+              hx-include="#dictionary-search-input, [name='status']">
             <div id="dictionary-table">
                 {% include "dictionary/partials/dictionary_table.html" %}
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 
     <script src="{% static 'js/checkboxesSelectAll.js' %}"></script>
     <script src="{% static 'js/pronunciationWord.js' %}"></script>
