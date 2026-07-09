@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-09 14:31+0300\n"
+"POT-Creation-Date: 2026-07-09 14:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 "через достижения."
 
 #: .\apps\core\templates\core\index.html:21
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:38
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:36
 #: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:4
 msgid "Add word"
 msgstr "Добавить слово"
@@ -96,7 +96,7 @@ msgstr "Всё работает как единый цикл"
 
 #: .\apps\core\templates\core\index.html:73
 #: .\apps\dictionary\templates\dictionary\dictionary_list.html:5
-#: .\templates\base.html:80
+#: .\templates\base.html:81
 msgid "Dictionary"
 msgstr "Словарь"
 
@@ -113,7 +113,7 @@ msgid "Open dictionary"
 msgstr "Открыть словарь"
 
 #: .\apps\core\templates\core\index.html:87
-#: .\apps\progress\templates\progress\srs.html:16
+#: .\apps\progress\templates\progress\srs.html:12
 msgid "Spaced repetition"
 msgstr "Интервальные повторения"
 
@@ -129,9 +129,9 @@ msgstr ""
 msgid "Review words"
 msgstr "Повторять слова"
 
-#: .\apps\core\templates\core\index.html:101 .\apps\progress\models.py:107
+#: .\apps\core\templates\core\index.html:101 .\apps\progress\models.py:105
 #: .\apps\progress\templates\progress\achievements.html:9
-#: .\templates\account\login.html:25 .\templates\base.html:85
+#: .\templates\account\login.html:25 .\templates\base.html:86
 msgid "Achievements"
 msgstr "Достижения"
 
@@ -197,11 +197,11 @@ msgstr "Категория"
 msgid "Categories"
 msgstr "Категории"
 
-#: .\apps\dictionary\models.py:25 .\apps\dictionary\tables\dictionary.py:109
+#: .\apps\dictionary\models.py:25 .\apps\dictionary\tables\dictionary.py:107
 msgid "Learned"
 msgstr "Изучено"
 
-#: .\apps\dictionary\models.py:26 .\apps\dictionary\tables\dictionary.py:112
+#: .\apps\dictionary\models.py:26 .\apps\dictionary\tables\dictionary.py:110
 msgid "In progress"
 msgstr "В процессе"
 
@@ -217,12 +217,12 @@ msgstr "Слово на русском"
 msgid "Status"
 msgstr "Статус"
 
-#: .\apps\dictionary\models.py:44 .\apps\progress\models.py:115
+#: .\apps\dictionary\models.py:44 .\apps\progress\models.py:113
 msgid "User"
 msgstr "Пользователь"
 
 #: .\apps\dictionary\models.py:49
-#: .\apps\progress\templates\progress\srs.html:79
+#: .\apps\progress\templates\progress\srs.html:75
 msgid "Word"
 msgstr "Слово"
 
@@ -235,24 +235,24 @@ msgstr "Перевод"
 msgid "Pronunciation"
 msgstr "Произношение"
 
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:25
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:23
 #: .\templates\account\login.html:23
 msgid "Vocabulary"
 msgstr "Словарь"
 
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:26
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:24
 msgid "Your dictionary"
 msgstr "Ваш словарь"
 
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:32
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:30
 msgid "Delete selected"
 msgstr "Удалить выбранные"
 
-#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:12
+#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:8
 msgid "Add a new word to the dictionary"
 msgstr "Добавлено новое слово в словарь"
 
-#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:19
+#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:15
 msgid "Add"
 msgstr "Добавить"
 
@@ -411,23 +411,23 @@ msgstr "SRS объект"
 msgid "SRS objects"
 msgstr "SRS объекты"
 
-#: .\apps\progress\models.py:102
+#: .\apps\progress\models.py:101
 msgid "Secret achievement"
 msgstr "Секретность достижения"
 
-#: .\apps\progress\models.py:106 .\apps\progress\models.py:118
+#: .\apps\progress\models.py:104 .\apps\progress\models.py:116
 msgid "Achievement"
 msgstr "Достижение"
 
-#: .\apps\progress\models.py:121
+#: .\apps\progress\models.py:119
 msgid "Award date and time"
 msgstr "Дата и время получения"
 
-#: .\apps\progress\models.py:126
+#: .\apps\progress\models.py:124
 msgid "User achievement"
 msgstr "Достижение пользователя"
 
-#: .\apps\progress\models.py:127
+#: .\apps\progress\models.py:125
 msgid "User achievements"
 msgstr "Достижения пользователя"
 
@@ -475,53 +475,58 @@ msgstr "Все скрытые испытания уже раскрыты или 
 msgid "Progress"
 msgstr "Прогресс"
 
-#: .\apps\progress\templates\progress\srs.html:19
+#: .\apps\progress\templates\progress\srs.html:15
 msgid "Review words at the right moment, before they fade from memory."
 msgstr "Повторяйте слова в нужный момент, пока они не исчезли из памяти."
 
-#: .\apps\progress\templates\progress\srs.html:28
+#: .\apps\progress\templates\progress\srs.html:24
 msgid "Review queue"
 msgstr "Очередь повторения"
 
-#: .\apps\progress\templates\progress\srs.html:29
+#: .\apps\progress\templates\progress\srs.html:25
 msgid "Words to study"
 msgstr "Слова для изучения"
 
-#: .\apps\progress\templates\progress\srs.html:31
+#: .\apps\progress\templates\progress\srs.html:27
 msgid "SRS statistics"
 msgstr "Статистика SRS"
 
-#: .\apps\progress\templates\progress\srs.html:34
-#: .\apps\progress\templates\progress\srs.html:53
+#: .\apps\progress\templates\progress\srs.html:30
+#: .\apps\progress\templates\progress\srs.html:49
 msgid "Ready now"
 msgstr "Доступно сейчас"
 
-#: .\apps\progress\templates\progress\srs.html:38
+#: .\apps\progress\templates\progress\srs.html:34
 msgid "Waiting"
 msgstr "Ожидают"
 
-#: .\apps\progress\templates\progress\srs.html:42
+#: .\apps\progress\templates\progress\srs.html:38
 msgid "Total"
 msgstr "Всего"
 
-#: .\apps\progress\templates\progress\srs.html:52
+#: .\apps\progress\templates\progress\srs.html:48
 msgid "Available in:"
 msgstr "Будет доступно через:"
 
-#: .\apps\progress\templates\progress\srs.html:94
+#: .\apps\progress\templates\progress\srs.html:84
+#: .\apps\progress\templates\progress\srs.html:85
+msgid "Play pronunciation"
+msgstr "Прослушать произношение"
+
+#: .\apps\progress\templates\progress\srs.html:103
 msgid "Check"
 msgstr "Проверить"
 
-#: .\apps\progress\templates\progress\srs.html:105
+#: .\apps\progress\templates\progress\srs.html:114
 msgid "No words to review"
 msgstr "Нет слов для повторения"
 
-#: .\apps\progress\templates\progress\srs.html:106
+#: .\apps\progress\templates\progress\srs.html:115
 msgid "Add words to your dictionary to start a new review queue."
 msgstr "Добавьте слова в словарь, чтобы начать новую очередь повторения."
 
 #: .\templates\account\login.html:7 .\templates\account\login.html:32
-#: .\templates\account\login.html:61 .\templates\base.html:96
+#: .\templates\account\login.html:61 .\templates\base.html:97
 msgid "Log in"
 msgstr "Войти"
 
@@ -573,8 +578,7 @@ msgstr "Сброс пароля"
 msgid ""
 "Enter your email and we will send instructions for returning to your "
 "learning space."
-msgstr ""
-"Введите email, и мы отправим инструкции для возвращения к обучению."
+msgstr "Введите email, и мы отправим инструкции для возвращения к обучению."
 
 #: .\templates\account\password_reset.html:22
 msgid "Learning flow"
@@ -681,31 +685,31 @@ msgstr "Уже есть аккаунт?"
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: .\templates\base.html:74
+#: .\templates\base.html:75
 msgid "Main"
 msgstr "Главная"
 
-#: .\templates\base.html:89
+#: .\templates\base.html:90
 msgid "SRS"
 msgstr "SRS"
 
-#: .\templates\base.html:97
+#: .\templates\base.html:98
 msgid "or"
 msgstr "или"
 
-#: .\templates\base.html:99
+#: .\templates\base.html:100
 msgid "Sign in"
 msgstr "Зарегистрироваться"
 
-#: .\templates\base.html:101
+#: .\templates\base.html:102
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: .\templates\base.html:104
+#: .\templates\base.html:105
 msgid "Exit"
 msgstr "Выйти"
 
-#: .\templates\base.html:117
+#: .\templates\base.html:118
 msgid "Copyright 2026 &copy; Made by vitalion"
 msgstr ""
 

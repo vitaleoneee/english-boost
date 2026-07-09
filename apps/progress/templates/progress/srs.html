@@ -73,7 +73,20 @@
                         {% csrf_token %}
                         <div class="srs-word-main">
                             <span class="srs-word-label">{% trans "Word" %}</span>
-                            <span class="srs-word">{{ item.word.english_name }}</span>
+                            <div class="srs-word-line">
+                                <span class="srs-word">{{ item.word.english_name }}</span>
+                                <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-secondary srs-pronunciation-btn"
+                                        onclick="playAudio('{{ item.word.english_name|escapejs }}')"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="{% trans 'Play pronunciation' %}"
+                                        aria-label="{% trans 'Play pronunciation' %}: {{ item.word.english_name }}"
+                                >
+                                    <i class="bi bi-volume-up-fill" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
                         <input type="hidden" name="english_word_name" value="{{ item.word.english_name }}">
                         <div class="srs-input">
@@ -104,4 +117,6 @@
             {% endfor %}
         </div>
     </div>
+
+    <script src="{% static 'js/pronunciationWord.js' %}"></script>
 {% endblock content %}
