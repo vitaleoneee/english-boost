@@ -3,6 +3,10 @@
 
 {% block title %}{% trans "Add word" %}{% endblock title %}
 
+{% block toasts %}
+    {% include "core/partials/toasts.html" %}
+{% endblock toasts %}
+
 {% block content %}
     <div class="container mt-5">
         <h1 class="text-center mb-4">{% trans "Add a new word to the dictionary" %}</h1>

@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import IntegrityError
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -51,11 +52,19 @@ class NewDictionaryWordView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         word = form.save(commit=False)
         word.user = self.request.user
-        word.save()
-        messages.info(self.request, _("Added a new word"))
+
+        try:
+            word.save()
+        except IntegrityError:
+            messages.error(
+                self.request,
+                _("A word with this English and Russian translation already exists."),
+            )
+            return self.form_invalid(form)
 
         # Automatically create SRS model when adding a new word
         UserSRS.objects.create(word=word, user=self.request.user)
+        messages.info(self.request, _("Added a new word"))
 
         return redirect(self.success_url)
 

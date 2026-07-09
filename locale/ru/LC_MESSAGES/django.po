@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-07 22:14+0300\n"
+"POT-Creation-Date: 2026-07-09 10:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,57 +145,53 @@ msgstr "Форма не может быть отправлена. Повтори
 msgid "Form sent successfully!"
 msgstr "Форма успешно отправлена!"
 
-#: .\apps\dictionary\models.py:9
+#: .\apps\dictionary\models.py:8
 msgid "Name"
 msgstr "Название"
 
-#: .\apps\dictionary\models.py:10
+#: .\apps\dictionary\models.py:9
 msgid "Description"
 msgstr "Описание"
 
-#: .\apps\dictionary\models.py:15 .\apps\dictionary\models.py:32
+#: .\apps\dictionary\models.py:14 .\apps\dictionary\models.py:31
 msgid "Category"
 msgstr "Категория"
 
-#: .\apps\dictionary\models.py:16
+#: .\apps\dictionary\models.py:15
 msgid "Categories"
 msgstr "Категории"
 
-#: .\apps\dictionary\models.py:28
+#: .\apps\dictionary\models.py:27
 msgid "Learned"
 msgstr "Изучено"
 
-#: .\apps\dictionary\models.py:29
+#: .\apps\dictionary\models.py:28
 #, fuzzy
 #| msgid "Progress"
 msgid "In progress"
 msgstr "Прогресс"
 
-#: .\apps\dictionary\models.py:34
+#: .\apps\dictionary\models.py:33
 msgid "English word"
 msgstr "Слово на английском"
 
-#: .\apps\dictionary\models.py:35
+#: .\apps\dictionary\models.py:34
 msgid "Russian word"
 msgstr "Слово на русском"
 
-#: .\apps\dictionary\models.py:37
-msgid "Slug"
-msgstr "Слаг"
-
-#: .\apps\dictionary\models.py:44
+#: .\apps\dictionary\models.py:40
 msgid "Status"
 msgstr "Статус"
 
-#: .\apps\dictionary\models.py:50
+#: .\apps\dictionary\models.py:46
 msgid "User"
 msgstr "Пользователь"
 
-#: .\apps\dictionary\models.py:55
+#: .\apps\dictionary\models.py:51
 msgid "Word"
 msgstr "Слово"
 
-#: .\apps\dictionary\models.py:56
+#: .\apps\dictionary\models.py:52
 msgid "Words"
 msgstr "Слова"
 
@@ -212,11 +208,11 @@ msgstr "Удалить выбранные"
 msgid "Add word"
 msgstr "Добавить слово"
 
-#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:8
+#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:12
 msgid "Add a new word to the dictionary"
 msgstr "Добавлено новое слово в словарь"
 
-#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:15
+#: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:19
 msgid "Add"
 msgstr "Добавить"
 
@@ -232,20 +228,24 @@ msgstr "Произношение"
 msgid "No words yet"
 msgstr "Пока нет слов"
 
-#: .\apps\dictionary\views.py:55
+#: .\apps\dictionary\views.py:61
+msgid "A word with this English and Russian translation already exists."
+msgstr "Слово с таким английским и русским переводом уже существует."
+
+#: .\apps\dictionary\views.py:67
 msgid "Added a new word"
 msgstr "Добавлено новое слово"
 
-#: .\apps\dictionary\views.py:85
+#: .\apps\dictionary\views.py:100
 #, python-format
 msgid "Deleted words: %(count)s"
 msgstr "Удалено слов: %(count)s"
 
-#: .\apps\dictionary\views.py:88
+#: .\apps\dictionary\views.py:103
 msgid "You have not selected any words."
 msgstr "Вы не выбрали ни одного слова."
 
-#: .\apps\progress\achievements.py:21
+#: .\apps\progress\achievements.py:27
 msgid ""
 "An error occurred while awarding the achievement. Please contact the "
 "developer through the website's homepage."
@@ -253,11 +253,11 @@ msgstr ""
 "Произошла ошибка при выдаче достижения. Пожалуйста, свяжитесь с "
 "разработчиком через главную страницу сайта."
 
-#: .\apps\progress\achievements.py:46
+#: .\apps\progress\achievements.py:55
 msgid "The Cleaner"
 msgstr "Очиститель"
 
-#: .\apps\progress\achievements.py:70
+#: .\apps\progress\achievements.py:79
 msgid "Night Owl"
 msgstr "Ночной совёнок"
 
@@ -508,7 +508,7 @@ msgstr "или"
 
 #: .\templates\base.html:93
 msgid "Sign in"
-msgstr "Войти"
+msgstr "Зарегистрироваться"
 
 #: .\templates\base.html:95
 msgid "Welcome"

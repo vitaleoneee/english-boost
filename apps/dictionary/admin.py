@@ -18,4 +18,4 @@ class CategoryAdmin(ModelAdmin):
 
 @admin.register(Word)
 class WordAdmin(ModelAdmin):
-    list_display = ("user", "english_name", "slug", "status", "id")
+    list_display = ("user", "english_name", "status", "id")
