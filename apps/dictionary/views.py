@@ -62,8 +62,8 @@ class NewDictionaryWordView(LoginRequiredMixin, CreateView):
             )
             return self.form_invalid(form)
 
-        # Automatically create SRS model when adding a new word
-        UserSRS.objects.create(word=word, user=self.request.user)
+        if word.status == Word.StudyStatus.PROCESS:
+            UserSRS.objects.create(word=word, user=self.request.user)
         messages.info(self.request, _("Added a new word"))
 
         return redirect(self.success_url)

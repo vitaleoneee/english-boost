@@ -1,12 +1,15 @@
 import os
 
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
 
 from apps.core.forms import ContactForm
+from apps.progress.models import UserAchievement
 
 
 class ToastView(TemplateView):
@@ -22,8 +25,19 @@ class IndexView(TemplateView):
             {
                 "selected": "index",
                 "form": ContactForm(),
-            })
+            }
+        )
         return context
+
+
+@login_required
+@require_POST
+def mark_achievements_seen(request):
+    UserAchievement.objects.filter(
+        user=request.user,
+        is_seen=False,
+    ).update(is_seen=True)
+    return HttpResponse(status=204)
 
 
 @require_POST

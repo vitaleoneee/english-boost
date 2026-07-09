@@ -12,10 +12,6 @@ def unseen_achievements(request):
         ).select_related("achievement")
     )
 
-    UserAchievement.objects.filter(
-        id__in=[a.id for a in achievements]
-    ).update(is_seen=True)
-
     return {
         "unseen_achievements": achievements,
     }

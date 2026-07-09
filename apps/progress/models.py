@@ -4,7 +4,7 @@ from datetime import timedelta
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django_lifecycle import LifecycleModel, hook, AFTER_UPDATE
+from django_lifecycle import LifecycleModel
 
 from apps.dictionary.models import Word
 from .constants import SRS_LEARNED_THRESHOLD
@@ -92,14 +92,6 @@ class UserSRS(LifecycleModel):
 
         self.save()
         return False
-
-    @hook(AFTER_UPDATE)
-    def on_srs_updated(self):
-        from apps.progress.achievements import AchievementChecker
-
-        checker = AchievementChecker(self.user)
-        checker.check_srs_session_count()
-        checker.check_srs_accuracy_counter()
 
 
 class Achievement(models.Model):

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if [ "$POSTGRES_DB" = "english-boost" ]
+if [ -n "$DB_HOST" ] && [ -n "$DB_PORT" ]
 then
     echo "Wait postgres..."
 
-    while ! nc -z "db" "$POSTGRES_PORT"; do
+    while ! nc -z "$DB_HOST" "$DB_PORT"; do
       sleep 0.5
     done
 

@@ -49,6 +49,12 @@
     {% for user_achievement in unseen_achievements %}
         {% include 'includes/toast_achievement_message.html' with message=user_achievement.achievement.name description=user_achievement.achievement.description %}
     {% endfor %}
+    {% if unseen_achievements %}
+        <div class="d-none"
+             hx-post="{% url 'core:mark-achievements-seen' %}"
+             hx-trigger="load"
+             hx-swap="none"></div>
+    {% endif %}
     {% block toasts %}{% endblock toasts %}
 </div>
 <!-- Header -->

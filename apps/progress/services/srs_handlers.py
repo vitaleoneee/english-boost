@@ -5,9 +5,11 @@ from django.utils.translation import gettext_lazy as _
 from apps.progress.constants import (
     SRS_CORRECT_ANSWER_MSG,
     SRS_LEARNED_MSG,
+    SRS_WORD_NOT_AVAILABLE_MSG,
     SRS_WRONG_ANSWER_MSG,
 )
 from apps.progress.forms import WordCheckForm
+from apps.progress.achievements import AchievementChecker
 from apps.progress.models import UserSRS
 from redis_service import r
 
@@ -25,6 +27,10 @@ def handle_srs_post(request):
     )
     word = srs.word
 
+    if not srs.is_due:
+        messages.error(request, SRS_WORD_NOT_AVAILABLE_MSG)
+        return redirect("progress:srs_technique")
+
     form = WordCheckForm(request.POST, prefix=f"word_{word.id}")
     if not form.is_valid():
         messages.error(request, _("Incorrect form"))
@@ -33,16 +39,23 @@ def handle_srs_post(request):
     user_input = form.cleaned_data["translate_input"].strip().lower()
     is_correct = user_input == word.russian_name.strip().lower()
 
-    # Updating the SRS status
+    if is_correct:
+        r.incr(f"{request.user.username}:{request.user.id}:srs_session_counter")
+        r.incr(f"{request.user.username}:{request.user.id}:srs_accuracy_counter")
+    else:
+        r.set(f"{request.user.username}:{request.user.id}:srs_accuracy_counter", 0)
+
     learned = srs.update_after_answer(correct=is_correct)
+
+    if is_correct:
+        checker = AchievementChecker(request.user)
+        checker.check_srs_session_count()
+        checker.check_srs_accuracy_counter()
 
     if learned:
         messages.success(request, SRS_LEARNED_MSG.format(word.english_name))
     elif is_correct:
-        r.incr(f"{request.user.username}:{request.user.id}:srs_session_counter")
-        r.incr(f"{request.user.username}:{request.user.id}:srs_accuracy_counter")
         messages.success(request, SRS_CORRECT_ANSWER_MSG)
     else:
-        r.set(f"{request.user.username}:{request.user.id}:srs_accuracy_counter", 0)
         messages.error(request, SRS_WRONG_ANSWER_MSG.format(word.english_name))
     return redirect("progress:srs_technique")

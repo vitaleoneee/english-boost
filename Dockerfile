@@ -20,4 +20,4 @@ RUN chmod +x /usr/src/english-boost/entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "english_app.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]

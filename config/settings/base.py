@@ -162,7 +162,7 @@ LOCALE_PATHS = [
     BASE_DIR.parent / "locale",
 ]
 
-TIME_ZONE = "Europe/Prague"
+TIME_ZONE = "Europe/Kiev"
 
 USE_TZ = True
 
