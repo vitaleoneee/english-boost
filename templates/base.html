@@ -46,15 +46,6 @@
 <body class="d-flex flex-column min-vh-100"
       hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    {% for user_achievement in unseen_achievements %}
-        {% include 'includes/toast_achievement_message.html' with message=user_achievement.achievement.name description=user_achievement.achievement.description %}
-    {% endfor %}
-    {% if unseen_achievements %}
-        <div class="d-none"
-             hx-post="{% url 'core:mark-achievements-seen' %}"
-             hx-trigger="load"
-             hx-swap="none"></div>
-    {% endif %}
     {% include "core/partials/toasts.html" %}
     {% block toasts %}{% endblock toasts %}
 </div>

@@ -1,3 +1,13 @@
+{% if unseen_achievements %}
+    {% for user_achievement in unseen_achievements %}
+        {% include 'includes/toast_achievement_message.html' with message=user_achievement.achievement.name description=user_achievement.achievement.description %}
+    {% endfor %}
+    <div class="d-none"
+         hx-post="{% url 'core:mark-achievements-seen' %}"
+         hx-trigger="load"
+         hx-swap="none"></div>
+{% endif %}
+
 {% if messages %}
     {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
