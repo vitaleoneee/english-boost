@@ -1,0 +1,22 @@
+{% extends "django_tables2/bootstrap5-responsive.html" %}
+{% load django_tables2 i18n %}
+
+{% block pagination.previous %}
+    <li class="previous page-item">
+        <a href="{% querystring_replace table.prefixed_page_field=table.page.previous_page_number %}"
+           class="page-link"
+           aria-label="{% trans 'Previous page' %}">
+            <span aria-hidden="true">&lt;&lt;</span>
+        </a>
+    </li>
+{% endblock pagination.previous %}
+
+{% block pagination.next %}
+    <li class="next page-item">
+        <a href="{% querystring_replace table.prefixed_page_field=table.page.next_page_number %}"
+           class="page-link"
+           aria-label="{% trans 'Next page' %}">
+            <span aria-hidden="true">&gt;&gt;</span>
+        </a>
+    </li>
+{% endblock pagination.next %}

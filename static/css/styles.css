@@ -471,6 +471,68 @@
     width: 12rem;
 }
 
+#dictionary-table nav[aria-label="Table navigation"] {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.35rem;
+}
+
+#dictionary-table .pagination {
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #d8dee6;
+    border-radius: 14px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0.4rem;
+}
+
+#dictionary-table .page-item {
+    margin: 0;
+}
+
+#dictionary-table .page-link {
+    align-items: center;
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #475569;
+    display: inline-flex;
+    font-size: 0.9rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    min-height: 2.35rem;
+    min-width: 2.35rem;
+    padding: 0.68rem 0.82rem;
+    transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
+}
+
+#dictionary-table .page-link:hover {
+    background: #e7f1ff;
+    border-color: #b6d4fe;
+    color: #0d6efd;
+}
+
+#dictionary-table .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+}
+
+#dictionary-table .page-item.active .page-link {
+    background: #212529;
+    border-color: #212529;
+    box-shadow: 0 7px 16px rgba(15, 23, 42, 0.16);
+    color: #fff;
+}
+
+#dictionary-table .page-item.disabled .page-link {
+    background: transparent;
+    border-color: transparent;
+    color: #94a3b8;
+}
+
 .pronunciation-btn {
     align-items: center;
     border-radius: 999px;
@@ -781,6 +843,15 @@
         width: 100%;
     }
 
+    #dictionary-table nav[aria-label="Table navigation"] {
+        overflow-x: auto;
+        padding-bottom: 0.15rem;
+    }
+
+    #dictionary-table .pagination {
+        justify-content: center;
+    }
+
     .dictionary-actions {
         justify-content: flex-start;
     }
@@ -886,6 +957,16 @@
     .dictionary-status-filter span {
         min-width: 0;
         width: 100%;
+    }
+
+    #dictionary-table .pagination {
+        display: flex;
+        width: 100%;
+    }
+
+    #dictionary-table .page-link {
+        min-width: 2.25rem;
+        padding: 0.65rem 0.75rem;
     }
 
     .dictionary-actions .btn {

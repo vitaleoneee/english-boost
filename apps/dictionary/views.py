@@ -10,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView
 from django_htmx.http import trigger_client_event
+from django_tables2 import RequestConfig
 from django_tables2 import SingleTableView
 
 from apps.dictionary.forms import NewDictionaryWordForm
@@ -18,6 +19,8 @@ from apps.dictionary.tables.dictionary import DictionaryTable
 from apps.progress.achievements import AchievementChecker
 from apps.progress.models import UserSRS
 from redis_service import r
+
+DICTIONARY_PAGE_SIZE = 20
 
 
 def get_dictionary_queryset(request):
@@ -39,9 +42,15 @@ def get_dictionary_queryset(request):
 
 
 def render_dictionary_table(request, words):
+    table = DictionaryTable(words)
+    RequestConfig(
+        request,
+        paginate={"per_page": DICTIONARY_PAGE_SIZE},
+    ).configure(table)
+
     context = {
-        "words": words,
-        "dictionary_table": DictionaryTable(words),
+        "words": table.page.object_list if hasattr(table, "page") else words,
+        "dictionary_table": table,
         "query": request.GET.get("q", "").strip() or request.POST.get("q", "").strip(),
         "status": request.GET.get("status", "").strip()
         or request.POST.get("status", "").strip(),
@@ -55,8 +64,7 @@ class DictionaryListView(LoginRequiredMixin, SingleTableView):
     template_name = "dictionary/dictionary_list.html"
     table_class = DictionaryTable
     context_table_name = "dictionary_table"
-
-    # TODO : Add pagination here
+    paginate_by = DICTIONARY_PAGE_SIZE
 
     def get_queryset(self):
         return get_dictionary_queryset(self.request)
@@ -66,7 +74,6 @@ class DictionaryListView(LoginRequiredMixin, SingleTableView):
         context.update(
             {
                 "selected": "dictionary",
-                "words": self.get_queryset(),
                 "query": self.request.GET.get("q", "").strip(),
                 "status": self.request.GET.get("status", "").strip(),
                 "study_statuses": Word.StudyStatus,

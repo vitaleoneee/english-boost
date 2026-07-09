@@ -66,7 +66,7 @@ class DictionaryTable(tables.Table):
 
     class Meta:
         model = Word
-        template_name = "django_tables2/bootstrap5-responsive.html"
+        template_name = "django_tables2/dictionary_bootstrap5.html"
         fields = (
             "select",
             "row_number",

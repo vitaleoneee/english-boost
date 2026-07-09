@@ -40,6 +40,7 @@ def mark_achievements_seen(request):
     return HttpResponse(status=204)
 
 
+@login_required
 @require_POST
 def send_features_view(request):
     form = ContactForm(request.POST)
