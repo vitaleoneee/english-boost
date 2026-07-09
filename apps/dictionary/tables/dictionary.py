@@ -3,6 +3,7 @@ import itertools
 import django_tables2 as tables
 from django.utils.html import format_html, escapejs
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 
 from apps.dictionary.models import Word
 
@@ -16,8 +17,8 @@ class DictionaryTable(tables.Table):
             '<input type="checkbox" id="select-all" class="form-check-input">'
         ),
         attrs={
-            "td": {"class": "text-center align-middle bg-dark"},
-            "th": {"class": "text-center align-middle"},
+            "td": {"class": "text-center align-middle select-cell"},
+            "th": {"class": "text-center align-middle select-cell"},
         },
     )
 
@@ -26,39 +27,39 @@ class DictionaryTable(tables.Table):
         verbose_name="#",
         orderable=False,
         attrs={
-            "td": {"class": "text-center align-middle fw-bold"},
-            "th": {"class": "text-center align-middle"},
+            "td": {"class": "text-center align-middle fw-semibold row-number-cell"},
+            "th": {"class": "text-center align-middle row-number-cell"},
         },
     )
     english_name = tables.Column(
-        verbose_name="Слово на английском",
+        verbose_name=_("English word"),
         attrs={
-            "td": {"class": "text-center align-middle"},
+            "td": {"class": "text-center align-middle word-text-cell"},
             "th": {"class": "text-center align-middle"},
         },
     )
     russian_name = tables.Column(
-        verbose_name="Перевод",
+        verbose_name=_("Translation"),
         attrs={
-            "td": {"class": "text-center align-middle"},
+            "td": {"class": "text-center align-middle word-text-cell"},
             "th": {"class": "text-center align-middle"},
         },
     )
     # accessor='pk' is required for virtual column rendering
     pronunciation = tables.Column(
-        verbose_name="Произношение",
+        verbose_name=_("Pronunciation"),
         orderable=False,
         empty_values=(),
         accessor="pk",
         attrs={
-            "td": {"class": "text-center align-middle"},
+            "td": {"class": "text-center align-middle pronunciation-cell"},
             "th": {"class": "text-center align-middle"},
         },
     )
     status = tables.Column(
-        verbose_name="Статус",
+        verbose_name=_("Status"),
         attrs={
-            "td": {"class": "text-center align-middle"},
+            "td": {"class": "text-center align-middle status-cell"},
             "th": {"class": "text-center align-middle"},
         },
     )
@@ -75,7 +76,7 @@ class DictionaryTable(tables.Table):
             "status",
         )
         attrs = {
-            "class": "table table-bordered table-hover align-middle custom-table mb-0",
+            "class": "table table-hover align-middle custom-table mb-0",
             "thead": {"class": "table-dark"},
         }
 
@@ -87,15 +88,13 @@ class DictionaryTable(tables.Table):
 
     def render_row_number(self):
         start_index = self.page.start_index() if hasattr(self, "page") else 1
-        self.row_number = getattr(
-            self, "row_number", itertools.count(start_index)
-        )
+        self.row_number = getattr(self, "row_number", itertools.count(start_index))
         return next(self.row_number)
 
     def render_pronunciation(self, value, record):
         word_js = escapejs(record.english_name)
         return format_html(
-            '<button type="button" class="btn btn-sm btn-outline-secondary" '
+            '<button type="button" class="btn btn-sm btn-outline-secondary pronunciation-btn" '
             'onclick="playAudio(\'{}\')" data-bs-toggle="tooltip" data-bs-placement="top" title="Play pronunciation">'
             '<i class="bi bi-play-fill"></i>'
             "</button>",
@@ -104,9 +103,9 @@ class DictionaryTable(tables.Table):
 
     def render_status(self, value, record):
         if record.status == "LEARNED":
-            badge = "success"
-            text = "Изучено"
+            badge = "dictionary-status dictionary-status-learned"
+            text = _("Learned")
         else:
-            badge = "warning text-dark"
-            text = "В процессе"
-        return format_html('<span class="badge bg-{}">{}</span>', badge, text)
+            badge = "dictionary-status dictionary-status-process"
+            text = _("In progress")
+        return format_html('<span class="{}">{}</span>', badge, text)

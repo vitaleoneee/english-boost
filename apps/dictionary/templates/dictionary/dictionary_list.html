@@ -9,9 +9,7 @@
     <div id="dictionary-toasts"
          hx-get="{% url 'core:toasts' %}"
          hx-trigger="wordDeleted from:body"
-         hx-swap="innerHTML">
-        {% include "core/partials/toasts.html" %}
-    </div>
+         hx-swap="innerHTML"></div>
 {% endblock toasts %}
 
 {% block content %}
@@ -19,18 +17,23 @@
           hx-post="{% url 'dictionary:delete-selected-words' %}"
           hx-target="#dictionary-table"
           hx-swap="innerHTML">
-        <div class="container mt-5">
-            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-3">
-                <h1 class="mb-2 mb-lg-0">{% trans "Your dictionary" %}</h1>
+        <div class="container py-5">
+            <div class="dictionary-toolbar">
+                <div>
+                    <span class="section-eyebrow">{% trans "Vocabulary" %}</span>
+                    <h1>{% trans "Your dictionary" %}</h1>
+                </div>
 
-                <div class="d-flex flex-column flex-sm-row gap-2">
+                <div class="dictionary-actions">
                     <button type="submit" class="btn btn-danger">
-                        {% trans "Delete selected" %}
+                        <i class="bi bi-trash3" aria-hidden="true"></i>
+                        <span>{% trans "Delete selected" %}</span>
                     </button>
 
                     <a href="{% url 'dictionary:new-dictionary-word' %}"
                        class="btn btn-primary">
-                        {% trans "Add word" %}
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>{% trans "Add word" %}</span>
                     </a>
                 </div>
             </div>

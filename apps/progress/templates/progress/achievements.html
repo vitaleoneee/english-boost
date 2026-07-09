@@ -10,20 +10,26 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container py-5">
-        <h1 class="mb-4 text-center">🏆 {% trans "Your achievements" %}</h1>
+    <div class="container achievements-page py-5">
+        <h1 class="achievement-section-title mb-4">
+            <i class="bi bi-trophy-fill text-warning" aria-hidden="true"></i>
+            <span>{% trans "Your achievements" %}</span>
+        </h1>
         {% if user_achievements %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 {% for ua in user_achievements %}
                     <div class="col">
-                        <div class="card h-100 border-success shadow-sm">
+                        <div class="card h-100 achievement-card achievement-card-earned shadow-sm">
                             <div class="card-body text-center">
+                                <span class="achievement-card-icon">
+                                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                </span>
                                 <h5 class="card-title">{{ ua.achievement.name }}</h5>
                                 <p class="card-text text-muted">{{ ua.achievement.description }}</p>
                             </div>
                             <div class="card-footer text-center text-muted small">
                                 {% trans "Received:" %} {{ ua.awarded_at|date:"d.m.Y" }}
-                                <i class="bi bi-bookmark-check"></i>
+                                <i class="bi bi-bookmark-check" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -31,16 +37,19 @@
             </div>
         {% else %}
             <div class="alert alert-secondary text-center">
-                {% trans "You do not have any achievements yet" %} 😔
+                {% trans "You do not have any achievements yet" %}
             </div>
         {% endif %}
 
-        <h2 class="mt-5 mb-3 text-center">🔓 {% trans "Available achievements" %}</h2>
+        <h2 class="achievement-section-title mt-5 mb-3">
+            <i class="bi bi-unlock-fill text-warning" aria-hidden="true"></i>
+            <span>{% trans "Available achievements" %}</span>
+        </h2>
         {% if available_achievements %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 {% for a in available_achievements %}
                     <div class="col">
-                        <div class="card h-100 border-secondary shadow-sm">
+                        <div class="card h-100 achievement-card achievement-card-available shadow-sm">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ a.name }}</h5>
                                 <p class="card-text text-muted">{{ a.description }}</p>
@@ -49,23 +58,38 @@
                     </div>
                 {% endfor %}
             </div>
+        {% else %}
+            <div class="achievement-empty">
+                <i class="bi bi-stars" aria-hidden="true"></i>
+                <h3>{% trans "All available achievements are unlocked" %}</h3>
+                <p>{% trans "New goals will appear here when more achievements are added." %}</p>
+            </div>
         {% endif %}
 
-        <h2 class="mt-5 mb-3 text-center">❓ {% trans "Secret achievements" %}</h2>
+        <h2 class="achievement-section-title mt-5 mb-3">
+            <i class="bi bi-question-circle-fill text-secondary" aria-hidden="true"></i>
+            <span>{% trans "Secret achievements" %}</span>
+        </h2>
         {% if secret_achievements %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 {% for sa in secret_achievements %}
                     <div class="col">
-                        <div class="card h-100 border-secondary shadow-sm">
+                        <div class="card h-100 achievement-card achievement-card-secret shadow-sm">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ sa.name }}</h5>
                                 <p class="card-text text-muted">
-                                    <i class="bi bi-question-lg"></i>
+                                    <i class="bi bi-question-lg" aria-hidden="true"></i>
                                 </p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        {% else %}
+            <div class="achievement-empty achievement-empty-secret">
+                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                <h3>{% trans "No secret achievements left" %}</h3>
+                <p>{% trans "Every hidden challenge has already been revealed or completed." %}</p>
             </div>
         {% endif %}
     </div>

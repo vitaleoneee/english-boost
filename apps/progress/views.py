@@ -30,6 +30,7 @@ def srs_technique(request):
         }
         for srs in srs_items
     ]
+    due_count = sum(1 for item in word_forms if item["is_due"])
 
     return render(
         request,
@@ -37,6 +38,9 @@ def srs_technique(request):
         {
             "selected": "srs_technique",
             "word_forms": word_forms,
+            "srs_total_count": len(word_forms),
+            "srs_due_count": due_count,
+            "srs_waiting_count": len(word_forms) - due_count,
         },
     )
 

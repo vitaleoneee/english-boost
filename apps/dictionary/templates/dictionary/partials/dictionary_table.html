@@ -13,7 +13,7 @@
 <!-- ===================== -->
 <div class="d-lg-none">
     {% for word in words %}
-        <div class="card mb-3 shadow-sm">
+        <div class="card dictionary-mobile-card mb-3 shadow-sm">
             <div class="card-body">
 
                 <div class="d-flex justify-content-between align-items-center">
@@ -22,6 +22,7 @@
                     </h5>
 
                     <input type="checkbox"
+                           class="form-check-input"
                            name="selected_words"
                            value="{{ word.id }}">
                 </div>
@@ -31,15 +32,15 @@
                 <div class="d-flex justify-content-between align-items-center">
 
                     <button type="button"
-                            class="btn btn-sm btn-outline-secondary"
+                            class="btn btn-sm btn-outline-secondary pronunciation-mobile-btn"
                             onclick="playAudio('{{ word.english_name|escapejs }}')">
                         <i class="bi bi-play-fill"></i>
                         {% trans "Pronunciation" %}
                     </button>
 
-                    <span class="badge {% if word.status == 'LEARNED' %}bg-success{% else %}bg-warning text-dark{% endif %}">
-                                {{ word.get_status_display }}
-                            </span>
+                    <span class="dictionary-status {% if word.status == 'LEARNED' %}dictionary-status-learned{% else %}dictionary-status-process{% endif %}">
+                        {{ word.get_status_display }}
+                    </span>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ from datetime import timedelta
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from django_lifecycle import LifecycleModel
 
 from apps.dictionary.models import Word
@@ -22,26 +23,26 @@ class UserSRS(LifecycleModel):
         related_name="srs",
     )
     interval = models.PositiveIntegerField(
-        verbose_name="Интервал в днях",
+        verbose_name=_("Interval in days"),
         default=1,
     )
     repetitions = models.PositiveIntegerField(
-        verbose_name="Успешных повторений подряд",
+        verbose_name=_("Successful repetitions in a row"),
         default=0,
     )
     ease_factor = models.FloatField(
-        verbose_name="Коэффициент лёгкости",
+        verbose_name=_("Ease factor"),
         default=2.5,
     )
     access_timer = models.DateTimeField(
-        verbose_name="Следующее повторение",
+        verbose_name=_("Next review"),
         default=timezone.now,
     )
 
     class Meta:
         unique_together = ("user", "word")
-        verbose_name = "SRS объект"
-        verbose_name_plural = "SRS объекты"
+        verbose_name = _("SRS object")
+        verbose_name_plural = _("SRS objects")
 
     def __str__(self):
         return self.word.english_name
@@ -95,15 +96,13 @@ class UserSRS(LifecycleModel):
 
 
 class Achievement(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название")
-    description = models.TextField(verbose_name="Описание")
-    is_secret = models.BooleanField(
-        default=False, verbose_name="Секретность достижения"
-    )
+    name = models.CharField(max_length=100, verbose_name=_("Name"))
+    description = models.TextField(verbose_name=_("Description"))
+    is_secret = models.BooleanField(default=False, verbose_name=_("Secret achievement"))
 
     class Meta:
-        verbose_name = "Достижение"
-        verbose_name_plural = "Достижения"
+        verbose_name = _("Achievement")
+        verbose_name_plural = _("Achievements")
 
     def __str__(self):
         return self.name
@@ -111,19 +110,19 @@ class Achievement(models.Model):
 
 class UserAchievement(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_("User")
     )
     achievement = models.ForeignKey(
-        Achievement, on_delete=models.CASCADE, verbose_name="Достижение"
+        Achievement, on_delete=models.CASCADE, verbose_name=_("Achievement")
     )
     awarded_at = models.DateTimeField(
-        auto_now_add=True, verbose_name="Дата и время получения"
+        auto_now_add=True, verbose_name=_("Award date and time")
     )
     is_seen = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = "Достижение пользователя"
-        verbose_name_plural = "Достижения пользователя"
+        verbose_name = _("User achievement")
+        verbose_name_plural = _("User achievements")
         ordering = ["user", "achievement"]
         constraints = [
             models.UniqueConstraint(
@@ -132,4 +131,4 @@ class UserAchievement(models.Model):
         ]
 
     def __str__(self):
-        return f"Достижение пользователя {self.user} - {self.achievement.name}"
+        return f"{self.user} - {self.achievement.name}"

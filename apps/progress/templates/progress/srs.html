@@ -5,93 +5,103 @@
     {% trans "Progress" %}
 {% endblock title %}
 
-{% block toasts %}
-    {% include "core/partials/toasts.html" %}
-{% endblock toasts %}
-
 {% block content %}
-    <!-- Header-->
-    <header class="bg-dark py-1">
-        <div class="container px-2">
-            <div class="row gx-3 justify-content-center">
-                <div class="col-lg-8">
-                    <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">SRS</h1>
-                        <p class="lead text-white-50 mb-4">{% blocktrans %}The SRS method (Spaced Repetition System) is
-                            a
-                            spaced repetition approach that helps you memorize information effectively and
-                            retain it for a long time.{% endblocktrans %}
-                        </p>
-                        <p class="lead text-white-50 mb-1">
-                            {% blocktrans %}SRS is based on the scientific principle that information should be reviewed
-                                as rarely as possible,
-                                but before it is forgotten. Reviews happen at increasing intervals,
-                                adapted to how well you have remembered the material.{% endblocktrans %}
-                        </p>
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                        </div>
-                    </div>
-                </div>
+    <header class="srs-hero">
+        <div class="container">
+            <div class="srs-hero-inner">
+                <span class="srs-kicker">{% trans "Spaced repetition" %}</span>
+                <h1>SRS</h1>
+                <p>
+                    {% blocktrans %}Review words at the right moment, before they fade from memory.{% endblocktrans %}
+                </p>
             </div>
         </div>
     </header>
-    <div class="container mt-4">
-        <div class="text-center mb-4">
-            <h1>{% trans "Words to study" %}</h1>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-8">
-                <ul class="list-group shadow rounded mb-5">
-                    {% for item in word_forms %}
-                        <li
-                                class="list-group-item"
-                                x-data="{
-                                        availableIn: '{% trans 'Available in:' %}',
-                                        seconds: {{ item.seconds_until_due }},
-                                        get isDue() { return this.seconds <= 0 },
-                                        get formatted() {
-                                            if (this.seconds <= 0) return ''
-                                            const h = Math.floor(this.seconds / 3600)
-                                            const m = Math.floor((this.seconds % 3600) / 60)
-                                            const s = this.seconds % 60
-                                            const hh = h > 0 ? h + ':' : ''
-                                            const mm = String(m).padStart(2, '0')
-                                            const ss = String(s).padStart(2, '0')
-                                            return hh + mm + ':' + ss
-                                        },
-                                        init() {
-                                            if (this.seconds <= 0) return
-                                            const timer = setInterval(() => {
-                                                this.seconds--
-                                                if (this.seconds <= 0) clearInterval(timer)
-                                            }, 1000)
-                                        }
-                                    }"
-                        >
-                            <form method="post" class="word-row">
-                                {% csrf_token %}
-                                <span class="word-col">{{ item.word.english_name }}</span>
-                                <input type="hidden" name="english_word_name" value="{{ item.word.english_name }}">
-                                <div class="input-col">
-                                    {{ item.form.translate_input }}
-                                </div>
-                                <button
-                                        type="submit"
-                                        name="check_word"
-                                        value="{{ item.word.id }}"
-                                        class="btn btn-primary btn-col"
-                                        :disabled="!isDue"
-                                >
-                                    {% trans "Check" %}
-                                </button>
-                                <span class="timer-col text-muted">
-                                    <span x-show="!isDue" x-text="availableIn + ' ' + formatted"></span>
-                                </span>
-                            </form>
-                        </li>
-                    {% endfor %}
-                </ul>
+
+    <div class="container py-5">
+        <div class="srs-heading">
+            <div>
+                <span class="section-eyebrow">{% trans "Review queue" %}</span>
+                <h2>{% trans "Words to study" %}</h2>
             </div>
+            <div class="srs-stats" aria-label="{% trans 'SRS statistics' %}">
+                <div class="srs-stat">
+                    <span class="srs-stat-value">{{ srs_due_count }}</span>
+                    <span class="srs-stat-label">{% trans "Ready now" %}</span>
+                </div>
+                <div class="srs-stat">
+                    <span class="srs-stat-value">{{ srs_waiting_count }}</span>
+                    <span class="srs-stat-label">{% trans "Waiting" %}</span>
+                </div>
+                <div class="srs-stat">
+                    <span class="srs-stat-value">{{ srs_total_count }}</span>
+                    <span class="srs-stat-label">{% trans "Total" %}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="srs-panel">
+            {% for item in word_forms %}
+                <div
+                        class="srs-card"
+                        x-data="{
+                            availableIn: '{% trans 'Available in:' %}',
+                            readyText: '{% trans 'Ready now' %}',
+                            seconds: {{ item.seconds_until_due }},
+                            get isDue() { return this.seconds <= 0 },
+                            get formatted() {
+                                if (this.seconds <= 0) return ''
+                                const h = Math.floor(this.seconds / 3600)
+                                const m = Math.floor((this.seconds % 3600) / 60)
+                                const s = this.seconds % 60
+                                const hh = h > 0 ? h + ':' : ''
+                                const mm = String(m).padStart(2, '0')
+                                const ss = String(s).padStart(2, '0')
+                                return hh + mm + ':' + ss
+                            },
+                            init() {
+                                if (this.seconds <= 0) return
+                                const timer = setInterval(() => {
+                                    this.seconds--
+                                    if (this.seconds <= 0) clearInterval(timer)
+                                }, 1000)
+                            }
+                        }"
+                        :class="{ 'is-waiting': !isDue }"
+                >
+                    <form method="post" class="srs-word-row">
+                        {% csrf_token %}
+                        <div class="srs-word-main">
+                            <span class="srs-word-label">{% trans "Word" %}</span>
+                            <span class="srs-word">{{ item.word.english_name }}</span>
+                        </div>
+                        <input type="hidden" name="english_word_name" value="{{ item.word.english_name }}">
+                        <div class="srs-input">
+                            {{ item.form.translate_input }}
+                        </div>
+                        <button
+                                type="submit"
+                                name="check_word"
+                                value="{{ item.word.id }}"
+                                class="btn btn-primary srs-check-btn"
+                                :disabled="!isDue"
+                        >
+                            <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                            <span>{% trans "Check" %}</span>
+                        </button>
+                        <div class="srs-timer">
+                            <span class="srs-ready-badge" x-show="isDue" x-text="readyText"></span>
+                            <span class="srs-wait-badge" x-show="!isDue" x-text="availableIn + ' ' + formatted"></span>
+                        </div>
+                    </form>
+                </div>
+            {% empty %}
+                <div class="srs-empty">
+                    <i class="bi bi-stars" aria-hidden="true"></i>
+                    <h3>{% trans "No words to review" %}</h3>
+                    <p>{% trans "Add words to your dictionary to start a new review queue." %}</p>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}

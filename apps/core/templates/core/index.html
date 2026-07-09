@@ -6,114 +6,149 @@
 {% endblock title %}
 
 {% block content %}
-    <!-- Header -->
-    <header class="bg-dark py-5">
-        <div class="container px-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center my-2">
-                        <h1 class="display-5 fw-bolder text-white mb-2">{% trans "Welcome to English BOOST!" %}</h1>
-                        <p class="lead text-white-50 mb-2">{% blocktrans %}Improve your English easily and with
-                            interest.
-                            We combine modern technologies, word pronunciation, spaced repetition, and
-                            a convenient learning system so you can learn effectively,
-                            step by step - every day.{% endblocktrans %}</p>
+    <header class="home-hero">
+        <div class="container">
+            <div class="home-hero-grid">
+                <div class="home-hero-copy">
+                    <span class="home-kicker">{% trans "Personal English trainer" %}</span>
+                    <h1>{% trans "English BOOST" %}</h1>
+                    <p>
+                        {% blocktrans %}Build your vocabulary, review words at the right moment, and keep learning visible with achievements.{% endblocktrans %}
+                    </p>
+                    <div class="home-hero-actions">
+                        <a class="btn btn-primary btn-lg" href="{% url 'dictionary:dictionary-list' %}">
+                            <i class="bi bi-journal-plus" aria-hidden="true"></i>
+                            <span>{% trans "Add word" %}</span>
+                        </a>
+                        <a class="btn btn-outline-light btn-lg" href="{% url 'progress:srs_technique' %}">
+                            <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                            <span>{% trans "Start review" %}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home-learning-preview" aria-label="{% trans 'Learning flow preview' %}">
+                    <div class="preview-header">
+                        <span>{% trans "Today" %}</span>
+                        <strong>SRS</strong>
+                    </div>
+                    <div class="preview-word">
+                        <span class="preview-label">{% trans "Next word" %}</span>
+                        <strong>confidence</strong>
+                        <small>{% trans "confidence translation" %}</small>
+                    </div>
+                    <div class="preview-progress">
+                        <span></span>
+                    </div>
+                    <div class="preview-metrics">
+                        <div>
+                            <strong>12</strong>
+                            <span>{% trans "Words" %}</span>
+                        </div>
+                        <div>
+                            <strong>3</strong>
+                            <span>{% trans "Ready" %}</span>
+                        </div>
+                        <div>
+                            <strong>5</strong>
+                            <span>{% trans "Awards" %}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <!-- Features section -->
-    <section class="py-5 border-bottom" id="features">
-        <div class="container px-5 my-5">
-            <div class="row gx-5">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                        <i class="bi bi-collection"></i>
-                    </div>
-                    <h2 class="h4 fw-bolder">{% trans "Dictionary" %}</h2>
-                    <p>{% blocktrans %}Your personal dictionary where you can add, view, and review words.
-                        Each word includes a translation, example, transcription, and pronunciation.
-                        Learning is now convenient, fast, and effective.{% endblocktrans %}
+
+    <section class="home-features" id="features">
+        <div class="container">
+            <div class="home-section-heading">
+                <span class="section-eyebrow">{% trans "Learning system" %}</span>
+                <h2>{% trans "Everything works as one loop" %}</h2>
+            </div>
+            <div class="home-feature-grid">
+                <a class="home-feature-card" href="{% url 'dictionary:dictionary-list' %}">
+                    <span class="home-feature-icon">
+                        <i class="bi bi-collection" aria-hidden="true"></i>
+                    </span>
+                    <h3>{% trans "Dictionary" %}</h3>
+                    <p>
+                        {% blocktrans %}Add words, keep translations close, and play pronunciation without leaving your vocabulary list.{% endblocktrans %}
                     </p>
-                    <a class="text-decoration-none" href="{% url 'dictionary:dictionary-list' %}">
-                        {% trans "Dictionary" %}
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                        <i class="bi bi-building"></i>
-                    </div>
-                    <h2 class="h4 fw-bolder">{% trans "Achievements" %}</h2>
-                    <p>{% blocktrans %}Track your progress with English learning achievements!
-                        We visualize:
-                        the number of learned words, current and maximum streaks (consecutive days), and much
-                        more!{% endblocktrans %}
+                    <span class="home-feature-link">
+                        {% trans "Open dictionary" %}
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </a>
+
+                <a class="home-feature-card" href="{% url 'progress:srs_technique' %}">
+                    <span class="home-feature-icon">
+                        <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                    </span>
+                    <h3>{% trans "Spaced repetition" %}</h3>
+                    <p>
+                        {% blocktrans %}Review only the words that are ready now and let the intervals grow with your memory.{% endblocktrans %}
                     </p>
-                    <a class="text-decoration-none" href="{% url 'progress:achievements' %}">
-                        {% trans "Achievements" %}
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                        <i class="bi bi-toggles2"></i>
-                    </div>
-                    <h2 class="h4 fw-bolder">{% trans "Progress" %}</h2>
-                    <p>{% blocktrans %}Learning words is fun!
-                        Flashcards are interactive mini-games to quickly reinforce vocabulary.
-                        A smart system shows words at the right moment, when you are about to forget them.
-                        This way, you do not just learn - you truly remember.{% endblocktrans %}
+                    <span class="home-feature-link">
+                        {% trans "Review words" %}
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </a>
+
+                <a class="home-feature-card" href="{% url 'progress:achievements' %}">
+                    <span class="home-feature-icon">
+                        <i class="bi bi-trophy" aria-hidden="true"></i>
+                    </span>
+                    <h3>{% trans "Achievements" %}</h3>
+                    <p>
+                        {% blocktrans %}See milestones, streak goals, hidden challenges, and the progress you have already earned.{% endblocktrans %}
                     </p>
-                    <a class="text-decoration-none" href="{% url 'progress:srs_technique' %}">
-                        {% trans "Spaced repetition" %}
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
+                    <span class="home-feature-link">
+                        {% trans "View achievements" %}
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
-    <!-- Contact section-->
+
     {# TODO: this flow may be available only for authenticated users #}
-    <section class="bg-light py-5">
-        <div class="container px-5 my-5">
-            <div class="text-center mb-5">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                    <i class="bi bi-envelope"></i>
+    <section class="home-feedback">
+        <div class="container">
+            <div class="home-feedback-grid">
+                <div class="home-feedback-copy">
+                    <span class="section-eyebrow">{% trans "Feedback" %}</span>
+                    <h2>{% trans "Suggest your improvements to us!" %}</h2>
+                    <p>{% trans "We really need it" %}</p>
                 </div>
-                <h2 class="fw-bolder">{% trans "Suggest your improvements to us!" %}</h2>
-                <p class="lead mb-0">{% trans "We really need it" %}</p>
-            </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <form hx-post="{% url 'core:send-features' %}" hx-target="#submitButton" hx-swap="outerHTML"
-                          hx-indicator="#loading-indicator"
-                          hx-disabled-elt="#submitButton">
-                        {% csrf_token %}
-                        <div class="form-floating mb-3">
-                            {{ form.full_name }}
-                            <label for="name">{% trans "Full name" %}</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            {{ form.email }}
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            {{ form.message }}
-                            <label for="message">{% trans "Message" %}</label>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit"
-                                    hx-disabled-elt="this">
-                                <span class="btn-text">{% trans "Send" %}</span>
-                                <span id="loading-indicator"
-                                      class="spinner-border spinner-border-sm text-light htmx-indicator"
-                                      role="status"></span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <form class="home-feedback-form"
+                      hx-post="{% url 'core:send-features' %}"
+                      hx-target="#submitButton"
+                      hx-swap="outerHTML"
+                      hx-indicator="#loading-indicator"
+                      hx-disabled-elt="#submitButton">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{ form.full_name }}
+                        <label for="name">{% trans "Full name" %}</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{ form.email }}
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{ form.message }}
+                        <label for="message">{% trans "Message" %}</label>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit"
+                                hx-disabled-elt="this">
+                            <span class="btn-text">{% trans "Send" %}</span>
+                            <span id="loading-indicator"
+                                  class="spinner-border spinner-border-sm text-light htmx-indicator"
+                                  role="status"></span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
