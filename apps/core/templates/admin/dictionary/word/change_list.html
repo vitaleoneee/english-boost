@@ -1,0 +1,14 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+    {% if generate_test_words_url %}
+        <div class="flex flex-row items-center">
+            <a href="{{ generate_test_words_url }}"
+               class="bg-primary-600 flex font-medium h-[38px] items-center px-3 rounded-default text-sm text-white hover:bg-primary-600/80">
+                {% trans "Create 10 test words" %}
+            </a>
+        </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}

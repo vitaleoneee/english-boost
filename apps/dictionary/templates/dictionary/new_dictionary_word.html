@@ -4,17 +4,41 @@
 {% block title %}{% trans "Add word" %}{% endblock title %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">{% trans "Add a new word to the dictionary" %}</h1>
-        <div class="card new-word-card shadow-sm mx-auto">
-            <div class="card-body">
-                <form method="POST" novalidate>
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success px-4">{% trans "Add" %}</button>
+    <div class="container py-5">
+        <div class="new-word-shell">
+            <div class="new-word-heading">
+                <span class="section-eyebrow">{% trans "Vocabulary" %}</span>
+                <h1>{% trans "Add a new word to the dictionary" %}</h1>
+            </div>
+
+            <div class="card new-word-card shadow-sm">
+                <div class="card-body">
+                    <div class="new-word-card-header">
+                        <span class="new-word-icon">
+                            <i class="bi bi-journal-plus" aria-hidden="true"></i>
+                        </span>
+                        <div>
+                            <h2>{% trans "Add word" %}</h2>
+                            <p>{% trans "Save the word, translation, category, and learning status." %}</p>
+                        </div>
                     </div>
-                </form>
+
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="new-word-actions">
+                            <a href="{% url 'dictionary:dictionary-list' %}"
+                               class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                                <span>{% trans "Back" %}</span>
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                                <span>{% trans "Add" %}</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

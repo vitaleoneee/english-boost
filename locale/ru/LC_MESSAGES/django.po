@@ -248,13 +248,37 @@ msgstr "Ваш словарь"
 msgid "Delete selected"
 msgstr "Удалить выбранные"
 
+msgid "Search by word or translation"
+msgstr "Поиск по слову или переводу"
+
+msgid "Searching"
+msgstr "Поиск"
+
+msgid "Create 10 test words"
+msgstr "Создать 10 тестовых слов"
+
+msgid "Test words"
+msgstr "Тестовые слова"
+
+msgid "Words generated from the admin panel."
+msgstr "Слова, созданные из админ-панели."
+
+msgid "Created test words: %(count)s"
+msgstr "Создано тестовых слов: %(count)s"
+
 #: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:8
 msgid "Add a new word to the dictionary"
-msgstr "Добавлено новое слово в словарь"
+msgstr "Добавить новое слово в словарь"
 
 #: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:15
 msgid "Add"
 msgstr "Добавить"
+
+msgid "Save the word, translation, category, and learning status."
+msgstr "Сохраните слово, перевод, категорию и статус изучения."
+
+msgid "Back"
+msgstr "Назад"
 
 #: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:30
 msgid "Translation:"

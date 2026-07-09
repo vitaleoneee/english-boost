@@ -18,13 +18,76 @@
     font-style: normal;
 }
 
+.app-navbar {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+    min-height: 4.4rem;
+}
+
+.app-navbar .navbar-brand {
+    letter-spacing: 0;
+}
+
+.app-navbar .navbar-nav {
+    gap: 0.2rem;
+}
+
+.app-navbar .nav-link {
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 0.55rem 0.75rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.app-navbar .nav-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.app-navbar .nav-link.active {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.navbar-account {
+    color: #fff;
+    font-weight: 600;
+}
+
+.navbar-exit-btn {
+    font-weight: 700;
+    min-height: 2.45rem;
+}
+
+.app-footer {
+    background: #212529;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.app-footer-inner {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.app-footer-brand {
+    color: #9fb3c8;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.app-footer p {
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 600;
+    margin: 0;
+}
+
 .play-audio-button {
     all: unset;
     cursor: pointer;
-}
-
-.new-word-card {
-    max-width: 600px;
 }
 
 .toast-container {
@@ -286,6 +349,80 @@
     font-weight: 700;
     letter-spacing: 0;
     text-transform: uppercase;
+}
+
+.new-word-shell {
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+.new-word-heading {
+    margin-bottom: 1rem;
+}
+
+.new-word-heading h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.new-word-card {
+    border: 1px solid #d8dee6;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.new-word-card .card-body {
+    padding: 1.25rem;
+}
+
+.new-word-card-header {
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+}
+
+.new-word-icon {
+    align-items: center;
+    background: #e7f1ff;
+    border-radius: 12px;
+    color: #0d6efd;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 1.35rem;
+    height: 3rem;
+    justify-content: center;
+    width: 3rem;
+}
+
+.new-word-card-header h2 {
+    font-size: 1.35rem;
+    font-weight: 750;
+    margin: 0;
+}
+
+.new-word-card-header p {
+    color: #64748b;
+    margin: 0.2rem 0 0;
+}
+
+.new-word-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1.25rem;
+}
+
+.new-word-actions .btn {
+    align-items: center;
+    display: inline-flex;
+    font-weight: 700;
+    gap: 0.45rem;
+    min-height: 2.75rem;
 }
 
 .dictionary-toolbar {
@@ -820,6 +957,44 @@
 
     .home-feature-grid {
         grid-template-columns: 1fr;
+    }
+
+    .app-navbar .navbar-nav {
+        gap: 0.35rem;
+        margin-top: 0.75rem;
+    }
+
+    .navbar-account {
+        align-items: stretch !important;
+        flex-direction: column;
+    }
+
+    .navbar-account form,
+    .navbar-exit-btn {
+        width: 100%;
+    }
+
+    .app-footer-inner {
+        flex-direction: column;
+        gap: 0.25rem;
+        text-align: center;
+    }
+
+    .new-word-heading h1 {
+        font-size: 2rem;
+    }
+
+    .new-word-card-header {
+        align-items: flex-start;
+    }
+
+    .new-word-actions {
+        flex-direction: column-reverse;
+    }
+
+    .new-word-actions .btn {
+        justify-content: center;
+        width: 100%;
     }
 
     .dictionary-toolbar,
