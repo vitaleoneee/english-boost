@@ -58,6 +58,43 @@
     min-height: 2.45rem;
 }
 
+.language-switcher {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.65rem;
+    display: flex;
+    flex: 0 0 auto;
+    padding: 0.2rem;
+}
+
+.language-switcher__option {
+    background: transparent;
+    border: 0;
+    border-radius: 0.45rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1;
+    padding: 0.55rem 0.6rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.language-switcher__option:hover,
+.language-switcher__option:focus-visible {
+    color: #fff;
+}
+
+.language-switcher__option:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 1px;
+}
+
+.language-switcher__option.active {
+    background: #fff;
+    color: #212529;
+}
+
 .next-action,
 .statistics-panel,
 .metric-card,
@@ -1124,6 +1161,15 @@
     .navbar-account {
         align-items: stretch !important;
         flex-direction: column;
+    }
+
+    .navbar-actions {
+        align-items: stretch !important;
+        flex-direction: column;
+    }
+
+    .language-switcher {
+        align-self: center;
     }
 
     .navbar-account form,

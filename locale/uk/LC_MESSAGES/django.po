@@ -1,0 +1,715 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-11 21:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+msgid "Full name"
+msgstr "Повне ім’я"
+
+msgid "Message"
+msgstr "Повідомлення"
+
+msgid "Create 10 test words"
+msgstr "Створити 10 тестових слів"
+
+msgid "Welcome!"
+msgstr "Ласкаво просимо!"
+
+msgid "Personal English trainer"
+msgstr "Персональний тренажер англійської"
+
+msgid "English BOOST"
+msgstr "English BOOST"
+
+msgid ""
+"Build your vocabulary, review words at the right moment, and keep learning "
+"visible with achievements."
+msgstr "Розширюйте словниковий запас, повторюйте слова в потрібний момент і відстежуйте навчання за допомогою досягнень."
+
+msgid "Add word"
+msgstr "Додати слово"
+
+msgid "Start review"
+msgstr "Почати повторення"
+
+msgid "Learning flow preview"
+msgstr "Огляд процесу навчання"
+
+msgid "Today"
+msgstr "Сьогодні"
+
+msgid "Next word"
+msgstr "Наступне слово"
+
+msgid "confidence translation"
+msgstr "впевненість"
+
+msgid "Words"
+msgstr "Слова"
+
+msgid "Ready"
+msgstr "Готові"
+
+msgid "Awards"
+msgstr "Нагороди"
+
+msgid "Learning system"
+msgstr "Система навчання"
+
+msgid "Everything works as one loop"
+msgstr "Усе працює як єдиний цикл"
+
+msgid "Dictionary"
+msgstr "Словник"
+
+msgid ""
+"Add words, keep translations close, and play pronunciation without leaving "
+"your vocabulary list."
+msgstr "Додавайте слова, тримайте переклади поруч і слухайте вимову, не залишаючи свій словник."
+
+msgid "Open dictionary"
+msgstr "Відкрити словник"
+
+msgid "Spaced repetition"
+msgstr "Інтервальне повторення"
+
+msgid ""
+"Review only the words that are ready now and let the intervals grow with "
+"your memory."
+msgstr "Повторюйте лише слова, які вже готові, а інтервали зростатимуть разом із вашою пам’яттю."
+
+msgid "Review words"
+msgstr "Повторювати слова"
+
+msgid "Achievements"
+msgstr "Досягнення"
+
+msgid ""
+"See milestones, streak goals, hidden challenges, and the progress you have "
+"already earned."
+msgstr "Переглядайте етапи, цілі серій, приховані випробування та вже здобутий прогрес."
+
+msgid "View achievements"
+msgstr "Переглянути досягнення"
+
+msgid "Feedback"
+msgstr "Зворотний зв’язок"
+
+msgid "Suggest your improvements to us!"
+msgstr "Запропонуйте нам свої покращення!"
+
+msgid "We really need it"
+msgstr "Це справді важливо для нас"
+
+msgid "Send"
+msgstr "Надіслати"
+
+#, python-format
+msgid "Password is too short. Minimum %(min_length)d characters."
+msgstr "Пароль надто короткий. Мінімум %(min_length)d символів."
+
+#, python-format
+msgid "Your password must contain at least %(min_length)d characters."
+msgstr "Ваш пароль має містити щонайменше %(min_length)d символів."
+
+msgid "Form cannot be sent. Please try again later"
+msgstr "Не вдалося надіслати форму. Спробуйте пізніше"
+
+msgid "Form sent successfully!"
+msgstr "Форму успішно надіслано!"
+
+msgid "Test words"
+msgstr "Тестові слова"
+
+msgid "Words generated from the admin panel."
+msgstr "Слова, створені з панелі адміністратора."
+
+#, python-format
+msgid "Created test words: %(count)s"
+msgstr "Створено тестових слів: %(count)s"
+
+msgid "Name"
+msgstr "Назва"
+
+msgid "Description"
+msgstr "Опис"
+
+msgid "Category"
+msgstr "Категорія"
+
+msgid "Categories"
+msgstr "Категорії"
+
+msgid "Learned"
+msgstr "Вивчено"
+
+msgid "In progress"
+msgstr "У процесі"
+
+msgid "English word"
+msgstr "Англійське слово"
+
+msgid "Russian word"
+msgstr "Російське слово"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "User"
+msgstr "Користувач"
+
+msgid "Word"
+msgstr "Слово"
+
+msgid "Translation"
+msgstr "Переклад"
+
+msgid "Pronunciation"
+msgstr "Вимова"
+
+msgid "Vocabulary"
+msgstr "Словник"
+
+msgid "Your dictionary"
+msgstr "Ваш словник"
+
+msgid "Delete selected"
+msgstr "Видалити вибране"
+
+msgid "Search by word or translation"
+msgstr "Пошук за словом або перекладом"
+
+msgid "Searching"
+msgstr "Пошук"
+
+msgid "All"
+msgstr "Усі"
+
+msgid "Add a new word to the dictionary"
+msgstr "Додати нове слово до словника"
+
+msgid "Save the word, translation, category, and learning status."
+msgstr "Збережіть слово, переклад, категорію та статус вивчення."
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Add"
+msgstr "Додати"
+
+msgid "Translation:"
+msgstr "Переклад:"
+
+msgid "Nothing found"
+msgstr "Нічого не знайдено"
+
+msgid "Try another word, translation, or status."
+msgstr "Спробуйте інше слово, переклад або статус."
+
+msgid "No words yet"
+msgstr "Слів поки немає"
+
+msgid "Add your first word and it will appear here."
+msgstr "Додайте перше слово, і воно з’явиться тут."
+
+msgid "Previous page"
+msgstr "Попередня сторінка"
+
+msgid "Next page"
+msgstr "Наступна сторінка"
+
+msgid "A word with this English and Russian translation already exists."
+msgstr "Слово з таким англійським і російським перекладом уже існує."
+
+msgid "Added a new word"
+msgstr "Нове слово додано"
+
+#, python-format
+msgid "Deleted words: %(count)s"
+msgstr "Видалено слів: %(count)s"
+
+msgid "You have not selected any words."
+msgstr "Ви не вибрали жодного слова."
+
+msgid ""
+"An error occurred while awarding the achievement. Please contact the "
+"developer through the website's homepage."
+msgstr "Під час надання досягнення сталася помилка. Зв’яжіться з розробником через головну сторінку сайту."
+
+msgid "The Cleaner"
+msgstr "Прибиральник"
+
+msgid "Night Owl"
+msgstr "Нічна сова"
+
+msgid "Beginner"
+msgstr "Початківець"
+
+msgid "First Ten"
+msgstr "Перша десятка"
+
+msgid "Vocabulary Builder"
+msgstr "Будівничий словника"
+
+msgid "Vocabulary Master"
+msgstr "Майстер словника"
+
+msgid "One Thousand Words"
+msgstr "Тисяча слів"
+
+msgid "First Day"
+msgstr "Перший день"
+
+msgid "Disciplined Learner"
+msgstr "Дисциплінований учень"
+
+msgid "Like Clockwork"
+msgstr "Як годинник"
+
+msgid "First Review"
+msgstr "Перше повторення"
+
+msgid "Power of Repetition"
+msgstr "Сила повторення"
+
+msgid "Memory Champion"
+msgstr "Чемпіон пам’яті"
+
+msgid "Iron Focus"
+msgstr "Залізна концентрація"
+
+msgid "Perfect Session"
+msgstr "Ідеальне заняття"
+
+msgid "This word is not yet available for review."
+msgstr "Це слово ще недоступне для повторення."
+
+msgid "Correct! The interval has been increased."
+msgstr "Правильно! Інтервал збільшено."
+
+#, python-brace-format
+msgid "You have learned the word — {}!"
+msgstr "Ви вивчили слово — {}!"
+
+#, python-brace-format
+msgid "Incorrect. The word \"{}\" has been reset."
+msgstr "Неправильно. Слово «{}» скинуто."
+
+msgid "Enter translation"
+msgstr "Введіть переклад"
+
+msgid "Interval in days"
+msgstr "Інтервал у днях"
+
+msgid "Successful repetitions in a row"
+msgstr "Успішних повторень поспіль"
+
+msgid "Ease factor"
+msgstr "Коефіцієнт легкості"
+
+msgid "Next review"
+msgstr "Наступне повторення"
+
+msgid "SRS object"
+msgstr "Об’єкт SRS"
+
+msgid "SRS objects"
+msgstr "Об’єкти SRS"
+
+msgid "Secret achievement"
+msgstr "Секретне досягнення"
+
+msgid "Achievement"
+msgstr "Досягнення"
+
+msgid "Award date and time"
+msgstr "Дата й час отримання"
+
+msgid "User achievement"
+msgstr "Досягнення користувача"
+
+msgid "User achievements"
+msgstr "Досягнення користувачів"
+
+msgid "Incorrect form"
+msgstr "Форма заповнена неправильно"
+
+msgid "Your achievements"
+msgstr "Ваші досягнення"
+
+msgid "Received:"
+msgstr "Отримано:"
+
+msgid "You do not have any achievements yet"
+msgstr "У вас поки немає досягнень"
+
+msgid "Available achievements"
+msgstr "Доступні досягнення"
+
+msgid "All available achievements are unlocked"
+msgstr "Усі доступні досягнення розблоковано"
+
+msgid "New goals will appear here when more achievements are added."
+msgstr "Нові цілі з’являться тут, коли буде додано більше досягнень."
+
+msgid "Secret achievements"
+msgstr "Секретні досягнення"
+
+msgid "No secret achievements left"
+msgstr "Секретних досягнень не залишилося"
+
+msgid "Every hidden challenge has already been revealed or completed."
+msgstr "Кожне приховане випробування вже відкрито або виконано."
+
+msgid "Progress"
+msgstr "Прогрес"
+
+msgid "Review words at the right moment, before they fade from memory."
+msgstr "Повторюйте слова в потрібний момент, перш ніж вони зникнуть із пам’яті."
+
+msgid "Review queue"
+msgstr "Черга повторення"
+
+msgid "Words to study"
+msgstr "Слова для вивчення"
+
+msgid "SRS statistics"
+msgstr "Статистика SRS"
+
+msgid "Ready now"
+msgstr "Готові зараз"
+
+msgid "Waiting"
+msgstr "Очікують"
+
+msgid "Total"
+msgstr "Усього"
+
+msgid "Available in:"
+msgstr "Доступно через:"
+
+msgid "Play pronunciation"
+msgstr "Відтворити вимову"
+
+msgid "Check"
+msgstr "Перевірити"
+
+msgid "No words to review"
+msgstr "Немає слів для повторення"
+
+msgid "Add words to your dictionary to start a new review queue."
+msgstr "Додайте слова до словника, щоб створити нову чергу повторення."
+
+msgid "SRS review"
+msgstr "Повторення SRS"
+
+msgid "SRS review log"
+msgstr "Запис повторення SRS"
+
+msgid "SRS review logs"
+msgstr "Записи повторень SRS"
+
+#, python-format
+msgid "%(count)d word is ready for review"
+msgid_plural "%(count)d words are ready for review"
+msgstr[0] "%(count)d слово готове до повторення"
+msgstr[1] "%(count)d слова готові до повторення"
+msgstr[2] "%(count)d слів готові до повторення"
+msgstr[3] "%(count)d слова готові до повторення"
+
+msgid "Review them now to protect your memory and keep your streak alive."
+msgstr "Повторіть їх зараз, щоб закріпити знання й зберегти серію занять."
+
+msgid "Your weak words need attention"
+msgstr "Складні слова потребують уваги"
+
+msgid "Open the review queue when they are due and focus on the words below."
+msgstr "Відкрийте чергу, коли настане час, і зосередьтеся на словах нижче."
+
+msgid "Open SRS queue"
+msgstr "Відкрити чергу SRS"
+
+msgid "You are up to date"
+msgstr "На сьогодні все виконано"
+
+msgid ""
+"Come back when the next words become ready, or add a new word to keep "
+"building your vocabulary."
+msgstr "Поверніться, коли наступні слова будуть готові, або додайте нове слово, щоб далі розширювати словник."
+
+msgid "Statistics"
+msgstr "Статистика"
+
+msgid "Learning progress"
+msgstr "Прогрес навчання"
+
+msgid ""
+"See your consistency, retention, and the words that need more attention."
+msgstr "Стежте за регулярністю, запам’ятовуванням і словами, які потребують більше уваги."
+
+msgid "Your learning story starts with the first review"
+msgstr "Ваша історія навчання починається з першого повторення"
+
+msgid ""
+"Complete a few SRS reviews and you will see your streak, accuracy, activity, "
+"and words that need attention here."
+msgstr "Виконайте кілька повторень SRS — тут з’являться серія занять, точність, активність і складні слова."
+
+msgid "Go to SRS"
+msgstr "Перейти до SRS"
+
+msgid "What to do today"
+msgstr "Що зробити сьогодні"
+
+msgid "Key learning metrics"
+msgstr "Основні показники навчання"
+
+msgid "day streak"
+msgstr "днів поспіль"
+
+msgid "Are you practicing regularly?"
+msgstr "Чи займаєтеся ви регулярно?"
+
+msgid "learned words"
+msgstr "вивчених слів"
+
+msgid "Words at long intervals"
+msgstr "Слова з довгими інтервалами"
+
+msgid "overall accuracy"
+msgstr "загальна точність"
+
+msgid "Are you retaining words?"
+msgstr "Чи запам’ятовуєте ви слова?"
+
+msgid "ready now"
+msgstr "готові зараз"
+
+msgid "Your next review action"
+msgstr "Ваш наступний крок"
+
+msgid "Practice activity"
+msgstr "Активність занять"
+
+msgid "A gap is a signal to return to a small, sustainable daily session."
+msgstr "Пропуск — це сигнал повернутися до коротких регулярних щоденних занять."
+
+msgid "Reviews per day for the last 30 days"
+msgstr "Повторення за днями протягом останніх 30 днів"
+
+msgid "Accuracy trend"
+msgstr "Динаміка точності"
+
+msgid "Aim for stable recall, not a perfect single session."
+msgstr "Прагніть стабільного запам’ятовування, а не одного ідеального заняття."
+
+msgid "Accuracy by day for the last 30 days"
+msgstr "Точність за днями протягом останніх 30 днів"
+
+msgid "Words that need attention"
+msgstr "Слова, які потребують уваги"
+
+msgid ""
+"These words have repeated mistakes or low recall. They will reappear in your "
+"SRS queue when due."
+msgstr "У цих словах часто трапляються помилки або вони погано запам’ятовуються. Вони знову з’являться в черзі SRS у потрібний час."
+
+msgid "Accuracy"
+msgstr "Точність"
+
+msgid "Mistakes"
+msgstr "Помилки"
+
+msgid ""
+"No recurring weak words yet. Keep reviewing to make this signal more "
+"reliable."
+msgstr "Слів із повторюваними помилками поки немає. Продовжуйте заняття, щоб оцінка стала надійнішою."
+
+msgid "Your SRS queue"
+msgstr "Ваша черга SRS"
+
+msgid "Use this to decide whether to review now or wait for the next session."
+msgstr "Це допоможе вирішити, повторювати зараз чи чекати наступного заняття."
+
+msgid "In queue"
+msgstr "У черзі"
+
+msgid "Review and recall"
+msgstr "Повторення й запам’ятовування"
+
+msgid ""
+"Compare short-term and longer-term recall to notice whether new material is "
+"sticking."
+msgstr "Порівнюйте коротко- й довгострокове запам’ятовування, щоб зрозуміти, чи засвоюється новий матеріал."
+
+msgid "reviews today"
+msgstr "повторень сьогодні"
+
+msgid "reviews in 7 days"
+msgstr "повторень за 7 днів"
+
+msgid "reviews in 30 days"
+msgstr "повторень за 30 днів"
+
+msgid "accuracy in 7 days"
+msgstr "точність за 7 днів"
+
+msgid "accuracy in 30 days"
+msgstr "точність за 30 днів"
+
+msgid "Log in"
+msgstr "Увійти"
+
+msgid "Welcome back"
+msgstr "Раді бачити знову"
+
+msgid "Keep your English moving"
+msgstr "Продовжуйте вдосконалювати англійську"
+
+msgid ""
+"Return to your dictionary, SRS queue, and achievements from one calm "
+"learning space."
+msgstr "Поверніться до словника, черги SRS і досягнень у єдиному зручному просторі для навчання."
+
+msgid "Account"
+msgstr "Обліковий запис"
+
+msgid "Username"
+msgstr "Ім’я користувача"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Forgot password?"
+msgstr "Забули пароль?"
+
+msgid "Create an account"
+msgstr "Створити обліковий запис"
+
+msgid "Password reset"
+msgstr "Скидання пароля"
+
+msgid ""
+"Enter your email and we will send instructions for returning to your "
+"learning space."
+msgstr "Введіть електронну адресу, і ми надішлемо інструкції для відновлення доступу до навчання."
+
+msgid "Learning flow"
+msgstr "Процес навчання"
+
+msgid "Send link"
+msgstr "Надіслати посилання"
+
+msgid "Secure account"
+msgstr "Захистити обліковий запис"
+
+msgid "Recover access"
+msgstr "Відновити доступ"
+
+msgid "Remembered your password?"
+msgstr "Згадали пароль?"
+
+msgid ""
+"We have sent you an email. If you do not receive it, please check your spam "
+"folder. Otherwise, contact us if it does not arrive within a few minutes."
+msgstr "Ми надіслали вам лист. Якщо ви його не отримали, перевірте папку «Спам». Зв’яжіться з нами, якщо лист не надійде протягом кількох хвилин."
+
+msgid "Change password"
+msgstr "Змінити пароль"
+
+msgid "Set a new password"
+msgstr "Установіть новий пароль"
+
+msgid "Choose a fresh password and return to your learning space."
+msgstr "Виберіть новий пароль і поверніться до навчання."
+
+msgid "Keep learning"
+msgstr "Продовжити навчання"
+
+msgid "The password reset link is invalid. Please request a new one."
+msgstr "Посилання для скидання пароля недійсне. Запросіть нове."
+
+msgid "New password"
+msgstr "Новий пароль"
+
+msgid "Repeat password"
+msgstr "Повторіть пароль"
+
+msgid "Your password has been changed."
+msgstr "Ваш пароль змінено."
+
+msgid "Sign up"
+msgstr "Реєстрація"
+
+msgid "New learner"
+msgstr "Новий учень"
+
+msgid "Start building your vocabulary"
+msgstr "Почніть розширювати свій словник"
+
+msgid ""
+"Create an account and keep every word, review, and achievement connected to "
+"your progress."
+msgstr "Створіть обліковий запис, щоб кожне слово, повторення й досягнення були пов’язані з вашим прогресом."
+
+msgid "Add words"
+msgstr "Додавайте слова"
+
+msgid "Review"
+msgstr "Повторюйте"
+
+msgid "Grow"
+msgstr "Розвивайтеся"
+
+msgid "Already have an account?"
+msgstr "Уже маєте обліковий запис?"
+
+msgid "Register"
+msgstr "Зареєструватися"
+
+msgid "Main"
+msgstr "Головна"
+
+msgid "SRS"
+msgstr "SRS"
+
+msgid "or"
+msgstr "або"
+
+msgid "Sign in"
+msgstr "Зареєструватися"
+
+msgid "Welcome"
+msgstr "Ласкаво просимо"
+
+msgid "Exit"
+msgstr "Вийти"
+
+msgid "Change language"
+msgstr "Змінити мову"
+
+msgid "Copyright 2026 &copy; Made by vitalion"
+msgstr "Copyright 2026 &copy; Створено vitalion"
+
+msgid "New achievement:"
+msgstr "Нове досягнення:"
+
+msgid "Close"
+msgstr "Закрити"

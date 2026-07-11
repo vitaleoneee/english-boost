@@ -16,6 +16,7 @@ urlpatterns = [
     path("accounts/signup/", account_views.signup, name="account_signup"),
     path("accounts/login/", account_views.login, name="account_login"),
     path("accounts/logout/", account_views.logout, name="account_logout"),
+    path("i18n/", include("django.conf.urls.i18n")),
     path(
         "accounts/password/reset/",
         account_views.password_reset,
