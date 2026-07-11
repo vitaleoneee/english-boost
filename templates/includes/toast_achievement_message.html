@@ -4,7 +4,7 @@
     <div class="toast show align-items-center text-white bg-success border-0" role="alert">
         <div class="d-flex">
             <div class="toast-body">
-                <div>🏆 {% trans "New achievement:" %} <strong>{{ message }}</strong></div>
+                <div><i class="bi {{ icon|default:'bi-trophy-fill' }} me-1" aria-hidden="true"></i> {% trans "New achievement:" %} <strong>{{ message }}</strong></div>
                 {% if description %}
                     <div class="small opacity-75">{{ description }}</div>
                 {% endif %}

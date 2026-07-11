@@ -22,7 +22,7 @@
                         <div class="card h-100 achievement-card achievement-card-earned shadow-sm">
                             <div class="card-body text-center">
                                 <span class="achievement-card-icon">
-                                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                    <i class="bi {{ ua.achievement.icon }}" aria-hidden="true"></i>
                                 </span>
                                 <h5 class="card-title">{{ ua.achievement.name }}</h5>
                                 <p class="card-text text-muted">{{ ua.achievement.description }}</p>
@@ -51,6 +51,9 @@
                     <div class="col">
                         <div class="card h-100 achievement-card achievement-card-available shadow-sm">
                             <div class="card-body text-center">
+                                <span class="achievement-card-icon achievement-card-icon-available">
+                                    <i class="bi {{ a.icon }}" aria-hidden="true"></i>
+                                </span>
                                 <h5 class="card-title">{{ a.name }}</h5>
                                 <p class="card-text text-muted">{{ a.description }}</p>
                             </div>
@@ -76,10 +79,10 @@
                     <div class="col">
                         <div class="card h-100 achievement-card achievement-card-secret shadow-sm">
                             <div class="card-body text-center">
-                                <h5 class="card-title">{{ sa.name }}</h5>
-                                <p class="card-text text-muted">
+                                <span class="achievement-card-icon achievement-card-icon-secret">
                                     <i class="bi bi-question-lg" aria-hidden="true"></i>
-                                </p>
+                                </span>
+                                <h5 class="card-title">{{ sa.name }}</h5>
                             </div>
                         </div>
                     </div>

@@ -99,6 +99,12 @@ class Achievement(models.Model):
     name = models.CharField(max_length=100, verbose_name=_("Name"))
     description = models.TextField(verbose_name=_("Description"))
     is_secret = models.BooleanField(default=False, verbose_name=_("Secret achievement"))
+    icon = models.CharField(
+        max_length=50,
+        default="bi-award-fill",
+        verbose_name=_("Icon"),
+        help_text=_("Bootstrap Icons class, for example: bi-book-fill"),
+    )
 
     class Meta:
         verbose_name = _("Achievement")

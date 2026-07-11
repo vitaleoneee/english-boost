@@ -1049,7 +1049,8 @@
     "fields": {
       "name": "Начинающий",
       "description": "Выучите 5 слов",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-flower1"
     }
   },
   {
@@ -1058,7 +1059,8 @@
     "fields": {
       "name": "Первый десяток",
       "description": "Выучите 10 слов",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-list-ol"
     }
   },
   {
@@ -1067,7 +1069,8 @@
     "fields": {
       "name": "Словарный строитель",
       "description": "Выучите 50 слов",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-bricks"
     }
   },
   {
@@ -1076,7 +1079,8 @@
     "fields": {
       "name": "Лексический мастер",
       "description": "Выучите 100 слов",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-book-half"
     }
   },
   {
@@ -1085,7 +1089,8 @@
     "fields": {
       "name": "Тысяча слов",
       "description": "Выучите 1000 слов",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-collection-fill"
     }
   },
   {
@@ -1094,7 +1099,8 @@
     "fields": {
       "name": "Первый день",
       "description": "Занимайтесь один день",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-sunrise-fill"
     }
   },
   {
@@ -1103,7 +1109,8 @@
     "fields": {
       "name": "Ученик дисциплины",
       "description": "Занимайтесь 7 дней подряд",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-calendar-week-fill"
     }
   },
   {
@@ -1112,7 +1119,8 @@
     "fields": {
       "name": "Ты как часы",
       "description": "Занимайтесь 30 дней подряд",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-clock-fill"
     }
   },
   {
@@ -1121,7 +1129,8 @@
     "fields": {
       "name": "Ночной совёнок",
       "description": "Занимайтесь с 00:00 до 05:00",
-      "is_secret": true
+      "is_secret": true,
+      "icon": "bi-moon-stars-fill"
     }
   },
   {
@@ -1130,7 +1139,8 @@
     "fields": {
       "name": "Первое повторение",
       "description": "Сделайте первое повторение",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-arrow-repeat"
     }
   },
   {
@@ -1139,7 +1149,8 @@
     "fields": {
       "name": "Сила повторения",
       "description": "Сделайте 10 повторений",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-lightning-charge-fill"
     }
   },
   {
@@ -1148,7 +1159,8 @@
     "fields": {
       "name": "Чемпион памяти",
       "description": "Сделайте 100 повторений",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-trophy-fill"
     }
   },
   {
@@ -1157,7 +1169,8 @@
     "fields": {
       "name": "Железная концентрация",
       "description": "Сделайте 5 повторений без ошибок",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-bullseye"
     }
   },
   {
@@ -1166,7 +1179,8 @@
     "fields": {
       "name": "Безупречная сессия",
       "description": "Сделайте 10 повторений без ошибок",
-      "is_secret": false
+      "is_secret": false,
+      "icon": "bi-patch-check-fill"
     }
   },
   {
@@ -1175,7 +1189,8 @@
     "fields": {
       "name": "Очиститель",
       "description": "Удалите 10 слов из списка изучения",
-      "is_secret": true
+      "is_secret": true,
+      "icon": "bi-eraser-fill"
     }
   }
 ]

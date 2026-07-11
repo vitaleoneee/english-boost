@@ -25,7 +25,7 @@ class AchievementAdmin(ModelAdmin):
     list_filter = ("is_secret",)
     compressed_fields = True
     warn_unsaved_form = True
-    list_display = ("id", "name", "is_secret", "description")
+    list_display = ("id", "name", "icon", "is_secret", "description")
 
 
 @admin.register(UserAchievement)

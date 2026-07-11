@@ -1,6 +1,6 @@
 {% if unseen_achievements %}
     {% for user_achievement in unseen_achievements %}
-        {% include 'includes/toast_achievement_message.html' with message=user_achievement.achievement.name description=user_achievement.achievement.description %}
+        {% include 'includes/toast_achievement_message.html' with message=user_achievement.achievement.name description=user_achievement.achievement.description icon=user_achievement.achievement.icon %}
     {% endfor %}
     <div class="d-none"
          hx-post="{% url 'core:mark-achievements-seen' %}"

@@ -57,8 +57,17 @@
 .achievement-card-icon {
     color: #198754;
     display: inline-block;
-    font-size: 1.25rem;
-    margin-bottom: 0.35rem;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.65rem;
+}
+
+.achievement-card-icon-available {
+    color: #526173;
+}
+
+.achievement-card-icon-secret {
+    color: #64748b;
 }
 
 .achievement-empty {
