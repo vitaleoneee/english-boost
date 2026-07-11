@@ -80,6 +80,10 @@
                     <a class="nav-link {% if selected == 'srs_technique' %}active{% endif %}"
                        href="{% url 'progress:srs_technique' %}">{% translate "SRS" %}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if selected == 'statistics' %}active{% endif %}"
+                       href="{% url 'statistics:statistics' %}">{% translate "Statistics" %}</a>
+                </li>
             </ul>
 
             <div class="navbar-account d-flex justify-content-center align-items-center gap-2 mt-1 mt-lg-0 text-center">
@@ -110,5 +114,7 @@
         <p>{% blocktrans %}Copyright 2026 &copy; Made by vitalion{% endblocktrans %}</p>
     </div>
 </footer>
+
+{% block extra_js %}{% endblock extra_js %}
 </body>
 </html>

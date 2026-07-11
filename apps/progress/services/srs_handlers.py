@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db import transaction
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
@@ -11,6 +12,7 @@ from apps.progress.constants import (
 from apps.progress.forms import WordCheckForm
 from apps.progress.achievements import AchievementChecker
 from apps.progress.models import UserSRS
+from apps.statistics.models import SRSReviewLog
 from redis_service import r
 
 
@@ -45,7 +47,24 @@ def handle_srs_post(request):
     else:
         r.set(f"{request.user.username}:{request.user.id}:srs_accuracy_counter", 0)
 
-    learned = srs.update_after_answer(correct=is_correct)
+    interval_before = srs.interval
+    ease_factor_before = srs.ease_factor
+    repetitions_before = srs.repetitions
+    with transaction.atomic():
+        learned = srs.update_after_answer(correct=is_correct)
+        SRSReviewLog.objects.create(
+            user=request.user,
+            word=word,
+            user_answer=user_input,
+            correct_answer=word.russian_name,
+            is_correct=is_correct,
+            interval_before=interval_before,
+            interval_after=srs.interval,
+            ease_factor_before=ease_factor_before,
+            ease_factor_after=srs.ease_factor,
+            repetitions_before=repetitions_before,
+            repetitions_after=srs.repetitions,
+        )
 
     if is_correct:
         checker = AchievementChecker(request.user)

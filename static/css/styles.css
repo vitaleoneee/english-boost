@@ -58,6 +58,163 @@
     min-height: 2.45rem;
 }
 
+.next-action,
+.statistics-panel,
+.metric-card,
+.statistics-empty {
+    background: #fff;
+    border: 1px solid #dbe4f0;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.next-action {
+    align-items: center;
+    border-left: 5px solid #2563eb;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+.next-action h2,
+.statistics-panel h2 {
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.5rem;
+}
+
+.next-action p,
+.statistics-panel > p {
+    color: #64748b;
+    margin-bottom: 0;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 168px;
+    padding: 1.2rem;
+}
+
+.metric-card i {
+    color: #2563eb;
+    font-size: 1.3rem;
+}
+
+.metric-card strong {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-top: 0.25rem;
+}
+
+.metric-card span {
+    font-weight: 600;
+}
+
+.metric-card small {
+    color: #64748b;
+    margin-top: auto;
+}
+
+.statistics-panel {
+    padding: 1.5rem;
+}
+
+.statistics-chart {
+    height: 320px;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.statistics-chart canvas {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.statistics-empty {
+    margin: 2rem auto;
+    max-width: 650px;
+    padding: 3rem 1.5rem;
+}
+
+.statistics-empty i {
+    color: #2563eb;
+    font-size: 3rem;
+}
+
+.statistics-empty p {
+    color: #64748b;
+    margin: 1rem auto 1.5rem;
+    max-width: 35rem;
+}
+
+.queue-metrics {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem 0 0;
+}
+
+.queue-metrics div {
+    background: #f8fafc;
+    border-radius: 0.65rem;
+    padding: 0.8rem;
+}
+
+.queue-metrics dt {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.queue-metrics dd {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin: 0.15rem 0 0;
+}
+
+.review-summary {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 1rem;
+}
+
+.review-summary div {
+    border-left: 3px solid #93c5fd;
+    padding-left: 0.7rem;
+}
+
+.review-summary strong,
+.review-summary span {
+    display: block;
+}
+
+.review-summary strong {
+    font-size: 1.35rem;
+}
+
+.review-summary span,
+.statistics-note {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 767px) {
+    .next-action {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .review-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .statistics-chart {
+        height: 280px;
+    }
+}
+
 .app-footer {
     background: #212529;
     border-top: 1px solid rgba(255, 255, 255, 0.08);

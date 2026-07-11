@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "apps.core.apps.CoreConfig",
     "apps.progress.apps.ProgressConfig",
     "apps.dictionary.apps.DictionaryConfig",
+    "apps.statistics.apps.StatisticsConfig",
     # Other
     "django_extensions",
     "django_tables2",
@@ -162,7 +163,7 @@ LOCALE_PATHS = [
     BASE_DIR.parent / "locale",
 ]
 
-TIME_ZONE = "Europe/Kiev"
+TIME_ZONE = "Europe/Kyiv"
 
 USE_TZ = True
 

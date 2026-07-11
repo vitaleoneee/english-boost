@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Statistics" %} | English BOOST{% endblock %}
+
+{% block content %}
+    <header class="srs-hero statistics-hero">
+        <div class="container">
+            <div class="srs-hero-inner">
+                <span class="srs-kicker">{% trans "Learning progress" %}</span>
+                <h1>{% trans "Statistics" %}</h1>
+                <p>{% trans "See your consistency, retention, and the words that need more attention." %}</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-4 py-lg-5 statistics-page">
+        {% if not has_reviews %}
+            <section class="statistics-empty text-center">
+                <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+                <h2>{% trans "Your learning story starts with the first review" %}</h2>
+                <p>{% trans "Complete a few SRS reviews and you will see your streak, accuracy, activity, and words that need attention here." %}</p>
+                <a class="btn btn-primary" href="{% url 'progress:srs_technique' %}">{% trans "Go to SRS" %}</a>
+            </section>
+        {% else %}
+            <section class="next-action mb-4">
+                <div>
+                    <span class="section-eyebrow">{% trans "What to do today" %}</span>
+                    <h2>{{ next_action.title }}</h2>
+                    <p>{{ next_action.text }}</p>
+                </div>
+                <a class="btn btn-primary" href="{% url next_action.url %}">{{ next_action.button }}</a>
+            </section>
+
+            <section class="row g-3 mb-4" aria-label="{% trans 'Key learning metrics' %}">
+                <div class="col-6 col-lg-3">
+                    <div class="metric-card"><i
+                            class="bi bi-fire"></i><strong>{{ streak }}</strong><span>{% trans "day streak" %}</span><small>{% trans "Are you practicing regularly?" %}</small>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="metric-card"><i
+                            class="bi bi-mortarboard"></i><strong>{{ learned_words }}</strong><span>{% trans "learned words" %}</span><small>{% trans "Words at long intervals" %}</small>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="metric-card"><i
+                            class="bi bi-arrow-repeat"></i><strong>{{ accuracy_overall }}%</strong><span>{% trans "overall accuracy" %}</span><small>{% trans "Are you retaining words?" %}</small>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="metric-card"><i
+                            class="bi bi-clock-history"></i><strong>{{ due_now }}</strong><span>{% trans "ready now" %}</span><small>{% trans "Your next review action" %}</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row g-4 mb-4">
+                <div class="col-lg-6">
+                    <div class="statistics-panel h-100">
+                        <h2>{% trans "Practice activity" %}</h2>
+                        <p>{% trans "A gap is a signal to return to a small, sustainable daily session." %}</p>
+                        <div class="statistics-chart">
+                            <canvas id="activityChart"
+                                    aria-label="{% trans 'Reviews per day for the last 30 days' %}"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="statistics-panel h-100">
+                        <h2>{% trans "Accuracy trend" %}</h2>
+                        <p>{% trans "Aim for stable recall, not a perfect single session." %}</p>
+                        <div class="statistics-chart">
+                            <canvas id="accuracyChart"
+                                    aria-label="{% trans 'Accuracy by day for the last 30 days' %}"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row g-4 mb-4">
+                <div class="col-lg-7">
+                    <div class="statistics-panel h-100"><h2>{% trans "Words that need attention" %}</h2>
+                        <p>{% trans "These words have repeated mistakes or low recall. They will reappear in your SRS queue when due." %}</p>
+                        {% if weak_words %}
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>{% trans "Word" %}</th>
+                                        <th>{% trans "Accuracy" %}</th>
+                                        <th>{% trans "Mistakes" %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>{% for word in weak_words %}
+                                        <tr>
+                                            <td>
+                                                <strong>{{ word.word__english_name }}</strong><br><small>{{ word.word__russian_name }}</small>
+                                            </td>
+                                            <td>{{ word.accuracy }}%</td>
+                                            <td>{{ word.mistakes }} / {{ word.attempts }}</td>
+                                        </tr>{% endfor %}</tbody>
+                                </table>
+                            </div>{% else %}
+                            <div class="statistics-note"><i
+                                    class="bi bi-check-circle"></i> {% trans "No recurring weak words yet. Keep reviewing to make this signal more reliable." %}
+                            </div>{% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="statistics-panel h-100"><h2>{% trans "Your SRS queue" %}</h2>
+                        <p>{% trans "Use this to decide whether to review now or wait for the next session." %}</p>
+                        <dl class="queue-metrics">
+                            <div>
+                                <dt>{% trans "Ready now" %}</dt>
+                                <dd>{{ due_now }}</dd>
+                            </div>
+                            <div>
+                                <dt>{% trans "Waiting" %}</dt>
+                                <dd>{{ waiting }}</dd>
+                            </div>
+                            <div>
+                                <dt>{% trans "In queue" %}</dt>
+                                <dd>{{ queue_total }}</dd>
+                            </div>
+                            <div>
+                                <dt>{% trans "In progress" %}</dt>
+                                <dd>{{ in_progress_words }}</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section class="statistics-panel"><h2>{% trans "Review and recall" %}</h2>
+                <p>{% trans "Compare short-term and longer-term recall to notice whether new material is sticking." %}</p>
+                <div class="review-summary">
+                    <div><strong>{{ reviews_today }}</strong><span>{% trans "reviews today" %}</span></div>
+                    <div><strong>{{ reviews_week }}</strong><span>{% trans "reviews in 7 days" %}</span></div>
+                    <div><strong>{{ reviews_month }}</strong><span>{% trans "reviews in 30 days" %}</span></div>
+                    <div><strong>{% if accuracy_7_days is not None %}{{ accuracy_7_days }}%
+                        {% else %}&mdash;{% endif %}</strong><span>{% trans "accuracy in 7 days" %}</span></div>
+                    <div><strong>{% if accuracy_30_days is not None %}{{ accuracy_30_days }}%
+                        {% else %}&mdash;{% endif %}</strong><span>{% trans "accuracy in 30 days" %}</span></div>
+                </div>
+            </section>
+
+        {% endif %}
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+    {% if has_reviews %}
+        <script src="{% static 'js/vendor/chart.umd.min.js' %}"></script>
+        {{ activity_chart|json_script:"statistics-activity" }}
+        <script>
+            const activity = JSON.parse(
+                document.getElementById("statistics-activity").textContent
+            );
+            const labels = activity.map(item => item.label);
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 15,
+                        },
+                    },
+                },
+            };
+
+            new Chart(document.getElementById("activityChart"), {
+                type: "bar",
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            data: activity.map(item => item.count),
+                            backgroundColor: "#3b82f6",
+                            borderRadius: 5,
+                        },
+                    ],
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0,
+                            },
+                        },
+                    },
+                },
+            });
+
+            new Chart(document.getElementById("accuracyChart"), {
+                type: "line",
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            data: activity.map(item => item.accuracy),
+                            backgroundColor: "rgba(22, 163, 74, 0.12)",
+                            borderColor: "#16a34a",
+                            fill: true,
+                            spanGaps: true,
+                            tension: 0.35,
+                        },
+                    ],
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            max: 100,
+                            min: 0,
+                            ticks: {
+                                callback: value => `${value}%`,
+                            },
+                        },
+                    },
+                },
+            });
+        </script>
+    {% endif %}
+{% endblock %}
