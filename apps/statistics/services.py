@@ -4,6 +4,7 @@ from django.db.models import Case, Count, IntegerField, Q, Sum, When
 from django.utils import timezone
 from django.utils.translation import gettext as _, ngettext
 
+from apps.dictionary.choices import StudyStatus
 from apps.dictionary.models import Word
 from apps.progress.models import UserSRS
 from apps.statistics.models import SRSReviewLog
@@ -130,10 +131,10 @@ def build_statistics(user):
         "has_reviews": logs.exists(),
         "streak": _learning_streak(active_dates, today),
         "learned_words": Word.objects.filter(
-            user=user, status=Word.StudyStatus.LEARNED
+            user=user, status=StudyStatus.LEARNED
         ).count(),
         "in_progress_words": Word.objects.filter(
-            user=user, status=Word.StudyStatus.PROCESS
+            user=user, status=StudyStatus.PROCESS
         ).count(),
         "reviews_today": logs.filter(reviewed_at__date=today).count(),
         "reviews_week": logs.filter(reviewed_at__date__gte=start_7_days).count(),

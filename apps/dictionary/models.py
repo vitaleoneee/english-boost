@@ -3,17 +3,27 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_lifecycle import AFTER_CREATE, LifecycleModel, hook
 
+from apps.dictionary.choices import (
+    LanguageLevel,
+    PartOfSpeech,
+    StudyStatus,
+    UsageRegister,
+)
 
-class Category(models.Model):
+
+class Topic(models.Model):
+    code = models.SlugField(max_length=100, unique=True, verbose_name=_("Code"))
     name = models.CharField(max_length=100, verbose_name=_("Name"))
-    description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
+    description = models.TextField(blank=True, verbose_name=_("Description"))
+    is_active = models.BooleanField(default=True, verbose_name=_("Active"))
+    is_system = models.BooleanField(default=True, verbose_name=_("System topic"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
-        ordering = ["id"]
+        verbose_name = _("Topic")
+        verbose_name_plural = _("Topics")
+        ordering = ["name"]
         indexes = [models.Index(fields=["created_at", "updated_at"])]
 
     def __str__(self):
@@ -21,15 +31,29 @@ class Category(models.Model):
 
 
 class Word(LifecycleModel):
-    class StudyStatus(models.TextChoices):
-        LEARNED = ("LEARNED", _("Learned"))
-        PROCESS = ("PROCESS", _("In progress"))
-
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, verbose_name=_("Category")
+    topics = models.ManyToManyField(
+        Topic, blank=True, related_name="words", verbose_name=_("Topics")
     )
     english_name = models.CharField(max_length=100, verbose_name=_("English word"))
     russian_name = models.CharField(max_length=100, verbose_name=_("Russian word"))
+    part_of_speech = models.CharField(
+        choices=PartOfSpeech.choices,
+        max_length=20,
+        blank=True,
+        verbose_name=_("Part of speech"),
+    )
+    level = models.CharField(
+        choices=LanguageLevel.choices,
+        max_length=2,
+        blank=True,
+        verbose_name=_("Language level"),
+    )
+    register = models.CharField(
+        choices=UsageRegister.choices,
+        max_length=20,
+        blank=True,
+        verbose_name=_("Usage register"),
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(

@@ -37,7 +37,8 @@
         </div>
 
         <div class="dictionary-search-panel">
-            <div class="dictionary-search-field">
+            <div class="dictionary-search-primary">
+                <div class="dictionary-search-field">
                 <i class="bi bi-search" aria-hidden="true"></i>
                 <input id="dictionary-search-input"
                        type="search"
@@ -49,39 +50,107 @@
                        hx-get="{% url 'dictionary:search-words' %}"
                        hx-trigger="input changed delay:300ms, search"
                        hx-target="#dictionary-table"
-                       hx-include="[name='status']"
+                       hx-include="[name='status'], [name='topic'], [name='level'], [name='part_of_speech'], [name='register']"
                        hx-indicator="#dictionary-search-indicator">
                 <div id="dictionary-search-indicator"
                      class="spinner-border spinner-border-sm htmx-indicator"
                      role="status"
                      aria-label="{% trans 'Searching' %}"></div>
+                </div>
+
+                <div class="dictionary-status-filter"
+                     hx-get="{% url 'dictionary:search-words' %}"
+                     hx-trigger="change"
+                     hx-target="#dictionary-table"
+                     hx-include="#dictionary-search-input, [name='status'], [name='topic'], [name='level'], [name='part_of_speech'], [name='register']"
+                     hx-indicator="#dictionary-search-indicator">
+                    <label>
+                        <input type="radio" name="status" value="" {% if not status %}checked{% endif %}>
+                        <span>{% trans "All" %}</span>
+                    </label>
+                    <label>
+                        <input type="radio"
+                               name="status"
+                               value="{{ study_statuses.PROCESS }}"
+                               {% if status == study_statuses.PROCESS %}checked{% endif %}>
+                        <span>{% trans "In progress" %}</span>
+                    </label>
+                    <label>
+                        <input type="radio"
+                               name="status"
+                               value="{{ study_statuses.LEARNED }}"
+                               {% if status == study_statuses.LEARNED %}checked{% endif %}>
+                        <span>{% trans "Learned" %}</span>
+                    </label>
+                </div>
             </div>
 
-            <div class="dictionary-status-filter"
-                 hx-get="{% url 'dictionary:search-words' %}"
-                 hx-trigger="change"
-                 hx-target="#dictionary-table"
-                 hx-include="#dictionary-search-input, [name='status']"
-                 hx-indicator="#dictionary-search-indicator">
-                <label>
-                    <input type="radio" name="status" value="" {% if not status %}checked{% endif %}>
-                    <span>{% trans "All" %}</span>
-                </label>
-                <label>
-                    <input type="radio"
-                           name="status"
-                           value="{{ study_statuses.PROCESS }}"
-                           {% if status == study_statuses.PROCESS %}checked{% endif %}>
-                    <span>{% trans "In progress" %}</span>
-                </label>
-                <label>
-                    <input type="radio"
-                           name="status"
-                           value="{{ study_statuses.LEARNED }}"
-                           {% if status == study_statuses.LEARNED %}checked{% endif %}>
-                    <span>{% trans "Learned" %}</span>
-                </label>
+            <div class="dictionary-extra-filters">
+                <div>
+                    <div class="dropdown topic-filter"
+                         hx-get="{% url 'dictionary:search-words' %}"
+                         hx-trigger="change"
+                         hx-target="#dictionary-table"
+                         hx-include="#dictionary-search-input, [name='status'], [name='topic'], [name='level'], [name='part_of_speech'], [name='register']">
+                        <button class="btn btn-light dropdown-toggle topic-filter-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside"
+                                data-all-label="{% trans 'All topics' %}"
+                                data-selected-label="{% trans 'Selected' %}"
+                                aria-expanded="false">
+                            <span class="topic-filter-label">{% trans "All topics" %}</span>
+                        </button>
+                        <div class="dropdown-menu topic-filter-menu">
+                            {% for item in topics %}
+                                <label class="dropdown-item topic-filter-option">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           name="topic"
+                                           value="{{ item.code }}"
+                                           data-topic-name="{{ item.name }}"
+                                           {% if item.code in selected_topics %}checked{% endif %}>
+                                    <span>{{ item.name }}</span>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <select name="part_of_speech" class="form-select"
+                            hx-get="{% url 'dictionary:search-words' %}"
+                            hx-trigger="change" hx-target="#dictionary-table"
+                            hx-include="#dictionary-search-input, [name='status'], [name='topic'], [name='level'], [name='register']">
+                        <option value="">{% trans "All parts of speech" %}</option>
+                        {% for value, label in parts_of_speech.choices %}
+                            <option value="{{ value }}" {% if part_of_speech == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <select name="level" class="form-select"
+                            hx-get="{% url 'dictionary:search-words' %}"
+                            hx-trigger="change" hx-target="#dictionary-table"
+                            hx-include="#dictionary-search-input, [name='status'], [name='topic'], [name='part_of_speech'], [name='register']">
+                        <option value="">{% trans "All levels" %}</option>
+                        {% for value, label in levels.choices %}
+                            <option value="{{ value }}" {% if level == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <select name="register" class="form-select"
+                            hx-get="{% url 'dictionary:search-words' %}"
+                            hx-trigger="change" hx-target="#dictionary-table"
+                            hx-include="#dictionary-search-input, [name='status'], [name='topic'], [name='part_of_speech'], [name='level']">
+                        <option value="">{% trans "All usage registers" %}</option>
+                        {% for value, label in usage_registers.choices %}
+                            <option value="{{ value }}" {% if register == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
+
         </div>
 
         <form id="dictionary-delete-form"
@@ -89,7 +158,7 @@
               hx-post="{% url 'dictionary:delete-selected-words' %}"
               hx-target="#dictionary-table"
               hx-swap="innerHTML"
-              hx-include="#dictionary-search-input, [name='status']">
+              hx-include="#dictionary-search-input, [name='status'], [name='topic'], [name='level'], [name='part_of_speech'], [name='register']">
             <div id="dictionary-table">
                 {% include "dictionary/partials/dictionary_table.html" %}
             </div>
@@ -98,5 +167,6 @@
 
     <script src="{% static 'js/checkboxesSelectAll.js' %}"></script>
     <script src="{% static 'js/pronunciationWord.js' %}"></script>
+    <script src="{% static 'js/topicFilter.js' %}"></script>
 
 {% endblock content %}

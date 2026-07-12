@@ -1,7 +1,7 @@
 import itertools
 
 import django_tables2 as tables
-from django.utils.html import format_html, escapejs
+from django.utils.html import escapejs, format_html, format_html_join
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
@@ -45,6 +45,15 @@ class DictionaryTable(tables.Table):
             "th": {"class": "text-center align-middle"},
         },
     )
+    topics = tables.Column(
+        empty_values=(),
+        verbose_name=_("Topics"),
+        orderable=False,
+        attrs={
+            "td": {"class": "text-center align-middle"},
+            "th": {"class": "text-center align-middle"},
+        },
+    )
     # accessor='pk' is required for virtual column rendering
     pronunciation = tables.Column(
         verbose_name=_("Pronunciation"),
@@ -72,6 +81,7 @@ class DictionaryTable(tables.Table):
             "row_number",
             "english_name",
             "russian_name",
+            "topics",
             "pronunciation",
             "status",
         )
@@ -99,6 +109,16 @@ class DictionaryTable(tables.Table):
             '<i class="bi bi-play-fill"></i>'
             "</button>",
             word_js,
+        )
+
+    def render_topics(self, record):
+        topics = record.topics.all()
+        if not topics:
+            return "—"
+        return format_html_join(
+            " ",
+            '<span class="badge text-bg-light border">{}</span>',
+            ((topic.name,) for topic in topics),
         )
 
     def render_status(self, value, record):

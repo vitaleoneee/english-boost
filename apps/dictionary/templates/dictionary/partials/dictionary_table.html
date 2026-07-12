@@ -1,13 +1,15 @@
-{% load render_table from django_tables2 %}
+{% load django_tables2 %}
 {% load i18n %}
 
-{% if words %}
+{% with page_rows=dictionary_table.page.object_list %}
+{% if page_rows %}
     <div class="d-none d-lg-block mb-3">
         {% render_table dictionary_table %}
     </div>
 
     <div class="d-lg-none">
-        {% for word in words %}
+        {% for row in page_rows %}
+            {% with word=row.record %}
             <div class="card dictionary-mobile-card mb-3 shadow-sm">
                 <div class="card-body">
 
@@ -24,6 +26,20 @@
                     <p class="text-muted mb-2">
                         {% trans "Translation:" %} {{ word.russian_name }}
                     </p>
+                    {% if word.topics.all %}
+                        <div class="mb-2">
+                            {% for topic in word.topics.all %}
+                                <span class="badge text-bg-light border">{{ topic.name }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if word.part_of_speech or word.level or word.register %}
+                        <p class="small text-muted mb-2">
+                            {% if word.part_of_speech %}{{ word.get_part_of_speech_display }}{% endif %}
+                            {% if word.level %} · {{ word.get_level_display }}{% endif %}
+                            {% if word.register %} · {{ word.get_register_display }}{% endif %}
+                        </p>
+                    {% endif %}
                     <div class="d-flex justify-content-between align-items-center">
 
                         <button type="button"
@@ -39,17 +55,50 @@
                     </div>
                 </div>
             </div>
+            {% endwith %}
         {% endfor %}
+
+        {% if dictionary_table.paginator.num_pages > 1 %}
+            <nav aria-label="{% trans 'Table navigation' %}" class="dictionary-mobile-pagination">
+                <ul class="pagination">
+                    {% if dictionary_table.page.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link"
+                               href="{% querystring_replace dictionary_table.prefixed_page_field=dictionary_table.page.previous_page_number %}"
+                               aria-label="{% trans 'Previous page' %}">&lt;&lt;</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page_number in dictionary_table.paginator.page_range %}
+                        <li class="page-item {% if page_number == dictionary_table.page.number %}active{% endif %}">
+                            <a class="page-link"
+                               href="{% querystring_replace dictionary_table.prefixed_page_field=page_number %}">
+                                {{ page_number }}
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                    {% if dictionary_table.page.has_next %}
+                        <li class="page-item">
+                            <a class="page-link"
+                               href="{% querystring_replace dictionary_table.prefixed_page_field=dictionary_table.page.next_page_number %}"
+                               aria-label="{% trans 'Next page' %}">&gt;&gt;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
     </div>
 {% else %}
     <div class="dictionary-empty-state">
         <i class="bi bi-search" aria-hidden="true"></i>
-        {% if query or status %}
+        {% if query or status or selected_topics or level or part_of_speech or register %}
             <h2>{% trans "Nothing found" %}</h2>
-            <p>{% trans "Try another word, translation, or status." %}</p>
+            <p>{% trans "Try changing your search or filters." %}</p>
         {% else %}
             <h2>{% trans "No words yet" %}</h2>
             <p>{% trans "Add your first word and it will appear here." %}</p>
         {% endif %}
     </div>
 {% endif %}
+{% endwith %}

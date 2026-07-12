@@ -13,8 +13,14 @@ from django_htmx.http import trigger_client_event
 from django_tables2 import RequestConfig
 from django_tables2 import SingleTableView
 
+from apps.dictionary.choices import (
+    LanguageLevel,
+    PartOfSpeech,
+    StudyStatus,
+    UsageRegister,
+)
 from apps.dictionary.forms import NewDictionaryWordForm
-from apps.dictionary.models import Word
+from apps.dictionary.models import Topic, Word
 from apps.dictionary.tables.dictionary import DictionaryTable
 from apps.progress.achievements import AchievementChecker
 from apps.progress.models import UserSRS
@@ -24,10 +30,23 @@ DICTIONARY_PAGE_SIZE = 20
 
 
 def get_dictionary_queryset(request):
-    words = Word.objects.filter(user=request.user)
+    words = Word.objects.filter(user=request.user).prefetch_related("topics")
     query = request.GET.get("q", "").strip() or request.POST.get("q", "").strip()
     status = (
         request.GET.get("status", "").strip() or request.POST.get("status", "").strip()
+    )
+    topics = request.GET.getlist("topic") or request.POST.getlist("topic")
+    topics = [topic.strip() for topic in topics if topic.strip()]
+    level = (
+        request.GET.get("level", "").strip() or request.POST.get("level", "").strip()
+    )
+    part_of_speech = (
+        request.GET.get("part_of_speech", "").strip()
+        or request.POST.get("part_of_speech", "").strip()
+    )
+    usage_register = (
+        request.GET.get("register", "").strip()
+        or request.POST.get("register", "").strip()
     )
 
     if query:
@@ -35,8 +54,17 @@ def get_dictionary_queryset(request):
             Q(english_name__icontains=query) | Q(russian_name__icontains=query)
         )
 
-    if status in Word.StudyStatus.values:
+    if status in StudyStatus.values:
         words = words.filter(status=status)
+
+    if topics:
+        words = words.filter(topics__code__in=topics).distinct()
+    if level in LanguageLevel.values:
+        words = words.filter(level=level)
+    if part_of_speech in PartOfSpeech.values:
+        words = words.filter(part_of_speech=part_of_speech)
+    if usage_register in UsageRegister.values:
+        words = words.filter(register=usage_register)
 
     return words
 
@@ -54,6 +82,14 @@ def render_dictionary_table(request, words):
         "query": request.GET.get("q", "").strip() or request.POST.get("q", "").strip(),
         "status": request.GET.get("status", "").strip()
         or request.POST.get("status", "").strip(),
+        "selected_topics": request.GET.getlist("topic")
+        or request.POST.getlist("topic"),
+        "level": request.GET.get("level", "").strip()
+        or request.POST.get("level", "").strip(),
+        "part_of_speech": request.GET.get("part_of_speech", "").strip()
+        or request.POST.get("part_of_speech", "").strip(),
+        "register": request.GET.get("register", "").strip()
+        or request.POST.get("register", "").strip(),
     }
     return render(request, "dictionary/partials/dictionary_table.html", context)
 
@@ -76,7 +112,15 @@ class DictionaryListView(LoginRequiredMixin, SingleTableView):
                 "selected": "dictionary",
                 "query": self.request.GET.get("q", "").strip(),
                 "status": self.request.GET.get("status", "").strip(),
-                "study_statuses": Word.StudyStatus,
+                "study_statuses": StudyStatus,
+                "topics": Topic.objects.filter(is_active=True),
+                "levels": LanguageLevel,
+                "parts_of_speech": PartOfSpeech,
+                "usage_registers": UsageRegister,
+                "selected_topics": self.request.GET.getlist("topic"),
+                "level": self.request.GET.get("level", "").strip(),
+                "part_of_speech": self.request.GET.get("part_of_speech", "").strip(),
+                "register": self.request.GET.get("register", "").strip(),
             }
         )
         return context
@@ -100,7 +144,9 @@ class NewDictionaryWordView(LoginRequiredMixin, CreateView):
             )
             return self.form_invalid(form)
 
-        if word.status == Word.StudyStatus.PROCESS:
+        form.save_m2m()
+
+        if word.status == StudyStatus.PROCESS:
             UserSRS.objects.create(word=word, user=self.request.user)
         messages.info(self.request, _("Added a new word"))
 

@@ -11,10 +11,9 @@ then
     echo "PostgreSQL is ready!"
 fi
 
-python manage.py makemigrations
 python manage.py migrate
+python manage.py sync_topics
 python manage.py collectstatic --noinput
-python manage.py loaddata ./fixtures.json
 
 echo "
 from django.contrib.auth import get_user_model

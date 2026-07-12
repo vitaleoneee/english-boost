@@ -713,3 +713,96 @@ msgstr "Нове досягнення:"
 
 msgid "Close"
 msgstr "Закрити"
+
+msgid "Usage register"
+msgstr "Стиль вживання"
+
+msgid "Topics"
+msgstr "Теми"
+
+msgid "Part of speech"
+msgstr "Частина мови"
+
+msgid "Language level"
+msgstr "Рівень мови"
+
+msgid "Required"
+msgstr "Обов'язково"
+
+msgid "All usage registers"
+msgstr "Усі стилі вживання"
+
+msgid "All topics"
+msgstr "Усі теми"
+
+msgid "Selected"
+msgstr "Вибрано"
+
+msgid "All parts of speech"
+msgstr "Усі частини мови"
+
+msgid "All levels"
+msgstr "Усі рівні"
+
+msgid "Noun"
+msgstr "Іменник"
+
+msgid "Verb"
+msgstr "Дієслово"
+
+msgid "Adjective"
+msgstr "Прикметник"
+
+msgid "Adverb"
+msgstr "Прислівник"
+
+msgid "Pronoun"
+msgstr "Займенник"
+
+msgid "Preposition"
+msgstr "Прийменник"
+
+msgid "Conjunction"
+msgstr "Сполучник"
+
+msgid "Determiner"
+msgstr "Визначник"
+
+msgid "Interjection"
+msgstr "Вигук"
+
+msgid "Numeral"
+msgstr "Числівник"
+
+msgid "Phrase"
+msgstr "Фраза"
+
+msgid "Other"
+msgstr "Інше"
+
+msgid "Neutral"
+msgstr "Нейтральний"
+
+msgid "Formal"
+msgstr "Формальний"
+
+msgid "Informal"
+msgstr "Неформальний"
+
+msgid "Slang"
+msgstr "Сленг"
+
+msgid "Technical"
+msgstr "Технічний"
+
+msgid "Literary"
+msgstr "Літературний"
+
+msgid "Old-fashioned"
+msgstr "Застарілий"
+
+msgid "Save the word, translation, topics, and learning details."
+msgstr "Збережіть слово, переклад, теми та параметри вивчення."
+
+msgid "Try changing your search or filters."
+msgstr "Змініть пошуковий запит або фільтри."

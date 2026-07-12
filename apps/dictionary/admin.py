@@ -9,24 +9,45 @@ from django.utils.translation import gettext_lazy as _
 from unfold.admin import ModelAdmin
 from unfold.contrib.forms.widgets import WysiwygWidget
 
-from apps.dictionary.models import Category, Word
+from apps.dictionary.choices import StudyStatus
+from apps.dictionary.models import Topic, Word
 from apps.progress.models import UserSRS
 
 
-@admin.register(Category)
-class CategoryAdmin(ModelAdmin):
+@admin.register(Topic)
+class TopicAdmin(ModelAdmin):
     compressed_fields = True
     warn_unsaved_form = True
-    list_display = ("id", "name")
+    list_display = ("id", "code", "name", "is_active", "is_system", "word_count")
+    list_filter = ("is_active", "is_system")
+    search_fields = ("code", "name")
     formfield_overrides = {
         models.TextField: {"widget": WysiwygWidget},
     }
 
+    @admin.display(description=_("Words"))
+    def word_count(self, obj):
+        return obj.words.count()
+
 
 @admin.register(Word)
 class WordAdmin(ModelAdmin):
-    list_display = ("user", "english_name", "status", "id")
+    list_display = (
+        "user",
+        "english_name",
+        "display_topics",
+        "part_of_speech",
+        "level",
+        "status",
+        "id",
+    )
+    list_filter = ("status", "part_of_speech", "level", "register", "topics")
+    filter_horizontal = ("topics",)
     change_list_template = "admin/dictionary/word/change_list.html"
+
+    @admin.display(description=_("Topics"))
+    def display_topics(self, obj):
+        return ", ".join(obj.topics.values_list("name", flat=True)) or "—"
 
     def get_urls(self):
         urls = super().get_urls()
@@ -47,9 +68,13 @@ class WordAdmin(ModelAdmin):
         return super().changelist_view(request, extra_context=extra_context)
 
     def generate_test_words(self, request):
-        category = Category.objects.get_or_create(
-            name=_("Test words"),
-            defaults={"description": _("Words generated from the admin panel.")},
+        topic = Topic.objects.get_or_create(
+            code="test-words",
+            defaults={
+                "name": _("Test words"),
+                "description": _("Words generated from the admin panel."),
+                "is_system": False,
+            },
         )[0]
         suffix = timezone.now().strftime("%Y%m%d%H%M%S")
         created_count = 0
@@ -57,12 +82,12 @@ class WordAdmin(ModelAdmin):
         for number in range(1, 11):
             word = Word(
                 user=request.user,
-                category=category,
                 english_name=f"test-word-{suffix}-{number}",
                 russian_name=f"тестовое слово {number}",
-                status=Word.StudyStatus.PROCESS,
+                status=StudyStatus.PROCESS,
             )
             word.save()
+            word.topics.add(topic)
             UserSRS.objects.get_or_create(user=request.user, word=word)
             created_count += 1
 
