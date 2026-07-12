@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.db import transaction
 from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from apps.progress.constants import (
@@ -14,6 +15,15 @@ from apps.progress.achievements import AchievementChecker
 from apps.progress.models import UserSRS
 from apps.statistics.models import SRSReviewLog
 from redis_service import r
+
+
+def redirect_to_srs_page(request):
+    if request.htmx:
+        return None
+
+    page = request.POST.get("page", "")
+    url = reverse("progress:srs_technique")
+    return redirect(f"{url}?page={page}" if page.isdigit() and int(page) > 0 else url)
 
 
 def handle_srs_post(request):
@@ -31,12 +41,12 @@ def handle_srs_post(request):
 
     if not srs.is_due:
         messages.error(request, SRS_WORD_NOT_AVAILABLE_MSG)
-        return redirect("progress:srs_technique")
+        return redirect_to_srs_page(request)
 
     form = WordCheckForm(request.POST, prefix=f"word_{word.id}")
     if not form.is_valid():
         messages.error(request, _("Incorrect form"))
-        return redirect("progress:srs_technique")
+        return redirect_to_srs_page(request)
 
     user_input = form.cleaned_data["translate_input"].strip().lower()
     is_correct = user_input == word.russian_name.strip().lower()
@@ -77,4 +87,4 @@ def handle_srs_post(request):
         messages.success(request, SRS_CORRECT_ANSWER_MSG)
     else:
         messages.error(request, SRS_WRONG_ANSWER_MSG.format(word.english_name))
-    return redirect("progress:srs_technique")
+    return redirect_to_srs_page(request)
