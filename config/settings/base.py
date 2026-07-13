@@ -22,6 +22,8 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(","
 # Application definition
 
 INSTALLED_APPS = [
+    # ASGI / WebSocket
+    "channels",
     # Unfold
     "unfold",
     "unfold.contrib.filters",
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     "apps.progress.apps.ProgressConfig",
     "apps.dictionary.apps.DictionaryConfig",
     "apps.statistics.apps.StatisticsConfig",
+    "apps.support.apps.SupportConfig",
     # Other
     "django_extensions",
     "django_tables2",
@@ -99,6 +102,31 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
+ASGI_APPLICATION = "config.asgi.application"
+
+REDIS_HOST = os.environ.get("REDIS_HOST", "redis")
+REDIS_PORT = int(os.environ.get("REDIS_PORT", 6379))
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [
+                os.environ.get(
+                    "CHANNEL_REDIS_URL",
+                    f"redis://{REDIS_HOST}:{REDIS_PORT}/0",
+                )
+            ],
+        },
+    },
+}
+
+CELERY_BROKER_URL = os.environ.get(
+    "CELERY_BROKER_URL",
+    f"redis://{REDIS_HOST}:{REDIS_PORT}/1",
+)
+CELERY_TASK_IGNORE_RESULT = True
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -165,6 +193,8 @@ LOCALE_PATHS = [
 ]
 
 TIME_ZONE = "Europe/Kyiv"
+
+CELERY_TIMEZONE = TIME_ZONE
 
 USE_TZ = True
 

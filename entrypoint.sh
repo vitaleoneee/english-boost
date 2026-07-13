@@ -11,11 +11,13 @@ then
     echo "PostgreSQL is ready!"
 fi
 
-python manage.py migrate
-python manage.py sync_topics
-python manage.py collectstatic --noinput
+if [ "${RUN_DJANGO_SETUP:-false}" = "true" ]
+then
+    python manage.py migrate
+    python manage.py sync_topics
+    python manage.py collectstatic --noinput
 
-echo "
+    echo "
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -29,5 +31,6 @@ if not User.objects.filter(username=username).exists():
 else:
     print('Superuser already exists:', username)
 " | python manage.py shell
+fi
 
 exec "$@"

@@ -19,9 +19,28 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      DB_HOST: db
+      REDIS_HOST: redis
+      RUN_DJANGO_SETUP: "true"
 
     depends_on:
       - db
+      - redis
+  celery:
+    build: .
+    image: web-english-boost
+    container_name: celery
+    command: ["celery", "-A", "config", "worker", "--loglevel=INFO"]
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      REDIS_HOST: redis
+    depends_on:
+      - db
+      - redis
   db:
     image: postgres:16.11-bookworm
     container_name: db
@@ -50,7 +69,6 @@ services:
       - static_volume:/usr/share/nginx/html/staticfiles
     depends_on:
       - web
-
 
 volumes:
   data:
