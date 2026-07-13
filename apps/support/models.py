@@ -107,3 +107,36 @@ class SupportRating(models.Model):
     def __str__(self):
         result = _("Helped") if self.helped else _("Did not help")
         return f"#{self.request_id} — {result}"
+
+
+class TelegramNotification(models.Model):
+    class Status(models.TextChoices):
+        PENDING = "pending", _("Pending")
+        SENT = "sent", _("Sent")
+        FAILED = "failed", _("Failed")
+
+    request = models.OneToOneField(
+        SupportRequest,
+        on_delete=models.CASCADE,
+        related_name="telegram_notification",
+        verbose_name=_("Support request"),
+    )
+    status = models.CharField(
+        max_length=16,
+        choices=Status.choices,
+        default=Status.PENDING,
+        db_index=True,
+        verbose_name=_("Status"),
+    )
+    attempts = models.PositiveSmallIntegerField(default=0, verbose_name=_("Attempts"))
+    last_error = models.TextField(blank=True, verbose_name=_("Last error"))
+    sent_at = models.DateTimeField(null=True, blank=True, verbose_name=_("Sent at"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated at"))
+
+    class Meta:
+        verbose_name = _("Telegram notification")
+        verbose_name_plural = _("Telegram notifications")
+
+    def __str__(self):
+        return f"#{self.request_id} — {self.get_status_display()}"

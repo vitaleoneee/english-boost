@@ -1,7 +1,12 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
 
-from apps.support.models import SupportMessage, SupportRating, SupportRequest
+from apps.support.models import (
+    SupportMessage,
+    SupportRating,
+    SupportRequest,
+    TelegramNotification,
+)
 
 
 @admin.register(SupportRequest)
@@ -36,3 +41,20 @@ class SupportRatingAdmin(ModelAdmin):
     list_filter = ("helped", "created_at")
     autocomplete_fields = ("request",)
     readonly_fields = ("created_at",)
+
+
+@admin.register(TelegramNotification)
+class TelegramNotificationAdmin(ModelAdmin):
+    list_display = ("id", "request", "status", "attempts", "sent_at", "created_at")
+    list_filter = ("status", "created_at")
+    search_fields = ("request__user__username", "request__user__email")
+    autocomplete_fields = ("request",)
+    readonly_fields = (
+        "request",
+        "status",
+        "attempts",
+        "last_error",
+        "sent_at",
+        "created_at",
+        "updated_at",
+    )

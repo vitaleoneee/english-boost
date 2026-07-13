@@ -128,6 +128,14 @@ CELERY_BROKER_URL = os.environ.get(
 CELERY_TASK_IGNORE_RESULT = True
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_SUPPORT_CHAT_ID = os.environ.get("TELEGRAM_SUPPORT_CHAT_ID", "")
+TELEGRAM_API_BASE_URL = os.environ.get(
+    "TELEGRAM_API_BASE_URL",
+    "https://api.telegram.org",
+)
+TELEGRAM_REQUEST_TIMEOUT = float(os.environ.get("TELEGRAM_REQUEST_TIMEOUT", 10))
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 

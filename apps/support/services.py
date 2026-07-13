@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import partial
 
 from django.db import transaction
 from django.utils import timezone
@@ -15,7 +16,12 @@ from apps.support.exceptions import (
     SupportAccessDenied,
     SupportRequestNotFound,
 )
-from apps.support.models import SupportMessage, SupportRating, SupportRequest
+from apps.support.models import (
+    SupportMessage,
+    SupportRating,
+    SupportRequest,
+    TelegramNotification,
+)
 from apps.support.permissions import is_moderator
 
 
@@ -54,6 +60,8 @@ def _get_request_for_update(request_id):
 
 @transaction.atomic
 def create_support_request(user, text):
+    from apps.support.tasks import enqueue_new_support_request_notification
+
     _ensure_authenticated(user)
     text = _normalize_message_text(text)
 
@@ -62,6 +70,10 @@ def create_support_request(user, text):
         request=support_request,
         author=user,
         text=text,
+    )
+    notification = TelegramNotification.objects.create(request=support_request)
+    transaction.on_commit(
+        partial(enqueue_new_support_request_notification, notification.pk)
     )
     return support_request
 

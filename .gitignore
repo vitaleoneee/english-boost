@@ -16,8 +16,6 @@ venv.bak/
 *.pot
 *.py[cod]
 *.sqlite3
-migrations/*
-!migrations/__init__.py
 
 # Secrets
 .env
