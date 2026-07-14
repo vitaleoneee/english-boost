@@ -12,6 +12,8 @@ urlpatterns = [
     # Include progress & statistics application route
     path("progress/", include("apps.progress.urls"), name="progress"),
     path("progress/statistics/", include("apps.statistics.urls"), name="statistics"),
+    # Support API routes
+    path("support/api/", include("apps.support.urls")),
     # Auth route
     path("accounts/signup/", account_views.signup, name="account_signup"),
     path("accounts/login/", account_views.login, name="account_login"),
