@@ -29,6 +29,9 @@
 
     <!-- CSS -->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    {% if request.user.is_authenticated %}
+        <link href="{% static 'css/support-widget.css' %}" rel="stylesheet"/>
+    {% endif %}
 
     <!-- HTMX -->
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
@@ -132,6 +135,10 @@
         <p>{% blocktrans %}Copyright 2026 &copy; Made by vitalion{% endblocktrans %}</p>
     </div>
 </footer>
+
+{% if request.user.is_authenticated %}
+    {% include "support/widget.html" %}
+{% endif %}
 
 {% block extra_js %}{% endblock extra_js %}
 </body>

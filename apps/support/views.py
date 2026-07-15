@@ -83,6 +83,10 @@ def _serialize_request(
     if viewer_is_moderator is None:
         viewer_is_moderator = is_moderator(viewer)
     viewer_is_owner = support_request.user_id == viewer.pk
+    request_is_closed = support_request.status == SupportRequest.Status.CLOSED
+    has_rating = (
+        viewer_is_owner and request_is_closed and hasattr(support_request, "rating")
+    )
     data = {
         "id": support_request.pk,
         "status": support_request.status,
@@ -107,11 +111,8 @@ def _serialize_request(
                 and viewer_is_moderator
             )
         ),
-        "can_rate": (
-            viewer_is_owner
-            and support_request.status == SupportRequest.Status.CLOSED
-            and not hasattr(support_request, "rating")
-        ),
+        "can_rate": (viewer_is_owner and request_is_closed and not has_rating),
+        "rating": ({"helped": support_request.rating.helped} if has_rating else None),
     }
 
     if include_messages:

@@ -1,0 +1,128 @@
+{% load i18n static %}
+
+<div id="support-widget"
+     class="support-widget"
+     data-requests-url="{% url 'support:request-collection' %}"
+     data-websocket-path="/ws/support/"
+     data-status-waiting="{% translate 'Waiting for moderator' %}"
+     data-status-progress="{% translate 'In progress' %}"
+     data-status-closed="{% translate 'Closed' %}"
+     data-connection-connecting="{% translate 'Connecting...' %}"
+     data-connection-connected="{% translate 'Connected' %}"
+     data-connection-disconnected="{% translate 'Connection lost' %}"
+     data-request-label="{% translate 'Request' %}"
+     data-load-error="{% translate 'Could not load support data.' %}"
+     data-send-error="{% translate 'Could not send the request.' %}">
+    <button class="support-widget__launcher"
+            type="button"
+            aria-label="{% translate 'Open support' %}"
+            aria-expanded="false"
+            aria-controls="support-widget-panel">
+        <i class="bi bi-chat-dots" aria-hidden="true"></i>
+        <span>{% translate "Support" %}</span>
+    </button>
+
+    <section id="support-widget-panel"
+             class="support-widget__panel"
+             aria-label="{% translate 'Support chat' %}"
+             hidden>
+        <header class="support-widget__header">
+            <button class="support-widget__icon-button support-widget__back"
+                    type="button"
+                    aria-label="{% translate 'Back' %}"
+                    hidden>
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            </button>
+            <h2 class="support-widget__title">{% translate "Support" %}</h2>
+            <button class="support-widget__icon-button support-widget__close"
+                    type="button"
+                    aria-label="{% translate 'Close support window' %}">
+                <i class="bi bi-x-lg" aria-hidden="true"></i>
+            </button>
+        </header>
+
+        <div class="support-widget__notice" role="status" hidden></div>
+
+        <div class="support-widget__screen" data-screen="list">
+            <div class="support-widget__screen-heading">
+                <h3>{% translate "Your requests" %}</h3>
+                <button class="btn btn-primary btn-sm support-widget__new-button"
+                        type="button">
+                    <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                    {% translate "New request" %}
+                </button>
+            </div>
+            <div class="support-widget__loading" hidden>{% translate "Loading..." %}</div>
+            <div class="support-widget__empty" hidden>
+                {% translate "You have no support requests yet." %}
+            </div>
+            <div class="support-widget__request-list"></div>
+        </div>
+
+        <div class="support-widget__screen" data-screen="new" hidden>
+            <form class="support-widget__new-form">
+                {% csrf_token %}
+                <label for="support-new-message" class="form-label">
+                    {% translate "Describe your problem" %}
+                </label>
+                <textarea id="support-new-message"
+                          class="form-control"
+                          name="text"
+                          rows="6"
+                          maxlength="4000"
+                          required></textarea>
+                <p class="support-widget__hint">
+                    {% translate "After sending, wait for a moderator to respond." %}
+                </p>
+                <button class="btn btn-primary w-100" type="submit">
+                    {% translate "Send request" %}
+                </button>
+            </form>
+        </div>
+
+        <div class="support-widget__screen support-widget__chat" data-screen="chat" hidden>
+            <div class="support-widget__chat-status">
+                <span class="support-widget__status-badge"></span>
+                <span class="support-widget__connection"></span>
+            </div>
+            <div class="support-widget__messages" aria-live="polite"></div>
+            <div class="support-widget__waiting" hidden>
+                {% translate "Your request has been sent. Please wait for a moderator." %}
+            </div>
+            <div class="support-widget__rating" hidden>
+                <p>{% translate "Did the consultation help you?" %}</p>
+                <div class="support-widget__rating-actions">
+                    <button class="btn btn-success btn-sm" type="button" data-helped="true">
+                        <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>
+                        {% translate "Helped" %}
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm" type="button" data-helped="false">
+                        <i class="bi bi-hand-thumbs-down" aria-hidden="true"></i>
+                        {% translate "Did not help" %}
+                    </button>
+                </div>
+            </div>
+            <div class="support-widget__rated" hidden>
+                {% translate "Thank you for your feedback." %}
+            </div>
+            <form class="support-widget__message-form">
+                <label class="visually-hidden" for="support-chat-message">
+                    {% translate "Message" %}
+                </label>
+                <textarea id="support-chat-message"
+                          class="form-control"
+                          name="text"
+                          rows="2"
+                          maxlength="4000"
+                          placeholder="{% translate 'Write a message...' %}"
+                          required></textarea>
+                <button class="btn btn-primary" type="submit" disabled
+                        aria-label="{% translate 'Send message' %}">
+                    <i class="bi bi-send" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<script src="{% static 'js/support-widget.js' %}" defer></script>

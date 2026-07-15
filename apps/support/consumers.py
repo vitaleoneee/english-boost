@@ -23,7 +23,9 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
             return
 
         self.user_is_moderator = connection_data["is_moderator"]
+        self.user_is_owner = connection_data["is_owner"]
         self.request_status = connection_data["status"]
+        self.request_can_rate = connection_data["can_rate"]
 
         await self.channel_layer.group_add(self.group_name, self.channel_name)
         await self.accept()
@@ -33,6 +35,7 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
                 "request_id": self.request_id,
                 "status": self.request_status,
                 "can_send_messages": self._can_send_messages(self.request_status),
+                "can_rate": self.request_can_rate,
             }
         )
         await self.send_json(
@@ -97,11 +100,15 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
         await self._send_status_changed(self.request_status)
 
     async def _send_status_changed(self, status):
+        self.request_can_rate = (
+            self.user_is_owner and status == SupportRequest.Status.CLOSED
+        )
         await self.send_json(
             {
                 "type": "request.status_changed",
                 "status": status,
                 "can_send_messages": self._can_send_messages(status),
+                "can_rate": self.request_can_rate,
             }
         )
 
@@ -128,14 +135,15 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
             return self._denied_connection(close_code=4401)
 
         try:
-            support_request = SupportRequest.objects.select_related("user").get(
-                pk=self.request_id
-            )
+            support_request = SupportRequest.objects.select_related(
+                "user", "rating"
+            ).get(pk=self.request_id)
         except SupportRequest.DoesNotExist:
             return self._denied_connection(close_code=4404)
 
         user_is_moderator = is_moderator(user)
-        if support_request.user_id != user.pk and not user_is_moderator:
+        user_is_owner = support_request.user_id == user.pk
+        if not user_is_owner and not user_is_moderator:
             return self._denied_connection(close_code=4403)
 
         messages = [
@@ -145,7 +153,13 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
         return {
             "close_code": None,
             "is_moderator": user_is_moderator,
+            "is_owner": user_is_owner,
             "status": support_request.status,
+            "can_rate": (
+                user_is_owner
+                and support_request.status == SupportRequest.Status.CLOSED
+                and not hasattr(support_request, "rating")
+            ),
             "messages": messages,
         }
 
@@ -181,6 +195,8 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
         return {
             "close_code": close_code,
             "is_moderator": False,
+            "is_owner": False,
             "status": None,
+            "can_rate": False,
             "messages": [],
         }
