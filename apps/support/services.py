@@ -60,6 +60,7 @@ def _get_request_for_update(request_id):
 
 @transaction.atomic
 def create_support_request(user, text):
+    from apps.support.realtime import broadcast_support_request_created
     from apps.support.tasks import enqueue_new_support_request_notification
 
     _ensure_authenticated(user)
@@ -74,6 +75,9 @@ def create_support_request(user, text):
     notification = TelegramNotification.objects.create(request=support_request)
     transaction.on_commit(
         partial(enqueue_new_support_request_notification, notification.pk)
+    )
+    transaction.on_commit(
+        partial(broadcast_support_request_created, support_request.pk)
     )
     return support_request
 

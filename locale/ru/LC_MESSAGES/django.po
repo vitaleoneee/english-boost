@@ -1169,3 +1169,36 @@ msgstr "Напишите сообщение..."
 
 msgid "Send message"
 msgstr "Отправить сообщение"
+
+msgid "Support requests"
+msgstr "Обращения в поддержку"
+
+msgid "Moderator support"
+msgstr "Поддержка для модератора"
+
+msgid "Moderator workspace"
+msgstr "Рабочее место модератора"
+
+msgid "Filter requests"
+msgstr "Фильтр обращений"
+
+msgid "There are no requests in this section."
+msgstr "В этом разделе нет обращений."
+
+msgid "Select a request"
+msgstr "Выберите обращение"
+
+msgid "Choose a conversation from the list to start working."
+msgstr "Выберите диалог из списка, чтобы начать работу."
+
+msgid "Back to requests"
+msgstr "Вернуться к обращениям"
+
+msgid "Close request"
+msgstr "Закрыть обращение"
+
+msgid "This conversation is closed."
+msgstr "Этот диалог закрыт."
+
+msgid "Could not send the message."
+msgstr "Не удалось отправить сообщение."

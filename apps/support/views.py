@@ -1,7 +1,10 @@
 import json
 from functools import wraps
 
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from apps.support.exceptions import (
@@ -28,6 +31,18 @@ ERROR_STATUS_CODES = {
     InvalidMessage: 400,
     InvalidRating: 400,
 }
+
+
+@require_GET
+@login_required
+def moderator_dashboard(request):
+    if not is_moderator(request.user):
+        raise PermissionDenied
+    return render(
+        request,
+        "support/moderator_dashboard.html",
+        {"selected": "support"},
+    )
 
 
 def api_login_required(view_func):

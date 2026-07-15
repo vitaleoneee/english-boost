@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% translate "Moderator support" %} | English BOOST{% endblock title %}
+
+{% block extra_css %}
+    <link href="{% static 'css/support-moderator.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
+{% block content %}
+    <main id="support-moderator"
+          class="support-moderator container py-4"
+          data-requests-url="{% url 'support:request-collection' %}"
+          data-queue-websocket-path="/ws/support/moderator/"
+          data-chat-websocket-path="/ws/support/"
+          data-status-waiting="{% translate 'Waiting for moderator' %}"
+          data-status-progress="{% translate 'In progress' %}"
+          data-status-closed="{% translate 'Closed' %}"
+          data-connecting="{% translate 'Connecting...' %}"
+          data-connected="{% translate 'Connected' %}"
+          data-disconnected="{% translate 'Connection lost' %}"
+          data-load-error="{% translate 'Could not load support data.' %}"
+          data-send-error="{% translate 'Could not send the message.' %}">
+        <div class="support-moderator__heading">
+            <div>
+                <span class="support-moderator__eyebrow">{% translate "Moderator workspace" %}</span>
+                <h1>{% translate "Support requests" %}</h1>
+            </div>
+            <span class="support-moderator__queue-connection"></span>
+        </div>
+
+        <div class="support-moderator__layout">
+            <aside class="support-moderator__sidebar">
+                <div class="support-moderator__filters" role="group"
+                     aria-label="{% translate 'Filter requests' %}">
+                    <button type="button" class="active" data-status="">
+                        {% translate "All" %}
+                        <span data-count="all">0</span>
+                    </button>
+                    <button type="button" data-status="waiting_moderator">
+                        {% translate "Waiting" %}
+                        <span data-count="waiting_moderator">0</span>
+                    </button>
+                    <button type="button" data-status="in_progress">
+                        {% translate "In progress" %}
+                        <span data-count="in_progress">0</span>
+                    </button>
+                    <button type="button" data-status="closed">
+                        {% translate "Closed" %}
+                        <span data-count="closed">0</span>
+                    </button>
+                </div>
+
+                <div class="support-moderator__list-status" role="status"></div>
+                <div class="support-moderator__request-list"></div>
+                <div class="support-moderator__empty" hidden>
+                    {% translate "There are no requests in this section." %}
+                </div>
+            </aside>
+
+            <section class="support-moderator__workspace">
+                <div class="support-moderator__placeholder">
+                    <i class="bi bi-chat-square-text" aria-hidden="true"></i>
+                    <h2>{% translate "Select a request" %}</h2>
+                    <p>{% translate "Choose a conversation from the list to start working." %}</p>
+                </div>
+
+                <div class="support-moderator__conversation" hidden>
+                    <header class="support-moderator__conversation-header">
+                        <button class="support-moderator__mobile-back" type="button"
+                                aria-label="{% translate 'Back to requests' %}">
+                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <div>
+                            <h2 class="support-moderator__request-title"></h2>
+                            <span class="support-moderator__username"></span>
+                        </div>
+                        <div class="support-moderator__conversation-actions">
+                            <span class="support-moderator__chat-connection"></span>
+                            <span class="support-moderator__status"></span>
+                            <button class="btn btn-danger btn-sm support-moderator__close-request"
+                                    type="button" hidden>
+                                {% translate "Close request" %}
+                            </button>
+                        </div>
+                    </header>
+
+                    <div class="support-moderator__notice" role="status" hidden></div>
+                    <div class="support-moderator__messages" aria-live="polite"></div>
+
+                    <div class="support-moderator__closed" hidden>
+                        {% translate "This conversation is closed." %}
+                    </div>
+
+                    <form class="support-moderator__message-form">
+                        {% csrf_token %}
+                        <label class="visually-hidden" for="moderator-message">
+                            {% translate "Message" %}
+                        </label>
+                        <textarea id="moderator-message" class="form-control" rows="2"
+                                  maxlength="4000"
+                                  placeholder="{% translate 'Write a message...' %}"
+                                  required></textarea>
+                        <button class="btn btn-primary" type="submit" disabled>
+                            <i class="bi bi-send" aria-hidden="true"></i>
+                            <span>{% translate "Send" %}</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'js/support-moderator.js' %}" defer></script>
+{% endblock extra_js %}

@@ -6,6 +6,7 @@ from channels.generic.websocket import AsyncJsonWebsocketConsumer
 from apps.support.exceptions import SupportServiceError
 from apps.support.models import SupportRequest
 from apps.support.permissions import is_moderator
+from apps.support.realtime import MODERATOR_CHANNEL_GROUP
 from apps.support.services import send_support_message
 
 
@@ -82,6 +83,15 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
                 **result,
             },
         )
+        if result["status_changed"]:
+            await self.channel_layer.group_send(
+                MODERATOR_CHANNEL_GROUP,
+                {
+                    "type": "support.request.status_changed",
+                    "request_id": self.request_id,
+                    "status": result["status"],
+                },
+            )
 
     async def support_message_created(self, event):
         self.request_status = event["status"]
@@ -200,3 +210,47 @@ class SupportConsumer(AsyncJsonWebsocketConsumer):
             "can_rate": False,
             "messages": [],
         }
+
+
+class ModeratorQueueConsumer(AsyncJsonWebsocketConsumer):
+    async def connect(self):
+        user = self.scope["user"]
+        if not user.is_authenticated:
+            await self.close(code=4401)
+            return
+        if not await self._is_moderator(user):
+            await self.close(code=4403)
+            return
+
+        await self.channel_layer.group_add(
+            MODERATOR_CHANNEL_GROUP,
+            self.channel_name,
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            MODERATOR_CHANNEL_GROUP,
+            self.channel_name,
+        )
+
+    async def support_request_created(self, event):
+        await self.send_json(
+            {
+                "type": "request.created",
+                "request_id": event["request_id"],
+            }
+        )
+
+    async def support_request_status_changed(self, event):
+        await self.send_json(
+            {
+                "type": "request.status_changed",
+                "request_id": event["request_id"],
+                "status": event["status"],
+            }
+        )
+
+    @database_sync_to_async
+    def _is_moderator(self, user):
+        return is_moderator(user)

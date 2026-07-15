@@ -14,6 +14,7 @@ urlpatterns = [
     path("progress/statistics/", include("apps.statistics.urls"), name="statistics"),
     # Support API routes
     path("support/api/", include("apps.support.urls")),
+    path("support/", include("apps.support.page_urls")),
     # Auth route
     path("accounts/signup/", account_views.signup, name="account_signup"),
     path("accounts/login/", account_views.login, name="account_login"),

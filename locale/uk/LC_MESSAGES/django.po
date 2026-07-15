@@ -884,3 +884,36 @@ msgstr "Напишіть повідомлення..."
 
 msgid "Send message"
 msgstr "Надіслати повідомлення"
+
+msgid "Support requests"
+msgstr "Звернення до підтримки"
+
+msgid "Moderator support"
+msgstr "Підтримка для модератора"
+
+msgid "Moderator workspace"
+msgstr "Робоче місце модератора"
+
+msgid "Filter requests"
+msgstr "Фільтр звернень"
+
+msgid "There are no requests in this section."
+msgstr "У цьому розділі немає звернень."
+
+msgid "Select a request"
+msgstr "Виберіть звернення"
+
+msgid "Choose a conversation from the list to start working."
+msgstr "Виберіть діалог зі списку, щоб розпочати роботу."
+
+msgid "Back to requests"
+msgstr "Повернутися до звернень"
+
+msgid "Close request"
+msgstr "Закрити звернення"
+
+msgid "This conversation is closed."
+msgstr "Цей діалог закрито."
+
+msgid "Could not send the message."
+msgstr "Не вдалося надіслати повідомлення."

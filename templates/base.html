@@ -88,6 +88,14 @@
                     <a class="nav-link {% if selected == 'statistics' %}active{% endif %}"
                        href="{% url 'statistics:statistics' %}">{% translate "Statistics" %}</a>
                 </li>
+                {% if support_is_moderator %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if selected == 'support' %}active{% endif %}"
+                           href="{% url 'support_pages:moderator-dashboard' %}">
+                            {% translate "Support" %}
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
 
             <div class="navbar-actions d-flex justify-content-center align-items-center gap-3 mt-1 mt-lg-0">
@@ -136,7 +144,7 @@
     </div>
 </footer>
 
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and not support_is_moderator %}
     {% include "support/widget.html" %}
 {% endif %}
 
