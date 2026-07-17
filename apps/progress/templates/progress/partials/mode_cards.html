@@ -1,0 +1,59 @@
+{% load i18n %}
+
+<div class="srs-heading">
+    <div>
+        <span class="section-eyebrow">{% trans "Training" %}</span>
+        <h2>{% trans "Learning modes" %}</h2>
+    </div>
+</div>
+
+<div class="srs-mode-grid">
+    {% for mode in mode_cards %}
+        <article class="srs-mode-card {% if not mode.enabled %}is-disabled{% endif %}">
+            <div class="srs-mode-icon" aria-hidden="true">
+                <i class="bi {{ mode.icon }}"></i>
+            </div>
+            <div class="srs-mode-body">
+                <h3>{{ mode.label }}</h3>
+                <p>{{ mode.description }}</p>
+                <div class="srs-mode-status">
+                    {% if mode.state == "active" %}
+                        <span class="badge text-bg-warning">{% trans "Session in progress" %}</span>
+                    {% elif mode.state == "completed" %}
+                        <span class="badge text-bg-success">{% trans "Mode completed" %}</span>
+                    {% elif mode.state == "ready" %}
+                        <span class="badge text-bg-primary">
+                            {% blocktrans count counter=mode.count %}{{ counter }} card available
+                                {% plural %}{{ counter }} cards available{% endblocktrans %}
+                        </span>
+                    {% else %}
+                        <span class="badge text-bg-secondary">{% trans "Unavailable" %}</span>
+                    {% endif %}
+                </div>
+                <small class="text-body-secondary">{{ mode.explanation }}</small>
+            </div>
+            <div class="srs-mode-action">
+                {% if mode.enabled %}
+                    <form method="post" action="{% url 'progress:start_learning' mode.mode %}">
+                        {% csrf_token %}
+                        <button class="btn btn-primary w-100" type="submit">
+                            {% if mode.state == "active" %}
+                                {% trans "Continue" %}
+                            {% else %}
+                                {% trans "Start learning" %}
+                            {% endif %}
+                        </button>
+                    </form>
+                {% else %}
+                    <button class="btn btn-outline-secondary w-100" type="button" disabled>
+                        {% if mode.state == "completed" %}
+                            {% trans "Completed" %}
+                        {% else %}
+                            {% trans "Not available yet" %}
+                        {% endif %}
+                    </button>
+                {% endif %}
+            </div>
+        </article>
+    {% endfor %}
+</div>

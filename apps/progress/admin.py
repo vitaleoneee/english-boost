@@ -1,22 +1,40 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
 
-from apps.dictionary.models import Word
-from apps.progress.models import UserSRS, Achievement, UserAchievement
+from apps.progress.models import (
+    Achievement,
+    StudySession,
+    StudySessionCard,
+    UserAchievement,
+    UserWordModeProgress,
+)
 
 
-@admin.register(UserSRS)
-class UserSRSAdmin(ModelAdmin):
+@admin.register(UserWordModeProgress)
+class UserWordModeProgressAdmin(ModelAdmin):
     search_fields = ("user__username", "word__english_name")
-    list_filter = ("interval",)
-    compressed_fields = True
-    warn_unsaved_form = True
-    list_display = ("user", "word", "interval", "access_timer")
+    list_filter = ("mode", "completed", "interval")
+    list_display = (
+        "user",
+        "word",
+        "mode",
+        "interval",
+        "next_review_at",
+        "completed",
+    )
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "word":
-            kwargs["queryset"] = Word.objects.filter(status="PROCESS")
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+@admin.register(StudySession)
+class StudySessionAdmin(ModelAdmin):
+    search_fields = ("user__username",)
+    list_filter = ("mode", "status")
+    list_display = ("user", "mode", "status", "started_at", "finished_at")
+
+
+@admin.register(StudySessionCard)
+class StudySessionCardAdmin(ModelAdmin):
+    list_filter = ("status", "is_correct")
+    list_display = ("session", "position", "progress", "status", "is_correct")
 
 
 @admin.register(Achievement)

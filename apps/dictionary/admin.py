@@ -11,7 +11,7 @@ from unfold.contrib.forms.widgets import WysiwygWidget
 
 from apps.dictionary.choices import StudyStatus
 from apps.dictionary.models import Topic, Word
-from apps.progress.models import UserSRS
+from apps.progress.services.session_service import create_progress_for_word
 
 
 @admin.register(Topic)
@@ -48,6 +48,11 @@ class WordAdmin(ModelAdmin):
     @admin.display(description=_("Topics"))
     def display_topics(self, obj):
         return ", ".join(obj.topics.values_list("name", flat=True)) or "—"
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        if not change:
+            create_progress_for_word(obj)
 
     def get_urls(self):
         urls = super().get_urls()
@@ -88,7 +93,7 @@ class WordAdmin(ModelAdmin):
             )
             word.save()
             word.topics.add(topic)
-            UserSRS.objects.get_or_create(user=request.user, word=word)
+            create_progress_for_word(word)
             created_count += 1
 
         messages.success(

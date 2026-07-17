@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -23,7 +23,7 @@ from apps.dictionary.forms import NewDictionaryWordForm
 from apps.dictionary.models import Topic, Word
 from apps.dictionary.tables.dictionary import DictionaryTable
 from apps.progress.achievements import AchievementChecker
-from apps.progress.models import UserSRS
+from apps.progress.services.session_service import create_progress_for_word
 from redis_service import r
 
 DICTIONARY_PAGE_SIZE = 20
@@ -136,7 +136,10 @@ class NewDictionaryWordView(LoginRequiredMixin, CreateView):
         word.user = self.request.user
 
         try:
-            word.save()
+            with transaction.atomic():
+                word.save()
+                form.save_m2m()
+                create_progress_for_word(word)
         except IntegrityError:
             messages.error(
                 self.request,
@@ -144,10 +147,6 @@ class NewDictionaryWordView(LoginRequiredMixin, CreateView):
             )
             return self.form_invalid(form)
 
-        form.save_m2m()
-
-        if word.status == StudyStatus.PROCESS:
-            UserSRS.objects.create(word=word, user=self.request.user)
         messages.info(self.request, _("Added a new word"))
 
         return redirect(self.success_url)

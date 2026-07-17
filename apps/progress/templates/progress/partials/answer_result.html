@@ -1,0 +1,56 @@
+{% load i18n %}
+
+<section class="srs-study-shell">
+    <div class="srs-study-topbar">
+        <div>
+            <span class="section-eyebrow">{{ mode_label }}</span>
+            <h2>{% trans "Answer result" %}</h2>
+        </div>
+        <span class="srs-progress-badge">
+            {% blocktrans with answered=counts.answered total=counts.total %}Answered {{ answered }} of {{ total }}{% endblocktrans %}
+        </span>
+    </div>
+
+    <div class="srs-result-card {% if result.is_correct %}is-correct{% else %}is-incorrect{% endif %}">
+        <div class="srs-result-title">
+            {% if result.is_correct %}
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                {% trans "Correct" %}
+            {% else %}
+                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                {% trans "Incorrect" %}
+            {% endif %}
+        </div>
+
+        <dl class="srs-result-details">
+            <div><dt>{% trans "Your answer" %}</dt><dd>{{ result.user_answer }}</dd></div>
+            <div><dt>{% trans "Correct answer" %}</dt><dd>{{ result.correct_answer }}</dd></div>
+            <div><dt>{% trans "Previous interval" %}</dt><dd>{{ result.interval_before }} {% trans "day(s)" %}</dd></div>
+            <div><dt>{% trans "New interval" %}</dt><dd>{{ result.interval_after }} {% trans "day(s)" %}</dd></div>
+            <div><dt>{% trans "Ease factor" %}</dt><dd>{{ result.ease_factor_before|floatformat:1 }} → {{ result.ease_factor_after|floatformat:1 }}</dd></div>
+            <div>
+                <dt>{% trans "Next review" %}</dt>
+                <dd>
+                    {% if result.mode_completed %}
+                        {% trans "Mode completed" %}
+                    {% else %}
+                        {{ result.next_review_at|date:"d.m.Y H:i" }}
+                    {% endif %}
+                </dd>
+            </div>
+        </dl>
+
+        <button class="btn btn-primary btn-lg"
+                type="button"
+                hx-get="{% url 'progress:next_card' session.id %}"
+                hx-target="#session-content"
+                hx-swap="innerHTML">
+            {% if result.session_completed %}
+                {% trans "View session summary" %}
+            {% else %}
+                {% trans "Next word" %}
+            {% endif %}
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </button>
+    </div>
+</section>

@@ -1273,6 +1273,245 @@
     margin: 0;
 }
 
+.srs-mode-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.srs-mode-card {
+    background: #fff;
+    border: 1px solid #d8dee6;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    padding: 1.5rem;
+}
+
+.srs-mode-card.is-disabled {
+    background: #f8fafc;
+    box-shadow: none;
+}
+
+.srs-mode-icon {
+    align-items: center;
+    background: #e8f0fe;
+    border-radius: 12px;
+    color: #0d6efd;
+    display: flex;
+    font-size: 1.5rem;
+    height: 3rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 3rem;
+}
+
+.srs-mode-body {
+    flex: 1;
+}
+
+.srs-mode-body h3 {
+    font-size: 1.25rem;
+    font-weight: 750;
+}
+
+.srs-mode-body p {
+    color: #64748b;
+}
+
+.srs-mode-status {
+    margin: 1rem 0 0.4rem;
+}
+
+.srs-mode-action {
+    margin-top: 1.25rem;
+}
+
+.srs-session-hero {
+    padding: 2.25rem 0;
+}
+
+.srs-session-hero h1 {
+    font-size: 2.35rem;
+}
+
+.srs-study-shell {
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.srs-study-topbar {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.srs-study-topbar h2 {
+    font-size: 1.75rem;
+    font-weight: 750;
+    margin: 0;
+}
+
+.srs-progress-badge {
+    background: #e9ecef;
+    border-radius: 999px;
+    color: #495057;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 0.8rem;
+}
+
+.srs-study-card,
+.srs-result-card {
+    background: #fff;
+    border: 1px solid #d8dee6;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    padding: 2rem;
+}
+
+.srs-study-prompt {
+    color: #111827;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    margin: 1rem 0 2rem;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.srs-audio-button {
+    display: flex;
+    font-size: 1.05rem;
+    gap: 0.55rem;
+    justify-content: center;
+    margin: 1.5rem auto 2rem;
+    padding: 0.8rem 1.2rem;
+}
+
+.srs-answer-form {
+    align-items: start;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr auto;
+}
+
+.srs-result-card.is-correct {
+    border-top: 5px solid #198754;
+}
+
+.srs-result-card.is-incorrect {
+    border-top: 5px solid #dc3545;
+}
+
+.srs-result-title {
+    align-items: center;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 800;
+    gap: 0.55rem;
+    margin-bottom: 1.5rem;
+}
+
+.is-correct .srs-result-title {
+    color: #198754;
+}
+
+.is-incorrect .srs-result-title {
+    color: #dc3545;
+}
+
+.srs-result-details {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+}
+
+.srs-result-details > div {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 0.75rem;
+}
+
+.srs-result-details dt {
+    color: #64748b;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.srs-result-details dd {
+    font-weight: 700;
+    margin: 0.2rem 0 0;
+    overflow-wrap: anywhere;
+}
+
+.srs-session-summary {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.srs-session-summary div {
+    background: #fff;
+    border: 1px solid #d8dee6;
+    border-radius: 12px;
+    min-width: 7rem;
+    padding: 0.8rem;
+}
+
+.srs-session-summary strong,
+.srs-session-summary span {
+    display: block;
+}
+
+.srs-session-summary strong {
+    font-size: 1.5rem;
+}
+
+.srs-session-summary span {
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+    .srs-mode-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .srs-mode-card {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .srs-study-topbar,
+    .srs-answer-form {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+    }
+
+    .srs-study-topbar {
+        display: grid;
+        gap: 0.75rem;
+    }
+
+    .srs-progress-badge {
+        justify-self: start;
+    }
+
+    .srs-result-details {
+        grid-template-columns: 1fr;
+    }
+
+    .srs-session-summary {
+        flex-direction: column;
+    }
+}
+
 
 /* 577px–980px */
 @media (max-width: 992px) and (min-width: 577px) {

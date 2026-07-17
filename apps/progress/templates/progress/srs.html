@@ -1,33 +1,20 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load i18n %}
 
-{% block title %}
-    {% trans "Progress" %}
-{% endblock title %}
-
-{% block toasts %}
-    <div id="srs-toasts"
-         hx-get="{% url 'core:toasts' %}"
-         hx-trigger="srsReviewed from:body"
-         hx-swap="innerHTML"></div>
-{% endblock toasts %}
+{% block title %}{% trans "SRS learning modes" %}{% endblock title %}
 
 {% block content %}
     <header class="srs-hero">
         <div class="container">
             <div class="srs-hero-inner">
                 <span class="srs-kicker">{% trans "Spaced repetition" %}</span>
-                <h1>SRS</h1>
-                <p>
-                    {% blocktrans %}Review words at the right moment, before they fade from memory.{% endblocktrans %}
-                </p>
+                <h1>{% trans "Choose a learning mode" %}</h1>
+                <p>{% trans "Each mode has its own schedule and learning progress." %}</p>
             </div>
         </div>
     </header>
 
-    <div id="srs-content" class="container py-5">
-        {% include "progress/partials/srs_content.html" %}
+    <div class="container py-5">
+        {% include "progress/partials/mode_cards.html" %}
     </div>
-
-    <script src="{% static 'js/pronunciationWord.js' %}"></script>
 {% endblock content %}

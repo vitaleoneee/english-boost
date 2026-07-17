@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<section class="srs-study-shell">
+    <div class="srs-empty srs-session-complete">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+        <h2>{% trans "Session completed" %}</h2>
+        <p>{% trans "Good work. Your next reviews have been scheduled." %}</p>
+
+        <div class="srs-session-summary">
+            <div><strong>{{ counts.total }}</strong><span>{% trans "Answered" %}</span></div>
+            <div><strong>{{ counts.correct }}</strong><span>{% trans "Correct" %}</span></div>
+            <div><strong>{{ counts.incorrect }}</strong><span>{% trans "Incorrect" %}</span></div>
+        </div>
+
+        <a class="btn btn-primary" href="{% url 'progress:srs_technique' %}">
+            {% trans "Choose another mode" %}
+        </a>
+    </div>
+</section>

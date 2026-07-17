@@ -2,9 +2,15 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 
-class WordCheckForm(forms.Form):
-    translate_input = forms.CharField(
+class AnswerForm(forms.Form):
+    answer = forms.CharField(
+        label="",
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": _("Enter translation")}
-        )
+            attrs={
+                "class": "form-control form-control-lg",
+                "placeholder": _("Type your answer"),
+                "autocomplete": "off",
+                "autofocus": True,
+            }
+        ),
     )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-10 09:27+0300\n"
+"POT-Creation-Date: 2026-07-15 16:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: .\apps\core\forms.py:8 .\apps\core\templates\core\index.html:132
 msgid "Full name"
 msgstr "Полное имя"
 
 #: .\apps\core\forms.py:27 .\apps\core\templates\core\index.html:140
+#: .\apps\support\templates\support\moderator_dashboard.html:98
+#: .\apps\support\templates\support\widget.html:110
 msgid "Message"
 msgstr "Сообщение"
 
@@ -45,12 +45,8 @@ msgid "English BOOST"
 msgstr "English BOOST"
 
 #: .\apps\core\templates\core\index.html:16
-msgid ""
-"Build your vocabulary, review words at the right moment, and keep learning "
-"visible with achievements."
-msgstr ""
-"Пополняйте словарь, повторяйте слова в нужный момент и следите за прогрессом "
-"через достижения."
+msgid "Build your vocabulary, review words at the right moment, and keep learning visible with achievements."
+msgstr "Пополняйте словарь, повторяйте слова в нужный момент и следите за прогрессом через достижения."
 
 #: .\apps\core\templates\core\index.html:21
 #: .\apps\dictionary\templates\dictionary\dictionary_list.html:34
@@ -59,7 +55,7 @@ msgstr ""
 msgid "Add word"
 msgstr "Добавить слово"
 
-#: .\apps\core\templates\core\index.html:25 .\apps\statistics\services.py:95
+#: .\apps\core\templates\core\index.html:25 .\apps\statistics\services.py:109
 msgid "Start review"
 msgstr "Начать повторение"
 
@@ -72,6 +68,7 @@ msgid "Today"
 msgstr "Сегодня"
 
 #: .\apps\core\templates\core\index.html:36
+#: .\apps\progress\templates\progress\partials\answer_result.html:51
 msgid "Next word"
 msgstr "Следующее слово"
 
@@ -79,7 +76,8 @@ msgstr "Следующее слово"
 msgid "confidence translation"
 msgstr "уверенность"
 
-#: .\apps\core\templates\core\index.html:46 .\apps\dictionary\models.py:50
+#: .\apps\core\templates\core\index.html:46 .\apps\dictionary\admin.py:28
+#: .\apps\dictionary\models.py:74
 msgid "Words"
 msgstr "Слова"
 
@@ -101,52 +99,40 @@ msgstr "Всё работает как единый цикл"
 
 #: .\apps\core\templates\core\index.html:73
 #: .\apps\dictionary\templates\dictionary\dictionary_list.html:5
-#: .\templates\base.html:72
+#: .\templates\base.html:76
 msgid "Dictionary"
 msgstr "Словарь"
 
 #: .\apps\core\templates\core\index.html:75
-msgid ""
-"Add words, keep translations close, and play pronunciation without leaving "
-"your vocabulary list."
-msgstr ""
-"Добавляйте слова, держите переводы рядом и запускайте произношение прямо из "
-"словаря."
+msgid "Add words, keep translations close, and play pronunciation without leaving your vocabulary list."
+msgstr "Добавляйте слова, держите переводы рядом и запускайте произношение прямо из словаря."
 
-#: .\apps\core\templates\core\index.html:78 .\apps\statistics\services.py:113
+#: .\apps\core\templates\core\index.html:78 .\apps\statistics\services.py:127
 msgid "Open dictionary"
 msgstr "Открыть словарь"
 
 #: .\apps\core\templates\core\index.html:87
-#: .\apps\progress\templates\progress\srs.html:12
+#: .\apps\progress\templates\progress\srs.html:10
 msgid "Spaced repetition"
 msgstr "Интервальные повторения"
 
 #: .\apps\core\templates\core\index.html:89
-msgid ""
-"Review only the words that are ready now and let the intervals grow with "
-"your memory."
-msgstr ""
-"Повторяйте только слова, которые уже доступны, а интервалы будут расти "
-"вместе с вашей памятью."
+msgid "Review only the words that are ready now and let the intervals grow with your memory."
+msgstr "Повторяйте только слова, которые уже доступны, а интервалы будут расти вместе с вашей памятью."
 
 #: .\apps\core\templates\core\index.html:92
 msgid "Review words"
 msgstr "Повторять слова"
 
-#: .\apps\core\templates\core\index.html:101 .\apps\progress\models.py:105
+#: .\apps\core\templates\core\index.html:101 .\apps\progress\models.py:177
 #: .\apps\progress\templates\progress\achievements.html:9
-#: .\templates\account\login.html:25 .\templates\base.html:77
+#: .\templates\account\login.html:25 .\templates\base.html:81
 msgid "Achievements"
 msgstr "Достижения"
 
 #: .\apps\core\templates\core\index.html:103
-msgid ""
-"See milestones, streak goals, hidden challenges, and the progress you have "
-"already earned."
-msgstr ""
-"Смотрите этапы, цели по сериям, скрытые испытания и уже заработанный "
-"прогресс."
+msgid "See milestones, streak goals, hidden challenges, and the progress you have already earned."
+msgstr "Смотрите этапы, цели по сериям, скрытые испытания и уже заработанный прогресс."
 
 #: .\apps\core\templates\core\index.html:106
 msgid "View achievements"
@@ -165,6 +151,7 @@ msgid "We really need it"
 msgstr "Нам это очень важно"
 
 #: .\apps\core\templates\core\index.html:145
+#: .\apps\support\templates\support\moderator_dashboard.html:106
 msgid "Send"
 msgstr "Отправить"
 
@@ -186,65 +173,181 @@ msgstr "Форма не может быть отправлена. Повтори
 msgid "Form sent successfully!"
 msgstr "Форма успешно отправлена!"
 
-#: .\apps\dictionary\admin.py:51
+#: .\apps\dictionary\admin.py:48 .\apps\dictionary\models.py:25
+#: .\apps\dictionary\models.py:35 .\apps\dictionary\tables\dictionary.py:50
+msgid "Topics"
+msgstr "Темы"
+
+#: .\apps\dictionary\admin.py:79
 msgid "Test words"
 msgstr "Тестовые слова"
 
-#: .\apps\dictionary\admin.py:52
+#: .\apps\dictionary\admin.py:80
 msgid "Words generated from the admin panel."
 msgstr "Слова, созданные из админ-панели."
 
-#: .\apps\dictionary\admin.py:71
+#: .\apps\dictionary\admin.py:101
 #, python-format
 msgid "Created test words: %(count)s"
 msgstr "Создано тестовых слов: %(count)s"
 
-#: .\apps\dictionary\models.py:8 .\apps\progress\models.py:99
-msgid "Name"
-msgstr "Название"
-
-#: .\apps\dictionary\models.py:9 .\apps\progress\models.py:100
-msgid "Description"
-msgstr "Описание"
-
-#: .\apps\dictionary\models.py:14 .\apps\dictionary\models.py:29
-msgid "Category"
-msgstr "Категория"
-
-#: .\apps\dictionary\models.py:15
-msgid "Categories"
-msgstr "Категории"
-
-#: .\apps\dictionary\models.py:25 .\apps\dictionary\tables\dictionary.py:107
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:82
+#: .\apps\dictionary\choices.py:6 .\apps\dictionary\tables\dictionary.py:127
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:83
 msgid "Learned"
 msgstr "Изучено"
 
-#: .\apps\dictionary\models.py:26 .\apps\dictionary\tables\dictionary.py:110
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:75
-#: .\apps\statistics\templates\statistics\statistics.html:51
+#: .\apps\dictionary\choices.py:7 .\apps\dictionary\tables\dictionary.py:130
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:76
+#: .\apps\statistics\templates\statistics\statistics.html:127
+#: .\apps\support\models.py:10
+#: .\apps\support\templates\support\moderator_dashboard.html:17
+#: .\apps\support\templates\support\moderator_dashboard.html:45
+#: .\apps\support\templates\support\widget.html:8
 msgid "In progress"
 msgstr "В процессе"
 
-#: .\apps\dictionary\models.py:31 .\apps\dictionary\tables\dictionary.py:35
+#: .\apps\dictionary\choices.py:11
+msgid "Noun"
+msgstr "Существительное"
+
+#: .\apps\dictionary\choices.py:12
+msgid "Verb"
+msgstr "Глагол"
+
+#: .\apps\dictionary\choices.py:13
+msgid "Adjective"
+msgstr "Прилагательное"
+
+#: .\apps\dictionary\choices.py:14
+msgid "Adverb"
+msgstr "Наречие"
+
+#: .\apps\dictionary\choices.py:15
+msgid "Pronoun"
+msgstr "Местоимение"
+
+#: .\apps\dictionary\choices.py:16
+msgid "Preposition"
+msgstr "Предлог"
+
+#: .\apps\dictionary\choices.py:17
+msgid "Conjunction"
+msgstr "Союз"
+
+#: .\apps\dictionary\choices.py:18
+msgid "Determiner"
+msgstr "Определитель"
+
+#: .\apps\dictionary\choices.py:19
+msgid "Interjection"
+msgstr "Междометие"
+
+#: .\apps\dictionary\choices.py:20
+msgid "Numeral"
+msgstr "Числительное"
+
+#: .\apps\dictionary\choices.py:21
+msgid "Phrase"
+msgstr "Фраза"
+
+#: .\apps\dictionary\choices.py:22
+msgid "Other"
+msgstr "Другое"
+
+#: .\apps\dictionary\choices.py:35
+msgid "Neutral"
+msgstr "Нейтральный"
+
+#: .\apps\dictionary\choices.py:36
+msgid "Formal"
+msgstr "Формальный"
+
+#: .\apps\dictionary\choices.py:37
+msgid "Informal"
+msgstr "Неформальный"
+
+#: .\apps\dictionary\choices.py:38
+msgid "Slang"
+msgstr "Сленг"
+
+#: .\apps\dictionary\choices.py:39
+msgid "Technical"
+msgstr "Технический"
+
+#: .\apps\dictionary\choices.py:40
+msgid "Literary"
+msgstr "Литературный"
+
+#: .\apps\dictionary\choices.py:41
+msgid "Old-fashioned"
+msgstr "Устаревший"
+
+#: .\apps\dictionary\forms.py:17
+msgid "Required"
+msgstr "Обязательно"
+
+#: .\apps\dictionary\models.py:15
+msgid "Code"
+msgstr ""
+
+#: .\apps\dictionary\models.py:16 .\apps\progress\models.py:165
+msgid "Name"
+msgstr "Название"
+
+#: .\apps\dictionary\models.py:17 .\apps\progress\models.py:166
+msgid "Description"
+msgstr "Описание"
+
+#: .\apps\dictionary\models.py:18 .\apps\progress\models.py:83
+#, fuzzy
+#| msgid "Adjective"
+msgid "Active"
+msgstr "Прилагательное"
+
+#: .\apps\dictionary\models.py:19
+msgid "System topic"
+msgstr ""
+
+#: .\apps\dictionary\models.py:24
+#, fuzzy
+#| msgid "Topics"
+msgid "Topic"
+msgstr "Темы"
+
+#: .\apps\dictionary\models.py:37 .\apps\dictionary\tables\dictionary.py:35
+#: .\apps\progress\templates\progress\partials\study_card.html:25
 msgid "English word"
 msgstr "Слово на английском"
 
-#: .\apps\dictionary\models.py:32
+#: .\apps\dictionary\models.py:38
 msgid "Russian word"
 msgstr "Слово на русском"
 
-#: .\apps\dictionary\models.py:38 .\apps\dictionary\tables\dictionary.py:60
+#: .\apps\dictionary\models.py:43
+msgid "Part of speech"
+msgstr "Часть речи"
+
+#: .\apps\dictionary\models.py:49
+msgid "Language level"
+msgstr "Уровень языка"
+
+#: .\apps\dictionary\models.py:55
+msgid "Usage register"
+msgstr "Стиль употребления"
+
+#: .\apps\dictionary\models.py:62 .\apps\dictionary\tables\dictionary.py:69
+#: .\apps\progress\models.py:100 .\apps\support\models.py:24
+#: .\apps\support\models.py:129
 msgid "Status"
 msgstr "Статус"
 
-#: .\apps\dictionary\models.py:44 .\apps\progress\models.py:113
+#: .\apps\dictionary\models.py:68 .\apps\progress\models.py:185
+#: .\apps\support\models.py:17
 msgid "User"
 msgstr "Пользователь"
 
-#: .\apps\dictionary\models.py:49
-#: .\apps\progress\templates\progress\srs.html:75
-#: .\apps\statistics\templates\statistics\statistics.html:49
+#: .\apps\dictionary\models.py:73
+#: .\apps\statistics\templates\statistics\statistics.html:90
 msgid "Word"
 msgstr "Слово"
 
@@ -252,8 +355,8 @@ msgstr "Слово"
 msgid "Translation"
 msgstr "Перевод"
 
-#: .\apps\dictionary\tables\dictionary.py:50
-#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:33
+#: .\apps\dictionary\tables\dictionary.py:59
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:49
 msgid "Pronunciation"
 msgstr "Произношение"
 
@@ -271,27 +374,50 @@ msgstr "Ваш словарь"
 msgid "Delete selected"
 msgstr "Удалить выбранные"
 
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:47
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:48
 msgid "Search by word or translation"
 msgstr "Поиск по слову или переводу"
 
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:57
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:58
 msgid "Searching"
 msgstr "Поиск"
 
-#: .\apps\dictionary\templates\dictionary\dictionary_list.html:68
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:69
+#: .\apps\support\templates\support\moderator_dashboard.html:37
 msgid "All"
 msgstr ""
+
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:99
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:102
+msgid "All topics"
+msgstr "Все темы"
+
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:100
+msgid "Selected"
+msgstr "Выбрано"
+
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:124
+msgid "All parts of speech"
+msgstr "Все части речи"
+
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:135
+msgid "All levels"
+msgstr "Все уровни"
+
+#: .\apps\dictionary\templates\dictionary\dictionary_list.html:146
+msgid "All usage registers"
+msgstr "Все стили употребления"
 
 #: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:11
 msgid "Add a new word to the dictionary"
 msgstr "Добавить новое слово в словарь"
 
 #: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:22
-msgid "Save the word, translation, category, and learning status."
-msgstr "Сохраните слово, перевод, категорию и статус изучения."
+msgid "Save the word, translation, topics, and learning details."
+msgstr "Сохраните слово, перевод, темы и параметры изучения."
 
 #: .\apps\dictionary\templates\dictionary\new_dictionary_word.html:33
+#: .\apps\support\templates\support\widget.html:32
 msgid "Back"
 msgstr "Назад"
 
@@ -299,62 +425,62 @@ msgstr "Назад"
 msgid "Add"
 msgstr "Добавить"
 
-#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:25
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:27
 msgid "Translation:"
 msgstr "Перевод:"
 
-#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:48
-msgid "Nothing found"
-msgstr "Ничего не найдено"
-
-#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:49
-#, fuzzy
-#| msgid "Save the word, translation, category, and learning status."
-msgid "Try another word, translation, or status."
-msgstr "Попробуйте изменить слово, перевод или статус."
-
-#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:51
-msgid "No words yet"
-msgstr "Пока нет слов"
-
-#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:52
-msgid "Add your first word and it will appear here."
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:62
+msgid "Table navigation"
 msgstr ""
 
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:68
 #: .\apps\dictionary\templates\django_tables2\dictionary_bootstrap5.html:8
 msgid "Previous page"
 msgstr ""
 
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:85
 #: .\apps\dictionary\templates\django_tables2\dictionary_bootstrap5.html:18
 #, fuzzy
 #| msgid "Next review"
 msgid "Next page"
 msgstr "Следующее повторение"
 
-#: .\apps\dictionary\views.py:99
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:96
+msgid "Nothing found"
+msgstr "Ничего не найдено"
+
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:97
+msgid "Try changing your search or filters."
+msgstr "Измените поисковый запрос или фильтры."
+
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:99
+msgid "No words yet"
+msgstr "Пока нет слов"
+
+#: .\apps\dictionary\templates\dictionary\partials\dictionary_table.html:100
+msgid "Add your first word and it will appear here."
+msgstr ""
+
+#: .\apps\dictionary\views.py:143
 msgid "A word with this English and Russian translation already exists."
 msgstr "Слово с таким английским и русским переводом уже существует."
 
-#: .\apps\dictionary\views.py:105
+#: .\apps\dictionary\views.py:150
 msgid "Added a new word"
 msgstr "Добавлено новое слово"
 
-#: .\apps\dictionary\views.py:138
+#: .\apps\dictionary\views.py:183
 #, python-format
 msgid "Deleted words: %(count)s"
 msgstr "Удалено слов: %(count)s"
 
-#: .\apps\dictionary\views.py:141
+#: .\apps\dictionary\views.py:186
 msgid "You have not selected any words."
 msgstr "Вы не выбрали ни одного слова."
 
 #: .\apps\progress\achievements.py:27
-msgid ""
-"An error occurred while awarding the achievement. Please contact the "
-"developer through the website's homepage."
-msgstr ""
-"Произошла ошибка при выдаче достижения. Пожалуйста, свяжитесь с "
-"разработчиком через главную страницу сайта."
+msgid "An error occurred while awarding the achievement. Please contact the developer through the website's homepage."
+msgstr "Произошла ошибка при выдаче достижения. Пожалуйста, свяжитесь с разработчиком через главную страницу сайта."
 
 #: .\apps\progress\achievements.py:55
 msgid "The Cleaner"
@@ -436,59 +562,145 @@ msgstr "Вы изучили новое слово — {}!"
 msgid "Incorrect. The word \"{}\" has been reset."
 msgstr "Неверно. Слово «{}» начато заново."
 
-#: .\apps\progress\forms.py:8
-#, fuzzy
-#| msgid "Translation:"
-msgid "Enter translation"
-msgstr "Введите перевод"
+#: .\apps\progress\forms.py:11
+msgid "Type your answer"
+msgstr "Введите ответ"
 
-#: .\apps\progress\models.py:26
+#: .\apps\progress\models.py:24 .\apps\progress\models.py:94
+msgid "Learning mode"
+msgstr "Режим обучения"
+
+#: .\apps\progress\models.py:27
 msgid "Interval in days"
 msgstr "Интервал в днях"
 
-#: .\apps\progress\models.py:30
+#: .\apps\progress\models.py:31
 msgid "Successful repetitions in a row"
 msgstr "Успешных повторений подряд"
 
-#: .\apps\progress\models.py:34
+#: .\apps\progress\models.py:35
+#: .\apps\progress\templates\progress\partials\answer_result.html:30
 msgid "Ease factor"
 msgstr "Коэффициент лёгкости"
 
-#: .\apps\progress\models.py:38
+#: .\apps\progress\models.py:39
+#: .\apps\progress\templates\progress\partials\answer_result.html:32
 msgid "Next review"
 msgstr "Следующее повторение"
 
-#: .\apps\progress\models.py:44
-msgid "SRS object"
-msgstr "SRS объект"
+#: .\apps\progress\models.py:44 .\apps\progress\models.py:84
+#: .\apps\progress\templates\progress\partials\mode_cards.html:49
+msgid "Completed"
+msgstr "Завершено"
 
-#: .\apps\progress\models.py:45
-msgid "SRS objects"
-msgstr "SRS объекты"
+#: .\apps\progress\models.py:48
+msgid "Completed at"
+msgstr "Завершено в"
 
-#: .\apps\progress\models.py:101
+#: .\apps\progress\models.py:54
+msgid "Word mode progress"
+msgstr "Прогресс слова в режиме"
+
+#: .\apps\progress\models.py:55
+msgid "Word mode progress records"
+msgstr "Прогресс слов по режимам"
+
+#: .\apps\progress\models.py:107
+msgid "Study session"
+msgstr "Учебная сессия"
+
+#: .\apps\progress\models.py:108
+msgid "Study sessions"
+msgstr "Учебные сессии"
+
+#: .\apps\progress\models.py:123 .\apps\support\models.py:114
+msgid "Pending"
+msgstr "Ожидает"
+
+#: .\apps\progress\models.py:124
+#: .\apps\progress\templates\progress\partials\session_completed.html:10
+msgid "Answered"
+msgstr "Отвечено"
+
+#: .\apps\progress\models.py:147
+msgid "Study session card"
+msgstr "Карточка учебной сессии"
+
+#: .\apps\progress\models.py:148
+msgid "Study session cards"
+msgstr "Карточки учебной сессии"
+
+#: .\apps\progress\models.py:167
 msgid "Secret achievement"
 msgstr "Секретность достижения"
 
-#: .\apps\progress\models.py:104 .\apps\progress\models.py:116
+#: .\apps\progress\models.py:171
+msgid "Icon"
+msgstr ""
+
+#: .\apps\progress\models.py:172
+msgid "Bootstrap Icons class, for example: bi-book-fill"
+msgstr ""
+
+#: .\apps\progress\models.py:176 .\apps\progress\models.py:188
 msgid "Achievement"
 msgstr "Достижение"
 
-#: .\apps\progress\models.py:119
+#: .\apps\progress\models.py:191
 msgid "Award date and time"
 msgstr "Дата и время получения"
 
-#: .\apps\progress\models.py:124
+#: .\apps\progress\models.py:196
 msgid "User achievement"
 msgstr "Достижение пользователя"
 
-#: .\apps\progress\models.py:125
+#: .\apps\progress\models.py:197
 msgid "User achievements"
 msgstr "Достижения пользователя"
 
-#: .\apps\progress\services\srs_handlers.py:38
-msgid "Incorrect form"
-msgstr "Некорректная форма"
+#: .\apps\progress\services\modes.py:6
+msgid "English → Russian"
+msgstr "Английский → Русский"
+
+#: .\apps\progress\services\modes.py:7
+msgid "Russian → English"
+msgstr "Русский → Английский"
+
+#: .\apps\progress\services\modes.py:8
+msgid "Audio → English"
+msgstr "Аудирование → Английский"
+
+#: .\apps\progress\services\modes.py:13
+msgid "See an English word and type its Russian translation."
+msgstr "Посмотрите английское слово и введите его русский перевод."
+
+#: .\apps\progress\services\modes.py:17
+msgid "See a Russian translation and type the English word."
+msgstr "Посмотрите русский перевод и введите английское слово."
+
+#: .\apps\progress\services\modes.py:21
+msgid "Listen to the pronunciation and type the English word."
+msgstr "Прослушайте произношение и введите английское слово."
+
+#: .\apps\progress\services\session_service.py:114
+msgid "An unfinished session is waiting for you."
+msgstr "Вас ждёт незавершённая сессия."
+
+#: .\apps\progress\services\session_service.py:119
+msgid "Mode completed."
+msgstr "Режим пройден."
+
+#: .\apps\progress\services\session_service.py:124
+msgid "Cards are ready for review."
+msgstr "Карточки готовы к повторению."
+
+#: .\apps\progress\services\session_service.py:129
+msgid "No cards are due yet."
+msgstr "Время повторения ещё не наступило."
+
+#: .\apps\progress\services\session_service.py:134
+msgid "Add words to your dictionary first."
+msgstr "Сначала добавьте слова в словарь."
 
 #: .\apps\progress\templates\progress\achievements.html:16
 msgid "Your achievements"
@@ -506,134 +718,231 @@ msgstr "У вас пока нет достижений"
 msgid "Available achievements"
 msgstr "Доступные достижения"
 
-#: .\apps\progress\templates\progress\achievements.html:64
+#: .\apps\progress\templates\progress\achievements.html:67
 msgid "All available achievements are unlocked"
 msgstr "Все доступные достижения открыты"
 
-#: .\apps\progress\templates\progress\achievements.html:65
+#: .\apps\progress\templates\progress\achievements.html:68
 msgid "New goals will appear here when more achievements are added."
 msgstr "Новые цели появятся здесь, когда будут добавлены новые достижения."
 
-#: .\apps\progress\templates\progress\achievements.html:71
+#: .\apps\progress\templates\progress\achievements.html:74
 msgid "Secret achievements"
 msgstr "Секретные достижения"
 
-#: .\apps\progress\templates\progress\achievements.html:91
+#: .\apps\progress\templates\progress\achievements.html:94
 msgid "No secret achievements left"
 msgstr "Секретных достижений не осталось"
 
-#: .\apps\progress\templates\progress\achievements.html:92
+#: .\apps\progress\templates\progress\achievements.html:95
 msgid "Every hidden challenge has already been revealed or completed."
 msgstr "Все скрытые испытания уже раскрыты или выполнены."
 
-#: .\apps\progress\templates\progress\srs.html:5
-msgid "Progress"
-msgstr "Прогресс"
+#: .\apps\progress\templates\progress\partials\answer_result.html:7
+msgid "Answer result"
+msgstr "Результат ответа"
 
-#: .\apps\progress\templates\progress\srs.html:15
-msgid "Review words at the right moment, before they fade from memory."
-msgstr "Повторяйте слова в нужный момент, пока они не исчезли из памяти."
+#: .\apps\progress\templates\progress\partials\answer_result.html:10
+#, python-format
+msgid "Answered %(answered)s of %(total)s"
+msgstr "Отвечено: %(answered)s из %(total)s"
 
-#: .\apps\progress\templates\progress\srs.html:24
-msgid "Review queue"
-msgstr "Очередь повторения"
+#: .\apps\progress\templates\progress\partials\answer_result.html:18
+#: .\apps\progress\templates\progress\partials\session_completed.html:11
+msgid "Correct"
+msgstr "Правильно"
 
-#: .\apps\progress\templates\progress\srs.html:25
-msgid "Words to study"
-msgstr "Слова для изучения"
+#: .\apps\progress\templates\progress\partials\answer_result.html:21
+#: .\apps\progress\templates\progress\partials\session_completed.html:12
+msgid "Incorrect"
+msgstr "Неправильно"
 
-#: .\apps\progress\templates\progress\srs.html:27
-msgid "SRS statistics"
-msgstr "Статистика SRS"
+#: .\apps\progress\templates\progress\partials\answer_result.html:26
+msgid "Your answer"
+msgstr "Ваш ответ"
 
-#: .\apps\progress\templates\progress\srs.html:30
-#: .\apps\progress\templates\progress\srs.html:49
-#: .\apps\statistics\templates\statistics\statistics.html:51
-msgid "Ready now"
-msgstr "Доступно сейчас"
+#: .\apps\progress\templates\progress\partials\answer_result.html:27
+msgid "Correct answer"
+msgstr "Правильный ответ"
 
-#: .\apps\progress\templates\progress\srs.html:34
-#: .\apps\statistics\templates\statistics\statistics.html:51
-msgid "Waiting"
-msgstr "Ожидают"
+#: .\apps\progress\templates\progress\partials\answer_result.html:28
+msgid "Previous interval"
+msgstr "Предыдущий интервал"
 
-#: .\apps\progress\templates\progress\srs.html:38
-msgid "Total"
-msgstr "Всего"
+#: .\apps\progress\templates\progress\partials\answer_result.html:28
+#: .\apps\progress\templates\progress\partials\answer_result.html:29
+msgid "day(s)"
+msgstr "дн."
 
-#: .\apps\progress\templates\progress\srs.html:48
-msgid "Available in:"
-msgstr "Будет доступно через:"
+#: .\apps\progress\templates\progress\partials\answer_result.html:29
+msgid "New interval"
+msgstr "Новый интервал"
 
-#: .\apps\progress\templates\progress\srs.html:84
-#: .\apps\progress\templates\progress\srs.html:85
+#: .\apps\progress\templates\progress\partials\answer_result.html:35
+#: .\apps\progress\templates\progress\partials\mode_cards.html:23
+msgid "Mode completed"
+msgstr "Режим пройден"
+
+#: .\apps\progress\templates\progress\partials\answer_result.html:49
+msgid "View session summary"
+msgstr "Посмотреть итоги сессии"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:5
+msgid "Training"
+msgstr "Тренировка"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:6
+msgid "Learning modes"
+msgstr "Режимы обучения"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:21
+msgid "Session in progress"
+msgstr "Сессия продолжается"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:26
+#, python-format
+msgid "%(counter)s card available"
+msgid_plural "%(counter)s cards available"
+msgstr[0] "Доступна %(counter)s карточка"
+msgstr[1] "Доступны %(counter)s карточки"
+msgstr[2] "Доступно %(counter)s карточек"
+msgstr[3] "Доступны %(counter)s карточки"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:29
+msgid "Unavailable"
+msgstr "Недоступно"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:40
+msgid "Continue"
+msgstr "Продолжить"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:42
+msgid "Start learning"
+msgstr "Начать обучение"
+
+#: .\apps\progress\templates\progress\partials\mode_cards.html:51
+msgid "Not available yet"
+msgstr "Пока недоступно"
+
+#: .\apps\progress\templates\progress\partials\session_completed.html:6
+msgid "Session completed"
+msgstr "Сессия завершена"
+
+#: .\apps\progress\templates\progress\partials\session_completed.html:7
+msgid "Good work. Your next reviews have been scheduled."
+msgstr "Отличная работа. Следующие повторения уже запланированы."
+
+#: .\apps\progress\templates\progress\partials\session_completed.html:16
+msgid "Choose another mode"
+msgstr "Выбрать другой режим"
+
+#: .\apps\progress\templates\progress\partials\study_card.html:7
+msgid "Your card"
+msgstr "Ваша карточка"
+
+#: .\apps\progress\templates\progress\partials\study_card.html:10
+#, python-format
+msgid "Card %(current)s of %(total)s"
+msgstr "Карточка %(current)s из %(total)s"
+
+#: .\apps\progress\templates\progress\partials\study_card.html:16
+msgid "Listen and type the English word"
+msgstr "Прослушайте и введите английское слово"
+
+#: .\apps\progress\templates\progress\partials\study_card.html:21
 msgid "Play pronunciation"
 msgstr "Прослушать произношение"
 
-#: .\apps\progress\templates\progress\srs.html:103
+#: .\apps\progress\templates\progress\partials\study_card.html:25
+msgid "Russian translation"
+msgstr "Русский перевод"
+
+#: .\apps\progress\templates\progress\partials\study_card.html:46
 msgid "Check"
 msgstr "Проверить"
 
-#: .\apps\progress\templates\progress\srs.html:114
-msgid "No words to review"
-msgstr "Нет слов для повторения"
+#: .\apps\progress\templates\progress\partials\study_card.html:54
+msgid "Leave session"
+msgstr "Выйти из сессии"
 
-#: .\apps\progress\templates\progress\srs.html:115
-msgid "Add words to your dictionary to start a new review queue."
-msgstr "Добавьте слова в словарь, чтобы начать новую очередь повторения."
+#: .\apps\progress\templates\progress\session.html:10
+msgid "Learning session"
+msgstr "Учебная сессия"
+
+#: .\apps\progress\templates\progress\session.html:12
+msgid "Answer at your own pace. You can leave and continue later."
+msgstr "Отвечайте в своём темпе. Можно выйти и продолжить позже."
+
+#: .\apps\progress\templates\progress\srs.html:4
+msgid "SRS learning modes"
+msgstr "Режимы обучения SRS"
+
+#: .\apps\progress\templates\progress\srs.html:11
+msgid "Choose a learning mode"
+msgstr "Выберите режим обучения"
+
+#: .\apps\progress\templates\progress\srs.html:12
+msgid "Each mode has its own schedule and learning progress."
+msgstr "У каждого режима своё расписание и отдельный прогресс."
+
+#: .\apps\progress\views.py:86
+msgid "There are no cards ready in this mode."
+msgstr "В этом режиме пока нет доступных карточек."
+
+#: .\apps\progress\views.py:114
+msgid "This card has already been processed."
+msgstr "Эта карточка уже обработана."
 
 #: .\apps\statistics\models.py:12
 msgid "SRS review"
 msgstr "Повторение SRS"
 
-#: .\apps\statistics\models.py:39
+#: .\apps\statistics\models.py:41
 msgid "SRS review log"
 msgstr "Запись истории SRS"
 
-#: .\apps\statistics\models.py:40
+#: .\apps\statistics\models.py:42
 msgid "SRS review logs"
 msgstr "История повторений SRS"
 
-#: .\apps\statistics\services.py:86
-#, python-format
-msgid "%(count)d word is ready for review"
-msgid_plural "%(count)d words are ready for review"
+#: .\apps\statistics\services.py:100
+#, fuzzy, python-format
+#| msgid "%(count)d word is ready for review"
+#| msgid_plural "%(count)d words are ready for review"
+msgid "%(count)d card is ready for review"
+msgid_plural "%(count)d cards are ready for review"
 msgstr[0] "%(count)d слово готово к повторению"
 msgstr[1] "%(count)d слова готовы к повторению"
 msgstr[2] "%(count)d слов готовы к повторению"
 msgstr[3] "%(count)d слова готовы к повторению"
 
-#: .\apps\statistics\services.py:92
+#: .\apps\statistics\services.py:106
 msgid "Review them now to protect your memory and keep your streak alive."
 msgstr "Повторите их сейчас, чтобы закрепить знания и сохранить серию занятий."
 
-#: .\apps\statistics\services.py:99
+#: .\apps\statistics\services.py:113
 msgid "Your weak words need attention"
 msgstr "Сложные слова требуют внимания"
 
-#: .\apps\statistics\services.py:101
+#: .\apps\statistics\services.py:115
 msgid "Open the review queue when they are due and focus on the words below."
 msgstr "Откройте очередь, когда слова будут доступны, и уделите внимание списку ниже."
 
-#: .\apps\statistics\services.py:104
+#: .\apps\statistics\services.py:118
 msgid "Open SRS queue"
 msgstr "Открыть очередь SRS"
 
-#: .\apps\statistics\services.py:108
+#: .\apps\statistics\services.py:122
 msgid "You are up to date"
 msgstr "На сегодня всё выполнено"
 
-#: .\apps\statistics\services.py:110
-msgid ""
-"Come back when the next words become ready, or add a new word to keep "
-"building your vocabulary."
-msgstr ""
-"Вернитесь, когда следующие слова будут готовы, или добавьте новое слово, "
-"чтобы продолжить развивать словарный запас."
+#: .\apps\statistics\services.py:124
+msgid "Come back when the next words become ready, or add a new word to keep building your vocabulary."
+msgstr "Вернитесь, когда следующие слова будут готовы, или добавьте новое слово, чтобы продолжить развивать словарный запас."
 
 #: .\apps\statistics\templates\statistics\statistics.html:4
 #: .\apps\statistics\templates\statistics\statistics.html:11
-#: .\templates\base.html:85
+#: .\templates\base.html:89
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -642,23 +951,16 @@ msgid "Learning progress"
 msgstr "Прогресс обучения"
 
 #: .\apps\statistics\templates\statistics\statistics.html:12
-msgid ""
-"See your consistency, retention, and the words that need more attention."
-msgstr ""
-"Следите за регулярностью, качеством запоминания и словами, которым нужно "
-"уделить больше внимания."
+msgid "See your consistency, retention, and the words that need more attention."
+msgstr "Следите за регулярностью, качеством запоминания и словами, которым нужно уделить больше внимания."
 
 #: .\apps\statistics\templates\statistics\statistics.html:21
 msgid "Your learning story starts with the first review"
 msgstr "История обучения начнётся с первого повторения"
 
 #: .\apps\statistics\templates\statistics\statistics.html:22
-msgid ""
-"Complete a few SRS reviews and you will see your streak, accuracy, activity, "
-"and words that need attention here."
-msgstr ""
-"Выполните несколько повторений SRS — здесь появятся серия занятий, точность, "
-"активность и сложные слова."
+msgid "Complete a few SRS reviews and you will see your streak, accuracy, activity, and words that need attention here."
+msgstr "Выполните несколько повторений SRS — здесь появятся серия занятий, точность, активность и сложные слова."
 
 #: .\apps\statistics\templates\statistics\statistics.html:23
 msgid "Go to SRS"
@@ -672,136 +974,441 @@ msgstr "Что сделать сегодня"
 msgid "Key learning metrics"
 msgstr "Основные показатели обучения"
 
-#: .\apps\statistics\templates\statistics\statistics.html:36
+#: .\apps\statistics\templates\statistics\statistics.html:38
 msgid "day streak"
 msgstr "дней подряд"
 
-#: .\apps\statistics\templates\statistics\statistics.html:36
+#: .\apps\statistics\templates\statistics\statistics.html:38
 msgid "Are you practicing regularly?"
 msgstr "Занимаетесь ли вы регулярно?"
 
-#: .\apps\statistics\templates\statistics\statistics.html:37
+#: .\apps\statistics\templates\statistics\statistics.html:43
 msgid "learned words"
 msgstr "изучено слов"
 
-#: .\apps\statistics\templates\statistics\statistics.html:37
+#: .\apps\statistics\templates\statistics\statistics.html:43
 msgid "Words at long intervals"
 msgstr "Слова с длинным интервалом"
 
-#: .\apps\statistics\templates\statistics\statistics.html:38
+#: .\apps\statistics\templates\statistics\statistics.html:48
 msgid "overall accuracy"
 msgstr "общая точность"
 
-#: .\apps\statistics\templates\statistics\statistics.html:38
+#: .\apps\statistics\templates\statistics\statistics.html:48
 msgid "Are you retaining words?"
 msgstr "Действительно ли слова запоминаются?"
 
-#: .\apps\statistics\templates\statistics\statistics.html:39
+#: .\apps\statistics\templates\statistics\statistics.html:53
 msgid "ready now"
 msgstr "Доступно сейчас"
 
-#: .\apps\statistics\templates\statistics\statistics.html:39
+#: .\apps\statistics\templates\statistics\statistics.html:53
 msgid "Your next review action"
 msgstr "Ваш следующий шаг"
 
-#: .\apps\statistics\templates\statistics\statistics.html:43
+#: .\apps\statistics\templates\statistics\statistics.html:61
 msgid "Practice activity"
 msgstr "Активность занятий"
 
-#: .\apps\statistics\templates\statistics\statistics.html:43
+#: .\apps\statistics\templates\statistics\statistics.html:62
 msgid "A gap is a signal to return to a small, sustainable daily session."
 msgstr "Пропуск — сигнал вернуться к коротким регулярным занятиям."
 
-#: .\apps\statistics\templates\statistics\statistics.html:43
+#: .\apps\statistics\templates\statistics\statistics.html:65
 msgid "Reviews per day for the last 30 days"
 msgstr "Повторения по дням за последние 30 дней"
 
-#: .\apps\statistics\templates\statistics\statistics.html:44
+#: .\apps\statistics\templates\statistics\statistics.html:71
 msgid "Accuracy trend"
 msgstr "Динамика точности"
 
-#: .\apps\statistics\templates\statistics\statistics.html:44
+#: .\apps\statistics\templates\statistics\statistics.html:72
 msgid "Aim for stable recall, not a perfect single session."
 msgstr "Важнее стабильное запоминание, чем один идеальный результат."
 
-#: .\apps\statistics\templates\statistics\statistics.html:44
+#: .\apps\statistics\templates\statistics\statistics.html:75
 msgid "Accuracy by day for the last 30 days"
 msgstr "Точность по дням за последние 30 дней"
 
-#: .\apps\statistics\templates\statistics\statistics.html:48
+#: .\apps\statistics\templates\statistics\statistics.html:83
 msgid "Words that need attention"
 msgstr "Слова, которым нужно внимание"
 
-#: .\apps\statistics\templates\statistics\statistics.html:48
-msgid ""
-"These words have repeated mistakes or low recall. They will reappear in your "
-"SRS queue when due."
-msgstr ""
-"В этих словах часто возникают ошибки или низкая точность. Они снова появятся "
-"в очереди SRS в нужный момент."
+#: .\apps\statistics\templates\statistics\statistics.html:84
+msgid "These words have repeated mistakes or low recall. They will reappear in your SRS queue when due."
+msgstr "В этих словах часто возникают ошибки или низкая точность. Они снова появятся в очереди SRS в нужный момент."
 
-#: .\apps\statistics\templates\statistics\statistics.html:49
+#: .\apps\statistics\templates\statistics\statistics.html:91
 msgid "Accuracy"
 msgstr "Точность"
 
-#: .\apps\statistics\templates\statistics\statistics.html:49
+#: .\apps\statistics\templates\statistics\statistics.html:92
 msgid "Mistakes"
 msgstr "Ошибки"
 
-#: .\apps\statistics\templates\statistics\statistics.html:49
-msgid ""
-"No recurring weak words yet. Keep reviewing to make this signal more "
-"reliable."
-msgstr ""
-"Пока нет слов с повторяющимися ошибками. Продолжайте заниматься, чтобы оценка "
-"стала надёжнее."
+#: .\apps\statistics\templates\statistics\statistics.html:106
+msgid "No recurring weak words yet. Keep reviewing to make this signal more reliable."
+msgstr "Пока нет слов с повторяющимися ошибками. Продолжайте заниматься, чтобы оценка стала надёжнее."
 
-#: .\apps\statistics\templates\statistics\statistics.html:51
+#: .\apps\statistics\templates\statistics\statistics.html:111
 msgid "Your SRS queue"
 msgstr "Ваша очередь SRS"
 
-#: .\apps\statistics\templates\statistics\statistics.html:51
+#: .\apps\statistics\templates\statistics\statistics.html:112
 msgid "Use this to decide whether to review now or wait for the next session."
 msgstr "Здесь видно, стоит ли повторять сейчас или дождаться следующего занятия."
 
-#: .\apps\statistics\templates\statistics\statistics.html:51
+#: .\apps\statistics\templates\statistics\statistics.html:115
+msgid "Ready now"
+msgstr "Доступно сейчас"
+
+#: .\apps\statistics\templates\statistics\statistics.html:119
+#: .\apps\support\templates\support\moderator_dashboard.html:41
+msgid "Waiting"
+msgstr "Ожидают"
+
+#: .\apps\statistics\templates\statistics\statistics.html:123
 msgid "In queue"
 msgstr "Всего в очереди"
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
+#: .\apps\statistics\templates\statistics\statistics.html:135
 msgid "Review and recall"
 msgstr "Повторения и запоминание"
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
-msgid ""
-"Compare short-term and longer-term recall to notice whether new material is "
-"sticking."
-msgstr ""
-"Сравнивайте краткосрочную и долгосрочную точность, чтобы понимать, "
-"закрепляется ли новый материал."
+#: .\apps\statistics\templates\statistics\statistics.html:136
+msgid "Compare short-term and longer-term recall to notice whether new material is sticking."
+msgstr "Сравнивайте краткосрочную и долгосрочную точность, чтобы понимать, закрепляется ли новый материал."
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
+#: .\apps\statistics\templates\statistics\statistics.html:138
 msgid "reviews today"
 msgstr "повторений сегодня"
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
+#: .\apps\statistics\templates\statistics\statistics.html:139
 msgid "reviews in 7 days"
 msgstr "повторений за 7 дней"
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
+#: .\apps\statistics\templates\statistics\statistics.html:140
 msgid "reviews in 30 days"
 msgstr "повторений за 30 дней"
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
+#: .\apps\statistics\templates\statistics\statistics.html:142
 msgid "accuracy in 7 days"
 msgstr "точность за 7 дней"
 
-#: .\apps\statistics\templates\statistics\statistics.html:54
+#: .\apps\statistics\templates\statistics\statistics.html:144
 msgid "accuracy in 30 days"
 msgstr "точность за 30 дней"
 
+#: .\apps\support\exceptions.py:6
+msgid "Support operation failed"
+msgstr ""
+
+#: .\apps\support\exceptions.py:15
+msgid "Authentication is required"
+msgstr ""
+
+#: .\apps\support\exceptions.py:20
+#, fuzzy
+#| msgid "You have no support requests yet."
+msgid "You do not have access to this support request"
+msgstr "У вас пока нет обращений в поддержку."
+
+#: .\apps\support\exceptions.py:25
+#, fuzzy
+#| msgid "Support requests"
+msgid "Support request was not found"
+msgstr "Обращения в поддержку"
+
+#: .\apps\support\exceptions.py:30
+msgid "Message text is invalid"
+msgstr ""
+
+#: .\apps\support\exceptions.py:35
+msgid "Wait for a moderator to join the conversation"
+msgstr ""
+
+#: .\apps\support\exceptions.py:40
+#, fuzzy
+#| msgid "Support requests"
+msgid "Support request is already closed"
+msgstr "Обращения в поддержку"
+
+#: .\apps\support\exceptions.py:45
+msgid "Only an active support request can be closed"
+msgstr ""
+
+#: .\apps\support\exceptions.py:50
+#, fuzzy
+#| msgid "You have no support requests yet."
+msgid "Only a closed support request can be rated"
+msgstr "У вас пока нет обращений в поддержку."
+
+#: .\apps\support\exceptions.py:55
+msgid "Rating must be either helped or did not help"
+msgstr ""
+
+#: .\apps\support\exceptions.py:60
+msgid "This support request has already been rated"
+msgstr ""
+
+#: .\apps\support\models.py:9
+#: .\apps\support\templates\support\moderator_dashboard.html:16
+#: .\apps\support\templates\support\widget.html:7
+msgid "Waiting for moderator"
+msgstr "Ожидает модератора"
+
+#: .\apps\support\models.py:11
+#: .\apps\support\templates\support\moderator_dashboard.html:18
+#: .\apps\support\templates\support\moderator_dashboard.html:49
+#: .\apps\support\templates\support\widget.html:9
+msgid "Closed"
+msgstr "Закрыто"
+
+#: .\apps\support\models.py:29
+msgid "Started at"
+msgstr ""
+
+#: .\apps\support\models.py:34
+#, fuzzy
+#| msgid "Closed"
+msgid "Closed at"
+msgstr "Закрыто"
+
+#: .\apps\support\models.py:42
+#, fuzzy
+#| msgid "Closed"
+msgid "Closed by"
+msgstr "Закрыто"
+
+#: .\apps\support\models.py:44 .\apps\support\models.py:79
+#: .\apps\support\models.py:101 .\apps\support\models.py:134
+#, fuzzy
+#| msgid "Create an account"
+msgid "Created at"
+msgstr "Создать аккаунт"
+
+#: .\apps\support\models.py:45 .\apps\support\models.py:135
+msgid "Updated at"
+msgstr ""
+
+#: .\apps\support\models.py:49 .\apps\support\models.py:67
+#: .\apps\support\models.py:98 .\apps\support\models.py:122
+#, fuzzy
+#| msgid "Support requests"
+msgid "Support request"
+msgstr "Обращения в поддержку"
+
+#: .\apps\support\models.py:50
+#: .\apps\support\templates\support\moderator_dashboard.html:27
+msgid "Support requests"
+msgstr "Обращения в поддержку"
+
+#: .\apps\support\models.py:73
+msgid "Author"
+msgstr ""
+
+#: .\apps\support\models.py:77
+msgid "Text"
+msgstr ""
+
+#: .\apps\support\models.py:83
+#, fuzzy
+#| msgid "Support requests"
+msgid "Support message"
+msgstr "Обращения в поддержку"
+
+#: .\apps\support\models.py:84
+#, fuzzy
+#| msgid "Support requests"
+msgid "Support messages"
+msgstr "Обращения в поддержку"
+
+#: .\apps\support\models.py:100 .\apps\support\models.py:108
+#: .\apps\support\templates\support\widget.html:97
+msgid "Helped"
+msgstr "Помогло"
+
+#: .\apps\support\models.py:104
+#, fuzzy
+#| msgid "Support chat"
+msgid "Support rating"
+msgstr "Чат поддержки"
+
+#: .\apps\support\models.py:105
+#, fuzzy
+#| msgid "Support chat"
+msgid "Support ratings"
+msgstr "Чат поддержки"
+
+#: .\apps\support\models.py:108
+#: .\apps\support\templates\support\widget.html:101
+msgid "Did not help"
+msgstr "Не помогло"
+
+#: .\apps\support\models.py:115
+msgid "Sent"
+msgstr ""
+
+#: .\apps\support\models.py:116
+msgid "Failed"
+msgstr ""
+
+#: .\apps\support\models.py:131
+msgid "Attempts"
+msgstr ""
+
+#: .\apps\support\models.py:132
+msgid "Last error"
+msgstr ""
+
+#: .\apps\support\models.py:133
+msgid "Sent at"
+msgstr ""
+
+#: .\apps\support\models.py:138
+msgid "Telegram notification"
+msgstr ""
+
+#: .\apps\support\models.py:139
+msgid "Telegram notifications"
+msgstr ""
+
+#: .\apps\support\templates\support\moderator_dashboard.html:4
+msgid "Moderator support"
+msgstr "Поддержка для модератора"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:19
+#: .\apps\support\templates\support\widget.html:10
+msgid "Connecting..."
+msgstr "Подключение..."
+
+#: .\apps\support\templates\support\moderator_dashboard.html:20
+#: .\apps\support\templates\support\widget.html:11
+msgid "Connected"
+msgstr "Подключено"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:21
+#: .\apps\support\templates\support\widget.html:12
+msgid "Connection lost"
+msgstr "Соединение потеряно"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:22
+#: .\apps\support\templates\support\widget.html:14
+msgid "Could not load support data."
+msgstr "Не удалось загрузить данные поддержки."
+
+#: .\apps\support\templates\support\moderator_dashboard.html:23
+msgid "Could not send the message."
+msgstr "Не удалось отправить сообщение."
+
+#: .\apps\support\templates\support\moderator_dashboard.html:26
+msgid "Moderator workspace"
+msgstr "Рабочее место модератора"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:35
+msgid "Filter requests"
+msgstr "Фильтр обращений"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:57
+msgid "There are no requests in this section."
+msgstr "В этом разделе нет обращений."
+
+#: .\apps\support\templates\support\moderator_dashboard.html:64
+msgid "Select a request"
+msgstr "Выберите обращение"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:65
+msgid "Choose a conversation from the list to start working."
+msgstr "Выберите диалог из списка, чтобы начать работу."
+
+#: .\apps\support\templates\support\moderator_dashboard.html:71
+msgid "Back to requests"
+msgstr "Вернуться к обращениям"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:83
+msgid "Close request"
+msgstr "Закрыть обращение"
+
+#: .\apps\support\templates\support\moderator_dashboard.html:92
+msgid "This conversation is closed."
+msgstr "Этот диалог закрыт."
+
+#: .\apps\support\templates\support\moderator_dashboard.html:102
+#: .\apps\support\templates\support\widget.html:117
+msgid "Write a message..."
+msgstr "Напишите сообщение..."
+
+#: .\apps\support\templates\support\widget.html:13
+msgid "Request"
+msgstr "Обращение"
+
+#: .\apps\support\templates\support\widget.html:15
+msgid "Could not send the request."
+msgstr "Не удалось отправить обращение."
+
+#: .\apps\support\templates\support\widget.html:18
+msgid "Open support"
+msgstr "Открыть поддержку"
+
+#: .\apps\support\templates\support\widget.html:22
+#: .\apps\support\templates\support\widget.html:36 .\templates\base.html:95
+msgid "Support"
+msgstr "Поддержка"
+
+#: .\apps\support\templates\support\widget.html:27
+msgid "Support chat"
+msgstr "Чат поддержки"
+
+#: .\apps\support\templates\support\widget.html:39
+msgid "Close support window"
+msgstr "Закрыть окно поддержки"
+
+#: .\apps\support\templates\support\widget.html:48
+msgid "Your requests"
+msgstr "Ваши обращения"
+
+#: .\apps\support\templates\support\widget.html:52
+msgid "New request"
+msgstr "Новое обращение"
+
+#: .\apps\support\templates\support\widget.html:55
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: .\apps\support\templates\support\widget.html:57
+msgid "You have no support requests yet."
+msgstr "У вас пока нет обращений в поддержку."
+
+#: .\apps\support\templates\support\widget.html:66
+msgid "Describe your problem"
+msgstr "Опишите вашу проблему"
+
+#: .\apps\support\templates\support\widget.html:75
+msgid "After sending, wait for a moderator to respond."
+msgstr "После отправки дождитесь ответа модератора."
+
+#: .\apps\support\templates\support\widget.html:78
+msgid "Send request"
+msgstr "Отправить обращение"
+
+#: .\apps\support\templates\support\widget.html:90
+msgid "Your request has been sent. Please wait for a moderator."
+msgstr "Обращение отправлено. Пожалуйста, дождитесь модератора."
+
+#: .\apps\support\templates\support\widget.html:93
+msgid "Did the consultation help you?"
+msgstr "Вам помогла консультация?"
+
+#: .\apps\support\templates\support\widget.html:106
+msgid "Thank you for your feedback."
+msgstr "Спасибо за вашу оценку."
+
+#: .\apps\support\templates\support\widget.html:120
+msgid "Send message"
+msgstr "Отправить сообщение"
+
 #: .\templates\account\login.html:7 .\templates\account\login.html:32
-#: .\templates\account\login.html:61 .\templates\base.html:92
+#: .\templates\account\login.html:61 .\templates\base.html:105
 msgid "Log in"
 msgstr "Войти"
 
@@ -814,12 +1421,8 @@ msgid "Keep your English moving"
 msgstr "Продолжайте двигать английский вперёд"
 
 #: .\templates\account\login.html:20
-msgid ""
-"Return to your dictionary, SRS queue, and achievements from one calm "
-"learning space."
-msgstr ""
-"Вернитесь к словарю, очереди SRS и достижениям из одного спокойного учебного "
-"пространства."
+msgid "Return to your dictionary, SRS queue, and achievements from one calm learning space."
+msgstr "Вернитесь к словарю, очереди SRS и достижениям из одного спокойного учебного пространства."
 
 #: .\templates\account\login.html:31 .\templates\account\password_reset.html:18
 #: .\templates\account\password_reset_from_key.html:30
@@ -850,9 +1453,7 @@ msgid "Password reset"
 msgstr "Сброс пароля"
 
 #: .\templates\account\password_reset.html:20
-msgid ""
-"Enter your email and we will send instructions for returning to your "
-"learning space."
+msgid "Enter your email and we will send instructions for returning to your learning space."
 msgstr "Введите email, и мы отправим инструкции для возвращения к обучению."
 
 #: .\templates\account\password_reset.html:22
@@ -878,13 +1479,8 @@ msgid "Remembered your password?"
 msgstr "Вспомнили пароль?"
 
 #: .\templates\account\password_reset_done.html:5
-msgid ""
-"We have sent you an email. If you do not receive it, please check your spam "
-"folder. Otherwise, contact us if it does not arrive within a few minutes."
-msgstr ""
-"Мы отправили вам письмо. Если вы его не получили, проверьте папку «Спам». "
-"Если письма нет и там, свяжитесь с нами, если оно не придёт в течение "
-"нескольких минут."
+msgid "We have sent you an email. If you do not receive it, please check your spam folder. Otherwise, contact us if it does not arrive within a few minutes."
+msgstr "Мы отправили вам письмо. Если вы его не получили, проверьте папку «Спам». Если письма нет и там, свяжитесь с нами, если оно не придёт в течение нескольких минут."
 
 #: .\templates\account\password_reset_from_key.html:7
 #: .\templates\account\password_reset_from_key.html:31
@@ -933,12 +1529,8 @@ msgid "Start building your vocabulary"
 msgstr "Начните собирать свой словарь"
 
 #: .\templates\account\signup.html:20
-msgid ""
-"Create an account and keep every word, review, and achievement connected to "
-"your progress."
-msgstr ""
-"Создайте аккаунт, чтобы каждое слово, повторение и достижение были связаны с "
-"вашим прогрессом."
+msgid "Create an account and keep every word, review, and achievement connected to your progress."
+msgstr "Создайте аккаунт, чтобы каждое слово, повторение и достижение были связаны с вашим прогрессом."
 
 #: .\templates\account\signup.html:23
 msgid "Add words"
@@ -960,31 +1552,35 @@ msgstr "Уже есть аккаунт?"
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: .\templates\base.html:66
+#: .\templates\base.html:70
 msgid "Main"
 msgstr "Главная"
 
-#: .\templates\base.html:81
+#: .\templates\base.html:85
 msgid "SRS"
 msgstr "SRS"
 
-#: .\templates\base.html:93
+#: .\templates\base.html:106
 msgid "or"
 msgstr "или"
 
-#: .\templates\base.html:95
+#: .\templates\base.html:108
 msgid "Sign in"
 msgstr "Зарегистрироваться"
 
-#: .\templates\base.html:97
+#: .\templates\base.html:110
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: .\templates\base.html:100
+#: .\templates\base.html:113
 msgid "Exit"
 msgstr "Выйти"
 
-#: .\templates\base.html:114
+#: .\templates\base.html:119
+msgid "Change language"
+msgstr ""
+
+#: .\templates\base.html:143
 msgid "Copyright 2026 &copy; Made by vitalion"
 msgstr ""
 
@@ -999,206 +1595,43 @@ msgstr "Новое достижение:"
 msgid "Close"
 msgstr "Закрыть"
 
-msgid "Usage register"
-msgstr "Стиль употребления"
+#~ msgid "Category"
+#~ msgstr "Категория"
 
-msgid "Topics"
-msgstr "Темы"
+#~ msgid "Categories"
+#~ msgstr "Категории"
 
-msgid "Part of speech"
-msgstr "Часть речи"
+#~ msgid "Save the word, translation, category, and learning status."
+#~ msgstr "Сохраните слово, перевод, категорию и статус изучения."
 
-msgid "Language level"
-msgstr "Уровень языка"
+#, fuzzy
+#~| msgid "Save the word, translation, category, and learning status."
+#~ msgid "Try another word, translation, or status."
+#~ msgstr "Попробуйте изменить слово, перевод или статус."
 
-msgid "Required"
-msgstr "Обязательно"
+#~ msgid "SRS object"
+#~ msgstr "SRS объект"
 
-msgid "All usage registers"
-msgstr "Все стили употребления"
+#~ msgid "SRS objects"
+#~ msgstr "SRS объекты"
 
-msgid "All topics"
-msgstr "Все темы"
+#~ msgid "Progress"
+#~ msgstr "Прогресс"
 
-msgid "Selected"
-msgstr "Выбрано"
+#~ msgid "Review words at the right moment, before they fade from memory."
+#~ msgstr "Повторяйте слова в нужный момент, пока они не исчезли из памяти."
 
-msgid "All parts of speech"
-msgstr "Все части речи"
+#~ msgid "Review queue"
+#~ msgstr "Очередь повторения"
 
-msgid "All levels"
-msgstr "Все уровни"
+#~ msgid "Words to study"
+#~ msgstr "Слова для изучения"
 
-msgid "Noun"
-msgstr "Существительное"
+#~ msgid "SRS statistics"
+#~ msgstr "Статистика SRS"
 
-msgid "Verb"
-msgstr "Глагол"
+#~ msgid "Total"
+#~ msgstr "Всего"
 
-msgid "Adjective"
-msgstr "Прилагательное"
-
-msgid "Adverb"
-msgstr "Наречие"
-
-msgid "Pronoun"
-msgstr "Местоимение"
-
-msgid "Preposition"
-msgstr "Предлог"
-
-msgid "Conjunction"
-msgstr "Союз"
-
-msgid "Determiner"
-msgstr "Определитель"
-
-msgid "Interjection"
-msgstr "Междометие"
-
-msgid "Numeral"
-msgstr "Числительное"
-
-msgid "Phrase"
-msgstr "Фраза"
-
-msgid "Other"
-msgstr "Другое"
-
-msgid "Neutral"
-msgstr "Нейтральный"
-
-msgid "Formal"
-msgstr "Формальный"
-
-msgid "Informal"
-msgstr "Неформальный"
-
-msgid "Slang"
-msgstr "Сленг"
-
-msgid "Technical"
-msgstr "Технический"
-
-msgid "Literary"
-msgstr "Литературный"
-
-msgid "Old-fashioned"
-msgstr "Устаревший"
-
-msgid "Save the word, translation, topics, and learning details."
-msgstr "Сохраните слово, перевод, темы и параметры изучения."
-
-msgid "Try changing your search or filters."
-msgstr "Измените поисковый запрос или фильтры."
-
-msgid "Waiting for moderator"
-msgstr "Ожидает модератора"
-
-msgid "Closed"
-msgstr "Закрыто"
-
-msgid "Connecting..."
-msgstr "Подключение..."
-
-msgid "Connected"
-msgstr "Подключено"
-
-msgid "Connection lost"
-msgstr "Соединение потеряно"
-
-msgid "Request"
-msgstr "Обращение"
-
-msgid "Could not load support data."
-msgstr "Не удалось загрузить данные поддержки."
-
-msgid "Could not send the request."
-msgstr "Не удалось отправить обращение."
-
-msgid "Open support"
-msgstr "Открыть поддержку"
-
-msgid "Support"
-msgstr "Поддержка"
-
-msgid "Support chat"
-msgstr "Чат поддержки"
-
-msgid "Close support window"
-msgstr "Закрыть окно поддержки"
-
-msgid "Your requests"
-msgstr "Ваши обращения"
-
-msgid "New request"
-msgstr "Новое обращение"
-
-msgid "Loading..."
-msgstr "Загрузка..."
-
-msgid "You have no support requests yet."
-msgstr "У вас пока нет обращений в поддержку."
-
-msgid "Describe your problem"
-msgstr "Опишите вашу проблему"
-
-msgid "After sending, wait for a moderator to respond."
-msgstr "После отправки дождитесь ответа модератора."
-
-msgid "Send request"
-msgstr "Отправить обращение"
-
-msgid "Your request has been sent. Please wait for a moderator."
-msgstr "Обращение отправлено. Пожалуйста, дождитесь модератора."
-
-msgid "Did the consultation help you?"
-msgstr "Вам помогла консультация?"
-
-msgid "Helped"
-msgstr "Помогло"
-
-msgid "Did not help"
-msgstr "Не помогло"
-
-msgid "Thank you for your feedback."
-msgstr "Спасибо за вашу оценку."
-
-msgid "Write a message..."
-msgstr "Напишите сообщение..."
-
-msgid "Send message"
-msgstr "Отправить сообщение"
-
-msgid "Support requests"
-msgstr "Обращения в поддержку"
-
-msgid "Moderator support"
-msgstr "Поддержка для модератора"
-
-msgid "Moderator workspace"
-msgstr "Рабочее место модератора"
-
-msgid "Filter requests"
-msgstr "Фильтр обращений"
-
-msgid "There are no requests in this section."
-msgstr "В этом разделе нет обращений."
-
-msgid "Select a request"
-msgstr "Выберите обращение"
-
-msgid "Choose a conversation from the list to start working."
-msgstr "Выберите диалог из списка, чтобы начать работу."
-
-msgid "Back to requests"
-msgstr "Вернуться к обращениям"
-
-msgid "Close request"
-msgstr "Закрыть обращение"
-
-msgid "This conversation is closed."
-msgstr "Этот диалог закрыт."
-
-msgid "Could not send the message."
-msgstr "Не удалось отправить сообщение."
+#~ msgid "No words to review"
+#~ msgstr "Нет слов для повторения"

@@ -1,0 +1,57 @@
+{% load i18n %}
+
+<section class="srs-study-shell">
+    <div class="srs-study-topbar">
+        <div>
+            <span class="section-eyebrow">{{ mode_label }}</span>
+            <h2>{% trans "Your card" %}</h2>
+        </div>
+        <span class="srs-progress-badge">
+            {% blocktrans with current=current_number total=counts.total %}Card {{ current }} of {{ total }}{% endblocktrans %}
+        </span>
+    </div>
+
+    <div class="srs-study-card">
+        {% if is_audio_mode %}
+            <span class="srs-word-label">{% trans "Listen and type the English word" %}</span>
+            <button type="button"
+                    class="btn btn-outline-primary srs-audio-button"
+                    onclick="playAudio('{{ word.english_name|escapejs }}')">
+                <i class="bi bi-volume-up-fill" aria-hidden="true"></i>
+                {% trans "Play pronunciation" %}
+            </button>
+        {% else %}
+            <span class="srs-word-label">
+                {% if is_english_prompt %}{% trans "English word" %}{% else %}{% trans "Russian translation" %}{% endif %}
+            </span>
+            <div class="srs-study-prompt">
+                {% if is_english_prompt %}{{ word.english_name }}{% else %}{{ word.russian_name }}{% endif %}
+            </div>
+        {% endif %}
+
+        <form method="post"
+              class="srs-answer-form"
+              hx-post="{% url 'progress:answer_card' session.id card.id %}"
+              hx-target="#session-content"
+              hx-swap="innerHTML">
+            {% csrf_token %}
+            <div>
+                {{ form.answer }}
+                {% for error in form.answer.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <button class="btn btn-primary btn-lg" type="submit">
+                <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                {% trans "Check" %}
+            </button>
+        </form>
+    </div>
+
+    <form method="post" action="{% url 'progress:leave_session' session.id %}" class="text-center mt-3">
+        {% csrf_token %}
+        <button class="btn btn-link text-body-secondary" type="submit">
+            {% trans "Leave session" %}
+        </button>
+    </form>
+</section>

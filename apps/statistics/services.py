@@ -6,7 +6,7 @@ from django.utils.translation import gettext as _, ngettext
 
 from apps.dictionary.choices import StudyStatus
 from apps.dictionary.models import Word
-from apps.progress.models import UserSRS
+from apps.progress.models import UserWordModeProgress
 from apps.statistics.models import SRSReviewLog
 
 
@@ -69,9 +69,9 @@ def build_statistics(user):
         )
 
     active_dates = logs.values_list("reviewed_at__date", flat=True).distinct()
-    queue = UserSRS.objects.filter(user=user)
-    due_now = queue.filter(access_timer__lte=now).count()
-    waiting = queue.filter(access_timer__gt=now).count()
+    queue = UserWordModeProgress.objects.filter(user=user, completed=False)
+    due_now = queue.filter(next_review_at__lte=now).count()
+    waiting = queue.filter(next_review_at__gt=now).count()
     weak_words = list(
         logs.values("word_id", "word__english_name", "word__russian_name")
         .annotate(
@@ -97,8 +97,8 @@ def build_statistics(user):
     if due_now:
         next_action = {
             "title": ngettext(
-                "%(count)d word is ready for review",
-                "%(count)d words are ready for review",
+                "%(count)d card is ready for review",
+                "%(count)d cards are ready for review",
                 due_now,
             )
             % {"count": due_now},

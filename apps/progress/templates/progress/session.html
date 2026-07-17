@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ mode_label }}{% endblock title %}
+
+{% block content %}
+    <header class="srs-hero srs-session-hero">
+        <div class="container">
+            <div class="srs-hero-inner">
+                <span class="srs-kicker">{% trans "Learning session" %}</span>
+                <h1>{{ mode_label }}</h1>
+                <p>{% trans "Answer at your own pace. You can leave and continue later." %}</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div id="session-content">
+            {% if card %}
+                {% include "progress/partials/study_card.html" %}
+            {% else %}
+                {% include "progress/partials/session_completed.html" %}
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/pronunciationWord.js' %}?v=20260715-srs"></script>
+{% endblock content %}
