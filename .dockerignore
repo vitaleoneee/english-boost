@@ -1,0 +1,15 @@
+.git/
+.venv/
+.uv-cache/
+.ruff_cache/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.env
+.env.*
+.idea/
+.vscode/
+.agents/
+screenshots/
+staticfiles/
+media/

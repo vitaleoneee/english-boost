@@ -18,7 +18,6 @@ tzdata>=2025.2
 pre-commit>=4.5.1
 django-tables2>=2.8.0
 psycopg[binary]>=3.3.4
-unfold>=1.2.4
 django-unfold>=0.93.0
 django-lifecycle>=1.2.7
 django-htmx>=1.27.0

@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
     dependencies = [
         ("core", "0009_alter_category_options"),
-        ("dictionary", "0001_move_from_core"),
+        ("progress", "0013_update_word_fk"),
     ]
 
     operations = [
